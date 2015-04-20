@@ -1,7 +1,11 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{013EC032-D346-0D4B-E443-1C6AB1F8F224}") = "Escape", "Assembly-CSharp-firstpass.csproj", "{5FF8F50E-C5EE-5E2A-F035-84290BFDAA61}"
+EndProject
 Project("{013EC032-D346-0D4B-E443-1C6AB1F8F224}") = "Escape", "Assembly-CSharp.csproj", "{0FB0ABFC-946D-1633-8070-49DD687763D9}"
+EndProject
+Project("{013EC032-D346-0D4B-E443-1C6AB1F8F224}") = "Escape", "Assembly-CSharp-Editor.csproj", "{D80CF8CB-9EC5-5740-E59B-643821AED62B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +13,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5FF8F50E-C5EE-5E2A-F035-84290BFDAA61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FF8F50E-C5EE-5E2A-F035-84290BFDAA61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FF8F50E-C5EE-5E2A-F035-84290BFDAA61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FF8F50E-C5EE-5E2A-F035-84290BFDAA61}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0FB0ABFC-946D-1633-8070-49DD687763D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0FB0ABFC-946D-1633-8070-49DD687763D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FB0ABFC-946D-1633-8070-49DD687763D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FB0ABFC-946D-1633-8070-49DD687763D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D80CF8CB-9EC5-5740-E59B-643821AED62B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D80CF8CB-9EC5-5740-E59B-643821AED62B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D80CF8CB-9EC5-5740-E59B-643821AED62B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D80CF8CB-9EC5-5740-E59B-643821AED62B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-		GlobalSection(MonoDevelopProperties) = preSolution
+								GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

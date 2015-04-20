@@ -12,7 +12,10 @@ namespace Escape
 		public abstract class BaseRoomController : MonoBehaviour
 		{
 	
-			protected List<BaseDoor> doors;
+			
+			public Core.BaseDoor[] doors;
+
+			public Transform entrance;
 
 			// the room we came from in this particular case
 			protected BaseRoomController parentRoom = null;
@@ -20,7 +23,8 @@ namespace Escape
 			// Use this for initialization
 			void Start ()
 			{
-	
+				/*if (parentRoom != null)
+					parentRoom.gameObject.SetActive (false);*/
 			}
 	
 			// Update is called once per frame

@@ -20,10 +20,12 @@ namespace Escape
 			// the center of the doorway, on the very edge, facing out of the room
 			public Transform doorPosition;
 
+			private GameObject nextRoom;
+
 			void Start () 
 			{
 				doorPosition = transform;
-				weights = new Dictionary<string, float> ();
+				if (weights == null) weights = new Dictionary<string, float> ();
 			}
 
 			// chooses a room probabilistically according to the weights
@@ -47,11 +49,13 @@ namespace Escape
 					}
 				}
 				// in theory now result should never be null because Random.Range does not include the max value
-				GameObject newRoom = Resources.Load (result) as GameObject;
-				BaseRoomController newRoomController = newRoom.GetComponent<BaseRoomController> ();
+				GameObject newRoom = Instantiate(Resources.Load (result) as GameObject);
+				BaseRoomController newRoomController = newRoom.GetComponentInChildren<BaseRoomController> ();
 				newRoomController.SetParentRoom (this.GetComponentInParent<BaseRoomController> ());
 
 				LineUpFacing (newRoom.transform);
+
+				//this.GetComponentInParent<BaseRoomController> ().gameObject.SetActive (false);
 
 				return newRoom.GetComponent<BaseRoomController> ();
 			}
@@ -61,7 +65,9 @@ namespace Escape
 			public void LineUpFacing (Transform other) 
 			{
 				other.position = doorPosition.position;
-				other.LookAt (doorPosition); // should do the trick???
+				other.forward = doorPosition.forward;
+				//other.RotateAround (other.position, Vector3.up, 180);
+				//other.LookAt (doorPosition); // should do the trick???
 			}
 
 			// default -- choose a new room when the collider is triggered
@@ -69,9 +75,20 @@ namespace Escape
 			// this is here for convenience, some doors may be triggered by other means
 			public void OnTriggerEnter(Collider other) 
 			{
-				if (other.tag.Equals ("Player")) { // temp tag
-					LoadNextRoom ();
+				if (nextRoom == null) {
+					if (other.tag.Equals ("Player")) { // temp tag
+						nextRoom = LoadNextRoom ().gameObject;
+					}
 				}
+			}
+
+			// sets a weight, initialises dictionary if this has not already been done
+			public void SetWeight(string name, float weight) 
+			{
+				if (weights == null)
+					weights = new Dictionary<string, float> ();
+
+				weights[name] = weight;
 			}
 		}
 
