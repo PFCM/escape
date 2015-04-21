@@ -1,10 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/BaseDoor.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TestRoom.cs">
     <Files>
       <File FileName="Assets/Scripts/BaseRoomController.cs" Line="16" Column="16" />
-      <File FileName="Assets/Scripts/BaseDoor.cs" Line="52" Column="90" />
-      <File FileName="Assets/Scripts/TestRoom.cs" Line="14" Column="41" />
+      <File FileName="Assets/Scripts/BaseDoor.cs" Line="52" Column="77" />
+      <File FileName="Assets/Scripts/TestRoom.cs" Line="19" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

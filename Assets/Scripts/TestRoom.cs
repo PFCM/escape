@@ -11,8 +11,13 @@ namespace Escape
 			// Use this for initialization
 			void Start ()
 			{
-				doors [0].SetWeight ("TestRoomCylinder", 1);
-				doors [0].SetWeight ("TestRoomCube", 1);
+				if (doors.Length == 1) {
+					doors [0].SetWeight ("Rooms/Tests/TestRoomCylinder", 1);
+					doors [0].SetWeight ("Rooms/Tests/TestRoomCube", 1);
+				} else if (doors.Length == 2) {
+					doors [1].SetWeight ("Rooms/Tests/TestRoomCylinder", 1);
+					doors [0].SetWeight ("Rooms/Tests/TestRoomCube", 1);
+				}
 			}
 	
 			// Update is called once per frame

@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BaseDoor.cs" />
      <Compile Include="Assets\Scripts\BaseRoomController.cs" />
+     <Compile Include="Assets\Scripts\Room01Script.cs" />
      <Compile Include="Assets\Scripts\TestRoom.cs" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
