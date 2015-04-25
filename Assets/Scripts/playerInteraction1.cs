@@ -40,6 +40,19 @@ public class playerInteraction1 : MonoBehaviour {
 
 			//if(openableObject)
 			//object.open
+
+			//if the object is a battery
+			if(hit.transform.gameObject.tag == "door"){
+				//Debug.Log("Hit object " + camera.transform.gameObject.tag);
+				//when the user presses E destroy object and load battery
+				if (Input.GetKeyDown (KeyCode.E)) {
+					//destroys battery object
+					//Destroy (hit.transform.gameObject);
+					//gameObject.GetComponent<flashlightScript>().loadBatter
+						hit.transform.gameObject.GetComponent<doorCloseScript>().activateDoor();
+
+				}
+			}
 		} 
 		
 	}

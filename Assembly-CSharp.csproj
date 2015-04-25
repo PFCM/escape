@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\flashlightScript.cs" />
      <Compile Include="Assets\Scripts\playerInteraction.cs" />
      <Compile Include="Assets\Scripts\playerInteraction1.cs" />
+     <Compile Include="Assets\doorCloseScript.cs" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
