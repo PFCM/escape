@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using Escape.Util;
+
 namespace Escape
 {
 	namespace Core
@@ -92,6 +94,9 @@ namespace Escape
 				
 				LineUpFacing (newRoom.transform);
 				newRoomController.positioned = true;
+				this.nextRoom = newRoom;
+
+				Logging.Log ("(BaseRoom) loaded " + name);
 			}
 
 			// Lines up a given transform so it is colocated with doorPosition, facing the opposite 
@@ -111,7 +116,7 @@ namespace Escape
 			{
 				if (nextRoom == null) {
 					if (other.tag.Equals ("Player")) { // temp tag
-						nextRoom = LoadNextRoom ().gameObject;
+						LoadNextRoom ();
 					}
 				}
 			}

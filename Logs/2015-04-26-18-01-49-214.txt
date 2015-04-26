@@ -1,0 +1,2 @@
+[0:0:8:897] (BaseRoom) loaded TestRoomCylinder
+[0:0:17:595] (BaseRoom) loaded TestRoomCube
