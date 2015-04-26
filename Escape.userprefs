@@ -1,17 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TestRoom.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\doorCloseScript.cs">
     <Files>
-      <File FileName="Assets/Scripts/TestRoom.cs" Line="16" Column="44" />
-      <File FileName="Assets/Scripts/BaseRoomController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/BaseDoor.cs" Line="81" Column="8" />
+      <File FileName="Assets\doorCloseScript.cs" Line="45" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/Guest/Escape/Assets/Scripts/BaseDoor.cs" line="72" />
-      <Breakpoint file="/Users/Guest/Escape/Assets/Scripts/BaseDoor.cs" line="50" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
