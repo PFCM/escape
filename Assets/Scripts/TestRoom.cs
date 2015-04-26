@@ -11,6 +11,8 @@ namespace Escape
 			// Use this for initialization
 			void Start ()
 			{
+				base.CheckParentRoomStatus ();
+
 				if (doors.Length == 1) {
 					doors [0].SetWeight ("TestRoomCube", 1);
 					doors [0].SetWeight ("TestRoomCylinder", 1);

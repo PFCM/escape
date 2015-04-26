@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using Escape.Util;
+
 namespace Escape
 {
 	namespace Core
@@ -20,14 +22,35 @@ namespace Escape
 			// has this room been put in its place?
 			public bool positioned = false; 
 
+			// how far back to turn off
+			public int activeDepth = 3;
+
 			// the room we came from in this particular case
 			protected BaseRoomController parentRoom = null;
 
 			// Use this for initialization
 			void Start ()
 			{
-				/*if (parentRoom != null)
-					parentRoom.gameObject.SetActive (false);*/
+
+			}
+
+			// disables a room activeDepth from us, if such a room exists
+			public void CheckParentRoomStatus () {
+				BaseRoomController check = parentRoom;
+				
+				for (int i = 0; i < activeDepth; i++) {
+					if (check != null && check.parentRoom != null) {
+						check = check.parentRoom;
+					} else {
+						check = null;
+						break;
+					}
+				}
+				
+				if (check != null) {
+					check.gameObject.SetActive (false);
+					Logging.Log("(BaseRoomController) disabling a room.");
+				}
 			}
 	
 			// Update is called once per frame

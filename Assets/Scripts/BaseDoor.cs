@@ -96,7 +96,7 @@ namespace Escape
 				newRoomController.positioned = true;
 				this.nextRoom = newRoom;
 
-				Logging.Log ("(BaseRoom) loaded " + name);
+				Logging.Log ("(BaseDoor) loaded " + name);
 			}
 
 			// Lines up a given transform so it is colocated with doorPosition, facing the opposite 
