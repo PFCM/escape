@@ -17,6 +17,9 @@ namespace Escape
 
 			public Transform entrance;
 
+			// has this room been put in its place?
+			public bool positioned = false; 
+
 			// the room we came from in this particular case
 			protected BaseRoomController parentRoom = null;
 

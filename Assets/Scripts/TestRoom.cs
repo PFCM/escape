@@ -12,11 +12,11 @@ namespace Escape
 			void Start ()
 			{
 				if (doors.Length == 1) {
-					doors [0].SetWeight ("Rooms/Tests/TestRoomCylinder", 1);
-					doors [0].SetWeight ("Rooms/Tests/TestRoomCube", 1);
+					doors [0].SetWeight ("TestRoomCube", 1);
+					doors [0].SetWeight ("TestRoomCylinder", 1);
 				} else if (doors.Length == 2) {
-					doors [1].SetWeight ("Rooms/Tests/TestRoomCylinder", 1);
-					doors [0].SetWeight ("Rooms/Tests/TestRoomCube", 1);
+					doors [1].SetWeight ("TestRoomCube", 1);
+					doors [0].SetWeight ("TestRoomCylinder", 1);
 				}
 			}
 	
