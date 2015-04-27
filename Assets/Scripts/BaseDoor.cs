@@ -22,6 +22,9 @@ namespace Escape
 			// the center of the doorway, on the very edge, facing out of the room
 			public Transform doorPosition;
 
+			// the actual physical door object
+			public GameObject doorObject;
+
 			private GameObject nextRoom;
 
 			void Start () 
@@ -91,6 +94,8 @@ namespace Escape
 
 				BaseRoomController newRoomController = newRoom.GetComponentInChildren<BaseRoomController> ();
 				newRoomController.SetParentRoom (this.GetComponentInParent<BaseRoomController> ());
+				newRoomController.SetEntranceDoor (this.doorObject);
+				this.doorObject.SetActive (true);
 				
 				LineUpFacing (newRoom.transform);
 				newRoomController.positioned = true;
