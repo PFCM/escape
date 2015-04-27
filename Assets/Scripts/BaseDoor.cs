@@ -99,7 +99,10 @@ namespace Escape
 				BaseRoomController newRoomController = newRoom.GetComponentInChildren<BaseRoomController> ();
 				newRoomController.SetParentRoom (this.GetComponentInParent<BaseRoomController> ());
 				newRoomController.SetEntranceDoor (this.doorObject);
+<<<<<<< HEAD
 				newRoomController.CheckParentRoomStatus ();
+=======
+>>>>>>> 3ca5f5c10527234554e368fae165396e30069100
 				this.doorObject.SetActive (true);
 				
 				LineUpFacing (newRoom.transform);

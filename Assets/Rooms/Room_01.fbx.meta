@@ -1,42 +1,20 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
-guid: fee971ac85b0346febcb0a0daf1a91c5
-timeCreated: 1430106961
+guid: 54c84e8d48f16479587bbf55d42c79c2
+timeCreated: 1430095798
 =======
-<<<<<<< HEAD
-guid: fee971ac85b0346febcb0a0daf1a91c5
-timeCreated: 1430095803
-=======
-guid: 64dc193c61bc24a87b4c5847d3a80b7e
-timeCreated: 1430096781
+guid: ff5b1dbd7252941c597404cc26322457
+timeCreated: 1430096785
 >>>>>>> master
->>>>>>> 3ca5f5c10527234554e368fae165396e30069100
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Single_Wall_Light_Base
-    100004: Single_Wall_Light_Lampshade
-    100006: Single_Wall_Light_Mount
-    100008: Single_Wall_Light_Support
     400000: //RootNode
-    400002: Single_Wall_Light_Base
-    400004: Single_Wall_Light_Lampshade
-    400006: Single_Wall_Light_Mount
-    400008: Single_Wall_Light_Support
-    2300000: Single_Wall_Light_Base
-    2300002: Single_Wall_Light_Lampshade
-    2300004: Single_Wall_Light_Mount
-    2300006: Single_Wall_Light_Support
-    3300000: Single_Wall_Light_Base
-    3300002: Single_Wall_Light_Lampshade
-    3300004: Single_Wall_Light_Mount
-    3300006: Single_Wall_Light_Support
-    4300000: Single_Wall_Light_Mount
-    4300002: Single_Wall_Light_Support
-    4300004: Single_Wall_Light_Base
-    4300006: Single_Wall_Light_Lampshade
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: RoomInterior
     9500000: //RootNode
   materials:
     importMaterials: 1

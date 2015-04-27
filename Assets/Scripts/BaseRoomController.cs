@@ -33,6 +33,9 @@ namespace Escape
 			// the physical door used to come into this room
 			private GameObject entranceDoor;
 
+			// the physical door used to come into this room
+			private GameObject entranceDoor;
+
 			// Use this for initialization
 			void Start ()
 			{
