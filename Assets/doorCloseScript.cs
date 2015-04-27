@@ -10,35 +10,61 @@ public class doorCloseScript : MonoBehaviour {
 
 	private int closeDoorTimer = 0;
 
+	private float startRotationY;
+
+	public bool flippedDoor = false;
+
 	// Use this for initialization
 	void Start () {
-	
+		startRotationY = transform.rotation.eulerAngles.y;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-
-	if (opening == true) {
-			//if its open
-			if (transform.rotation.eulerAngles.y > 90) {
-				//start timer
-				closeDoorTimer = 300;
-				opening = false;
-				closed = false;
-			} else {
-				transform.Rotate (Time.deltaTime, 1, 0);
+	if (flippedDoor == false) {
+			if (opening == true) {
+				//if its open
+				if (transform.rotation.eulerAngles.y > startRotationY + 90) {
+					//start timer
+					closeDoorTimer = 300;
+					opening = false;
+					closed = false;
+				} else {
+					transform.Rotate (Time.deltaTime, 1, 0);
+				}
 			}
-		} if(closing == true){
-			//if its closed
-			if (transform.rotation.eulerAngles.y < 1) {
-				 closing= false;
-				closed = true;
-			} else {
-				transform.Rotate (Time.deltaTime, -1, 0);
+			if (closing == true) {
+				//if its closed
+				if (transform.rotation.eulerAngles.y < startRotationY + 1) {
+					closing = false;
+					closed = true;
+				} else {
+					transform.Rotate (Time.deltaTime, -1, 0);
+				}
+			}
+		} else {
+			if (opening == true) {
+				//if its open
+				if (transform.rotation.eulerAngles.y > startRotationY + 89) {
+					//start timer
+					closeDoorTimer = 300;
+					opening = false;
+					closed = false;
+				} else {
+					transform.Rotate (Time.deltaTime, 1, 0);
+				}
+			}
+			if (closing == true) {
+				//if its closed
+				if (transform.rotation.eulerAngles.y < startRotationY + 1) {
+					closing = false;
+					closed = true;
+				} else {
+					transform.Rotate (Time.deltaTime, -1, 0);
+				}
 			}
 		}
-
 		//Sets x and z rotation to 0 because something is causing the x and z rotation to change when they shouldnt be 
 		transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
 
