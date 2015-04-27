@@ -1,0 +1,106 @@
+fileFormatVersion: 2
+guid: f29982971c6804a679ed0b58e1a48aad
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: bathtaps2:Bathtap_Left
+    100002: bathtaps2:Bathtap_Nozzle
+    100004: bathtaps2:Bathtap_Right
+    100006: Bathtub
+    100008: //RootNode
+    100010: Foot_Back_Left
+    100012: Foot_Back_Right
+    100014: Foot_Front_Left
+    100016: Foot_Front_Right
+    400000: bathtaps2:Bathtap_Left
+    400002: bathtaps2:Bathtap_Nozzle
+    400004: bathtaps2:Bathtap_Right
+    400006: Bathtub
+    400008: //RootNode
+    400010: Foot_Back_Left
+    400012: Foot_Back_Right
+    400014: Foot_Front_Left
+    400016: Foot_Front_Right
+    2300000: bathtaps2:Bathtap_Left
+    2300002: bathtaps2:Bathtap_Nozzle
+    2300004: bathtaps2:Bathtap_Right
+    2300006: Bathtub
+    2300008: Foot_Back_Left
+    2300010: Foot_Back_Right
+    2300012: Foot_Front_Left
+    2300014: Foot_Front_Right
+    3300000: bathtaps2:Bathtap_Left
+    3300002: bathtaps2:Bathtap_Nozzle
+    3300004: bathtaps2:Bathtap_Right
+    3300006: Bathtub
+    3300008: Foot_Back_Left
+    3300010: Foot_Back_Right
+    3300012: Foot_Front_Left
+    3300014: Foot_Front_Right
+    4300000: Bathtub
+    4300002: Foot_Front_Left
+    4300004: Foot_Front_Right
+    4300006: Foot_Back_Left
+    4300008: Foot_Back_Right
+    4300010: bathtaps2:Bathtap_Left
+    4300012: bathtaps2:Bathtap_Nozzle
+    4300014: bathtaps2:Bathtap_Right
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

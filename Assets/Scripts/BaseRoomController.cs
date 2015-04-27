@@ -25,8 +25,13 @@ namespace Escape
 			// how far back to turn off
 			public int activeDepth = 3;
 
+
+
 			// the room we came from in this particular case
-			protected BaseRoomController parentRoom = null;
+			public BaseRoomController parentRoom = null;
+
+			// the physical door used to come into this room
+			private GameObject entranceDoor;
 
 			// Use this for initialization
 			void Start ()
@@ -69,6 +74,11 @@ namespace Escape
 			public void SetParentRoom (BaseRoomController parent) 
 			{
 				parentRoom = parent;
+			}
+
+			public void SetEntranceDoor (GameObject door) 
+			{
+				this.entranceDoor = door;
 			}
 
 		}
