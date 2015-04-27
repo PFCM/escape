@@ -1,0 +1,103 @@
+fileFormatVersion: 2
+guid: fe4de1643a28f4463bf7f1c61ea46918
+timeCreated: 1430096785
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Double_Wall_Light_Base_Left
+    100004: Double_Wall_Light_Base_Right
+    100006: Double_Wall_Light_Lampshade_Left
+    100008: Double_Wall_Light_Mount
+    100010: Double_Wall_Light_Support_Left
+    100012: Double_Wall_Light_Support_Right
+    100014: Single_Wall_Light_Lampshade_Right
+    400000: //RootNode
+    400002: Double_Wall_Light_Base_Left
+    400004: Double_Wall_Light_Base_Right
+    400006: Double_Wall_Light_Lampshade_Left
+    400008: Double_Wall_Light_Mount
+    400010: Double_Wall_Light_Support_Left
+    400012: Double_Wall_Light_Support_Right
+    400014: Single_Wall_Light_Lampshade_Right
+    2300000: Double_Wall_Light_Base_Left
+    2300002: Double_Wall_Light_Base_Right
+    2300004: Double_Wall_Light_Lampshade_Left
+    2300006: Double_Wall_Light_Mount
+    2300008: Double_Wall_Light_Support_Left
+    2300010: Double_Wall_Light_Support_Right
+    2300012: Single_Wall_Light_Lampshade_Right
+    3300000: Double_Wall_Light_Base_Left
+    3300002: Double_Wall_Light_Base_Right
+    3300004: Double_Wall_Light_Lampshade_Left
+    3300006: Double_Wall_Light_Mount
+    3300008: Double_Wall_Light_Support_Left
+    3300010: Double_Wall_Light_Support_Right
+    3300012: Single_Wall_Light_Lampshade_Right
+    4300000: Double_Wall_Light_Mount
+    4300002: Double_Wall_Light_Support_Right
+    4300004: Double_Wall_Light_Base_Right
+    4300006: Single_Wall_Light_Lampshade_Right
+    4300008: Double_Wall_Light_Base_Left
+    4300010: Double_Wall_Light_Lampshade_Left
+    4300012: Double_Wall_Light_Support_Left
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
