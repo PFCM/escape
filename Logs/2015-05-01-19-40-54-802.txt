@@ -1,0 +1,6 @@
+[0:0:1:814] (BaseDoor) Collision 1
+[0:0:2:209] (BaseDoor) loaded Bathroom
+[0:0:7:488] (BaseDoor) Collision 1
+[0:0:11:893] (BaseDoor) Collision 2
+[0:0:12:40] (BaseDoor) loaded Bedroom
+[0:0:12:41] (BaseRoomController) disabling a room.
