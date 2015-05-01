@@ -12,7 +12,7 @@ namespace Escape.Rooms
 		// Use this for initialization
 		void Start ()
 		{
-	
+			CheckParentRoomStatus ();
 		}
 	
 		// Update is called once per frame

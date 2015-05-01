@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -22,14 +22,11 @@ namespace Escape
 			// the center of the doorway, on the very edge, facing out of the room
 			public Transform doorPosition;
 
-			// the actual physical door object
-			public GameObject doorObject;
-
 			private GameObject nextRoom;
 
-			// how many collisions after which to load? (1 will be fine for now unless dead end)
-			public int loadAfter = 1;
-			private int triggered = 0;
+			// how many collisions are needed before the room is loaded
+			public int collisionsRequired = 1;
+			private int collisions = 0; // how many have happened?
 
 			void Start () 
 			{
@@ -98,12 +95,6 @@ namespace Escape
 
 				BaseRoomController newRoomController = newRoom.GetComponentInChildren<BaseRoomController> ();
 				newRoomController.SetParentRoom (this.GetComponentInParent<BaseRoomController> ());
-				newRoomController.SetEntranceDoor (this.doorObject);
-<<<<<<< HEAD
-				newRoomController.CheckParentRoomStatus ();
-=======
->>>>>>> 3ca5f5c10527234554e368fae165396e30069100
-				this.doorObject.SetActive (true);
 				
 				LineUpFacing (newRoom.transform);
 				newRoomController.positioned = true;
@@ -129,12 +120,10 @@ namespace Escape
 			{
 				if (nextRoom == null) {
 					if (other.tag.Equals ("Player")) { // temp tag
-						++triggered;
-						Logging.Log(string.Format("(BaseDoor) Triggered {0} times", triggered));
-						if (triggered == loadAfter) {
-							Logging.Log("(BaseDoor) Player triggered, beginning load.");
+						collisions++;
+						Logging.Log("(BaseDoor) Collision "+collisions);
+						if (collisions == collisionsRequired)
 							LoadNextRoom ();
-						}
 					}
 				}
 			}

@@ -25,21 +25,17 @@ namespace Escape
 			// how far back to turn off
 			public int activeDepth = 3;
 
-
-
 			// the room we came from in this particular case
 			public BaseRoomController parentRoom = null;
 
 			// the physical door used to come into this room
 			private GameObject entranceDoor;
 
-			// the physical door used to come into this room
-			private GameObject entranceDoor;
 
 			// Use this for initialization
 			void Start ()
 			{
-
+				CheckParentRoomStatus ();
 			}
 
 			// disables a room activeDepth from us, if such a room exists
