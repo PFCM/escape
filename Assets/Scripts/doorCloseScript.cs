@@ -48,7 +48,7 @@ public class doorCloseScript : MonoBehaviour {
 				//if its open
 				if (transform.rotation.eulerAngles.y > startRotationY + 89) {
 					//start timer
-					closeDoorTimer = 300;
+					closeDoorTimer = 150;
 					opening = false;
 					closed = false;
 				} else {

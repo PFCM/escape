@@ -5,13 +5,16 @@ using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
 
 // ADDED 4/5 pfcm
+// Inserting logging, to keep an aye on what people are up to
+using Escape.Util;
+using System.Collections;
 
 
-namespace UnityStandardAssets.Characters.FirstPerson
+namespace Escape.Core.ModifiedStandardAssets
 {
     [RequireComponent(typeof (CharacterController))]
     [RequireComponent(typeof (AudioSource))]
-    public class FirstPersonController : MonoBehaviour
+    public class LoggingFirstPersonController : MonoBehaviour
     {
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
@@ -45,10 +48,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+		// added pfcm 4/5
+		public float positionLogPeriod = 0.2f;
+
 	
         // Use this for initialization
         private void Start()
         {
+			Cursor.visible = false;
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
@@ -59,7 +66,31 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+
+			// start logging
+			StartCoroutine (LogPosition (positionLogPeriod));
         }
+
+		// ADDED pfcm 4/5
+		// coroutine to periodically log position (if it has changed)
+		// ensures that it gets logged, but without having to track every tiny change (and waste time before frame updates)
+		IEnumerator LogPosition(float period)
+		{
+			Transform position = transform;
+			Logging.Log (string.Format ("(FirstPersonController) (player position) ({0},{1},{2}) facing ({3},{4},{5})",
+			                         	 position.position.x, position.position.y, position.position.z,
+			                         	 position.forward.x, position.forward.y, position.forward.z));
+			// loop forever now
+			while (true) {
+			//	if (!position.Equals (transform)) {
+					position = transform;
+					Logging.Log(string.Format("(FirstPersonController) (player position) ({0},{1},{2}) facing ({3},{4},{5})",
+					                          position.position.x, position.position.y, position.position.z,
+					                          position.forward.x, position.forward.y, position.forward.z));
+			//	}
+				yield return new WaitForSeconds(period);
+			}
+		}
 
 
         // Update is called once per frame

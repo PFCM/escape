@@ -24,6 +24,8 @@ namespace Escape
 
 			private GameObject nextRoom;
 
+			public GameObject exitDoorObject;
+
 			// how many collisions are needed before the room is loaded
 			public int collisionsRequired = 1;
 			private int collisions = 0; // how many have happened?
@@ -99,6 +101,8 @@ namespace Escape
 				LineUpFacing (newRoom.transform);
 				newRoomController.positioned = true;
 				this.nextRoom = newRoom;
+
+				exitDoorObject.SetActive (true);
 
 				Logging.Log ("(BaseDoor) loaded " + name);
 			}
