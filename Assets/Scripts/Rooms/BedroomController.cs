@@ -13,6 +13,7 @@ namespace Escape.Rooms
 		void Start ()
 		{
 			CheckParentRoomStatus ();
+			doors [0].SetWeight ("Hallway2", 1);
 		}
 	
 		// Update is called once per frame
@@ -24,6 +25,11 @@ namespace Escape.Rooms
 		override public Transform GetEntrance ()
 		{
 			return base.entrance;
+		}
+
+		override public void Shuffle()
+		{
+			CheckParentRoomStatus ();
 		}
 	}
 }

@@ -87,7 +87,7 @@ namespace Escape.Core
 				newPlaying.volume = (timeCounter*oneOverT)*volume;*/
 				float p = timeCounter * oneOverT * HALF_PI; // our phase
 				playing.volume = volume * (Mathf.Cos(p));
-				newPlaying.volume = volume * (Mathf.Sin (p));
+				newPlaying.volume = volume * (Mathf.Sin (p));	
 
 				yield return new WaitForSeconds (0.01f);
 			}

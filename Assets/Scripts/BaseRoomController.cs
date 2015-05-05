@@ -72,6 +72,9 @@ namespace Escape
 			// at the very edge, facing out
 			public abstract Transform GetEntrance ();
 
+			// overriden by subclasses to provide a chance at shuffling the furniture
+			public abstract void Shuffle ();
+
 			// sets the parent room -- this is potentially handy
 			public void SetParentRoom (BaseRoomController parent) 
 			{

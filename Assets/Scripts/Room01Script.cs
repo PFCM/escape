@@ -17,5 +17,7 @@ namespace Escape {
 		override public Transform GetEntrance () {
 			return transform;
 		}
+
+		override public void Shuffle () {}
 	}
 }

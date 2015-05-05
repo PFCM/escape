@@ -1,0 +1,14 @@
+[0:0:0:4] (AmbienceGenerator) Beginning with clip 'Amb5'
+[0:0:0:69] (FirstPersonController) (player position) (1.29,0.965,1.21) facing (-3.258414E-07,0,-1)
+[0:0:0:69] (FirstPersonController) (player position) (1.29,0.965,1.21) facing (-3.258414E-07,0,-1)
+[0:0:3:34] (BaseDoor) Collision 1
+[0:0:3:86] (BaseDoor) loaded Bathroom
+[0:0:8:962] (BaseDoor) Collision 1
+[0:0:20:135] (FirstPersonController) (player position) (-4.958375,0.9602582,-1.528551) facing (0.9727761,0,-0.2317477)
+[0:0:21:874] (BaseDoor) Collision 2
+[0:0:21:924] (BaseDoor) loaded Bedroom
+[0:0:21:925] (BaseRoomController) disabling a room.
+[0:0:21:926] (BaseDoor) Collision 1
+[0:0:26:929] (AmbienceGenerator) beginning fade in of 'Amb5'
+[0:0:31:936] (AmbienceGenerator) fade complete.
+[0:0:40:149] (FirstPersonController) (player position) (-3.537839,0.9472582,-1.876312) facing (-0.4446352,0,-0.8957117)

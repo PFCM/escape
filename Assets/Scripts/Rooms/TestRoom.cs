@@ -32,6 +32,11 @@ namespace Escape
 			{
 				return entrance;
 			}
+
+			override public void Shuffle ()
+			{
+
+			}
 		}
 	}
 }

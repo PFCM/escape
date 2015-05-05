@@ -64,12 +64,28 @@ namespace Escape
 				LineUpFacing (newRoom.transform);
 				*/
 				//this.GetComponentInParent<BaseRoomController> ().gameObject.SetActive (false);
-				StartCoroutine (LoadRoomAsLevel(result));
+				GameObject room = GameObject.FindGameObjectWithTag (result);
+
+				if (room == null) {
+					StartCoroutine (LoadRoomAsLevel (result));
+				} else {
+					ReloadRoom(room.transform.root.gameObject);
+				}
 
 
 
 
 				return this.GetComponentInParent<BaseRoomController> ();//newRoom.GetComponent<BaseRoomController> ();
+			}
+
+			// ensures a room that already exists is re-loaded approprioately into the correct position
+			void ReloadRoom (GameObject root) {
+				LineUpFacing (root.transform);
+				root.SetActive (true);
+				BaseRoomController newRoom = root.GetComponent<BaseRoomController> ();
+				newRoom.SetParentRoom (this.GetComponentInParent<BaseRoomController> ());
+				newRoom.Shuffle ();
+				Logging.Log ("(BaseDoor) Repositioned already loaded room: " + root.tag);
 			}
 
 			// this has to happen
@@ -86,7 +102,7 @@ namespace Escape
 				foreach (GameObject o in newStuff) {
 					if (o.transform.root.GetComponent<BaseRoomController> ().positioned == false) { // must be the new one!
 						newRoom = o.transform.root.gameObject;
-						break; // there will be lots of them, so jump ship asap
+						break; // there may be lots of them, so jump ship asap
 					}
 				}
 

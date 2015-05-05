@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using Escape.Core;
+using Escape.Util;
 
 namespace Escape.Rooms
 {
@@ -23,6 +24,11 @@ namespace Escape.Rooms
 		override public Transform GetEntrance ()
 		{
 			return base.entrance;
+		}
+
+		override public void Shuffle() 
+		{
+			Logging.Log ("(Bathroom) shuffled!");
 		}
 	}
 }
