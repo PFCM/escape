@@ -15,11 +15,13 @@ public class RoomEventGenerator : MonoBehaviour {
 	private string eventType = "null";
 	
 	//list of events which happen when player enters a room
-	private string[] entryEvents = {"flashAcross","monsterAttack", "monsterChase","monsterBehind", "monsterSpawnBehind"};
+	private string[] entryEvents = {"sound","flashAcross","monsterSpawnBehind","monsterChase"};
 	//when the room spawns
-	private string[] spawnEvents = {"monsterStanding","monsterPeaceful","monsterSpawnBehind", "sound"};
+	private string[] spawnEvents = {"sound","monsterStanding","monsterSpawnBehind", "monsterChase"};
 	//when a timer runs out
-	private string[] timedEvents = {"monsterScreamer"};
+	private string[] timedEvents = {"sound","monsterSpawnBehind","monsterChase"};
+	
+	public int timer =0;
 	
 	// Use this for initialization
 	void Start () {
@@ -32,17 +34,46 @@ public class RoomEventGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		//timed events
+		if (timer < 1 && eventType == "timed") {
+			
+			if (eventChoice == "sound") {
+				//Play sound
+			}
+			if (eventChoice == "monsterSpawnBehind") {
+				
+				//spawn a monster
+				GameObject monster = Instantiate (Resources.Load ("Monsters/MonsterSpawnBehind")) as GameObject; 
+				
+				//set its position to generators position
+				monster.transform.position = gameObject.transform.position;
+			}
+			if(eventChoice == "monsterChase"){
+				//spawn a monster
+				GameObject monster = Instantiate(Resources.Load("Monsters/MonsterChase")) as GameObject; 
+				
+				//set its position to generators position
+				monster.transform.position = gameObject.transform.position;
+			}
+			eventChoice = "null";
+			eventType = "null";
+		} else {
+			timer--;
+		}
 	}
 	
 	public void OnTriggerEnter(Collider other){
 		//when the player enteres the room
 		if (other.tag == "Player"){ //&& eventType =="entry") {
-			print (eventChoice);
-			if(eventChoice == "spawnMonster"){
+			
+			if(eventChoice == "sound"){
+				//Play sound
+			}
+			
+			if(eventChoice == "monsterChase"){
 				
 				//spawn a monster
-				GameObject monster = Instantiate(Resources.Load("MonsterChase")) as GameObject; 
+				GameObject monster = Instantiate(Resources.Load("Monsters/MonsterChase")) as GameObject; 
 				
 				//set its position to generators position
 				monster.transform.position = gameObject.transform.position;
@@ -56,19 +87,13 @@ public class RoomEventGenerator : MonoBehaviour {
 				monster.transform.position = gameObject.transform.position;
 				print ("event: monster flash across");
 			}
-			if(eventChoice == "monsterAttack"){
-				//spawn a monster
-				GameObject monster = Instantiate(Resources.Load("MonsterAttack")) as GameObject; 
-				
-				//set its position to generators position
-				monster.transform.position = gameObject.transform.position;//.x = gameObject.transform.position.x;
-				
-			}
 			if(eventChoice == "monsterSpawnBehind"){
 				//spawn a monster
 				GameObject monster = Instantiate(Resources.Load("Monsters/MonsterSpawnBehind")) as GameObject; 
 				//monster.transform.position = gameObject.transform.position;
 			}
+			eventChoice = null;
+			eventType = null;
 		}
 		
 	}
@@ -87,6 +112,7 @@ public class RoomEventGenerator : MonoBehaviour {
 		//index of chosen event
 		int eventIndex = 0;
 		eventChance = 80;
+		//roll to generate an event
 		if (eventChance > Random.Range (0, 100)) {
 			
 			int typeChoice = Mathf.RoundToInt (Random.Range (0,3));
@@ -125,20 +151,22 @@ public class RoomEventGenerator : MonoBehaviour {
 			if(eventType == "entry"){
 				eventChoice = entryEvents[eventIndex];
 			}else if(eventType == "onSpawn"){
-				
+				eventChoice = spawnEvents[eventIndex];
 			}
 			else{
 				eventChoice = timedEvents[eventIndex];
 			}
 			
 			
-			
+			print (eventIndex);
 			print (eventChoice);
+			print (eventType);
 			
 			//call an action based on even type
 			if (eventType == "onSpawn") {
 				doEvent ();
 			} else if (eventType == "timed") {
+				
 				startTimedEvent ();
 			}
 		}
@@ -162,9 +190,23 @@ public class RoomEventGenerator : MonoBehaviour {
 			//set its position to generators position
 			monster.transform.position = gameObject.transform.position;
 		}
+		if(eventChoice == "monsterChase"){
+			
+			//spawn a monster
+			GameObject monster = Instantiate(Resources.Load("Monsters/MonsterChase")) as GameObject; 
+			
+			//set its position to generators position
+			monster.transform.position = gameObject.transform.position;
+		}
+		
+		eventChoice = "null";
+		eventType = "null";
 	}
 	
 	private void startTimedEvent(){
+		
+		//could customize timer for each event here
+		timer = 150;
 		
 	}
 }
