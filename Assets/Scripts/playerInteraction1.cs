@@ -21,8 +21,7 @@ public class playerInteraction1 : MonoBehaviour {
 		
 		
 		RaycastHit hit;
-		
-		Debug.DrawRay(transform.position, transform.forward * interactionDistance);
+
 
 		//sends out ray to find object player is looking at 
 		if(Physics.Raycast (transform.position, camera.transform.forward, out hit, interactionDistance)) {

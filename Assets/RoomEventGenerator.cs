@@ -20,7 +20,10 @@ public class RoomEventGenerator : MonoBehaviour {
 	private string[] spawnEvents = {"sound","monsterStanding","monsterSpawnBehind", "monsterChase"};
 	//when a timer runs out
 	private string[] timedEvents = {"sound","monsterSpawnBehind","monsterChase"};
-	
+
+
+
+
 	public int timer =0;
 	
 	// Use this for initialization
@@ -38,7 +41,8 @@ public class RoomEventGenerator : MonoBehaviour {
 		if (timer < 1 && eventType == "timed") {
 			
 			if (eventChoice == "sound") {
-				//Play sound
+				GameObject sound = Instantiate(Resources.Load("Events/RandomSoundGenerator")) as GameObject; 
+				sound.transform.position = gameObject.transform.position;
 			}
 			if (eventChoice == "monsterSpawnBehind") {
 				
@@ -67,7 +71,8 @@ public class RoomEventGenerator : MonoBehaviour {
 		if (other.tag == "Player"){ //&& eventType =="entry") {
 			
 			if(eventChoice == "sound"){
-				//Play sound
+				GameObject sound = Instantiate(Resources.Load("Events/RandomSoundGenerator")) as GameObject; 
+				sound.transform.position = gameObject.transform.position;
 			}
 			
 			if(eventChoice == "monsterChase"){
@@ -198,6 +203,11 @@ public class RoomEventGenerator : MonoBehaviour {
 			//set its position to generators position
 			monster.transform.position = gameObject.transform.position;
 		}
+		if(eventChoice == "sound"){
+			GameObject sound = Instantiate(Resources.Load("Events/RandomSoundGenerator")) as GameObject; 
+			sound.transform.position = gameObject.transform.position;
+		}
+
 		
 		eventChoice = "null";
 		eventType = "null";
@@ -207,6 +217,8 @@ public class RoomEventGenerator : MonoBehaviour {
 		
 		//could customize timer for each event here
 		timer = 150;
-		
+
+
 	}
+	
 }
