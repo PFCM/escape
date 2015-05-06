@@ -53,6 +53,11 @@ public class playerInteraction1 : MonoBehaviour {
 
 				}
 			}
+
+			if(hit.transform.gameObject.tag == "MonsterSpawnBehind"){
+				//enrage monster
+				hit.transform.gameObject.GetComponent<MonsterSpawnBehind>().startChasingPlayer();
+			}
 		} 
 		
 	}
