@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.FirstPerson;
 
 //this code handles everything to do with player interacting with other objects
 public class playerInteraction1 : MonoBehaviour {
@@ -53,11 +54,26 @@ public class playerInteraction1 : MonoBehaviour {
 				}
 			}
 
+		
+		} 
+
+
+		//Longer range ray cast for sight instead of touch. Triggers sprinting.
+		if (Physics.Raycast (transform.position, camera.transform.forward, out hit, 10)) {
+			if(hit.transform.gameObject.tag == "MonsterChasing"){
+				//enrage monster
+				hit.transform.gameObject.GetComponent<MonsterChase>().speedUp();
+				//start running
+				gameObject.GetComponent<FirstPersonController>().startRunning(500);//().loadBattery();
+			}
+
 			if(hit.transform.gameObject.tag == "MonsterSpawnBehind"){
 				//enrage monster
 				hit.transform.gameObject.GetComponent<MonsterSpawnBehind>().startChasingPlayer();
+				//start running
+				gameObject.GetComponent<FirstPersonController>().startRunning(500);//().loadBattery();
 			}
-		} 
-		
+		}
+
 	}
 }

@@ -19,10 +19,14 @@ public class MonsterChase : MonoBehaviour {
 		//transform.position = Vector3.MoveTowards(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position,   speed*Time.deltaTime);
 		transform.position = Vector3.MoveTowards(transform.position, targetPosition,   speed*Time.deltaTime);
 		
-		
+		timer--;
 		if(timer<1){
 			Destroy (gameObject);
 		}
 		
+	}
+
+	public void speedUp(){
+		speed = 4;
 	}
 }

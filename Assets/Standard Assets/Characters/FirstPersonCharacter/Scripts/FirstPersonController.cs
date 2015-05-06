@@ -45,7 +45,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
-	
+
+		private bool isRunning = false;
+		private int runTimer = 0;
+
         // Use this for initialization
         private void Start()
         {
@@ -87,7 +90,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
 		
-
+			runTimer--;
 
         }
 
@@ -218,7 +221,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running
-			m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
+			if(runTimer <1){
+				isRunning = false;
+			}
+			m_IsWalking = !isRunning;//!Input.GetKey(KeyCode.LeftShift);
 #endif
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
@@ -262,5 +268,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
+		public void startRunning(int time){
+			isRunning = true;
+			runTimer = time;
+
+		}
     }
 }

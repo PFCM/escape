@@ -42,6 +42,6 @@ public class MonsterSpawnBehind : MonoBehaviour {
 	public void startChasingPlayer(){
 		enraged = true;
 		targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
-		
+		speed = 4;
 	}
 }
