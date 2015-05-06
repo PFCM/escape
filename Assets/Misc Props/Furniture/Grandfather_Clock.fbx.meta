@@ -1,0 +1,132 @@
+fileFormatVersion: 2
+guid: d13251021c44f4786b280fbb6b27c53c
+timeCreated: 1430893782
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Grandfather_Clock
+    100002: //RootNode
+    100004: Grandfather_Clock_Cabinet_Glass
+    100006: Grandfather_Clock_Chime
+    100008: Grandfather_Clock_Glass
+    100010: pCylinder4
+    400000: //RootNode
+    400002: Grandfather_Clock
+    400004: Grandfather_Clock_Cabinet_Glass
+    400006: Grandfather_Clock_Chime
+    400008: Grandfather_Clock_Glass
+    400010: pCylinder4
+    2300000: Grandfather_Clock
+    2300002: Grandfather_Clock_Cabinet_Glass
+    2300004: Grandfather_Clock_Chime
+    2300006: Grandfather_Clock_Glass
+    2300008: pCylinder4
+    3300000: Grandfather_Clock
+    3300002: Grandfather_Clock_Cabinet_Glass
+    3300004: Grandfather_Clock_Chime
+    3300006: Grandfather_Clock_Glass
+    3300008: pCylinder4
+    4300000: Grandfather_Clock
+    4300002: Grandfather_Clock_Cabinet_Glass
+    4300004: Grandfather_Clock_Glass
+    4300006: Grandfather_Clock_Chime
+    4300008: pCylinder4
+    7400000: PendulumSwing
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: PendulumSwing
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 150
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Grandfather_Clock
+        weight: 1
+      - path: Grandfather_Clock_Cabinet_Glass
+        weight: 1
+      - path: Grandfather_Clock_Chime
+        weight: 1
+      - path: Grandfather_Clock_Glass
+        weight: 1
+      - path: pCylinder4
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

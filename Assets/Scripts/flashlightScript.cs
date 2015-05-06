@@ -5,10 +5,10 @@ public class flashlightScript : MonoBehaviour {
 
 	// Use this for initialization
 	public Light flashlight;
-	double charge = 100;
-	double lossRate = 0.1;
+	public double charge = 100;
+	public double lossRate = 0.1;
 	//brightness of the torch
-	float brightness = 2.0f;
+	public float brightness = 2.0f;
 	bool on = false;
 
 	void Start()
@@ -33,7 +33,7 @@ public class flashlightScript : MonoBehaviour {
 			flashlight.GetComponent<Light>().enabled = true;
 		else if(!on)
 			flashlight.GetComponent<Light>().enabled = false;
-		if (Input.GetKeyDown (KeyCode.F)) {
+		if (Input.GetKeyDown (KeyCode.F) || Input.GetKeyDown (KeyCode.JoystickButton11)) {
 			//check if player has charge
 			if(charge <=0){
 				on =false;

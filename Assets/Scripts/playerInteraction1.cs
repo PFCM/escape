@@ -45,7 +45,7 @@ public class playerInteraction1 : MonoBehaviour {
 			if(hit.transform.gameObject.tag == "door"){
 				//Debug.Log("Hit object " + camera.transform.gameObject.tag);
 				//when the user presses E destroy object and load battery
-				if (Input.GetKeyDown (KeyCode.E)) {
+				if (Input.GetKeyDown (KeyCode.E) || Input.GetKeyDown (KeyCode.JoystickButton1)) {
 					//destroys battery object
 					//Destroy (hit.transform.gameObject);
 					//gameObject.GetComponent<flashlightScript>().loadBatter

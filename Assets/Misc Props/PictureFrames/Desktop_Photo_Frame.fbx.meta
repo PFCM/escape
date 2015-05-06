@@ -1,0 +1,128 @@
+fileFormatVersion: 2
+guid: 3887f66f358b4421192c92b7c18e42f2
+timeCreated: 1430885021
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Desktop_Photo_Frame
+    100002: //RootNode
+    100004: Desktop_Photo_Frame_Clasp1
+    100006: Desktop_Photo_Frame_Clasp2
+    100008: Desktop_Photo_Frame_Clasp3
+    100010: Desktop_Photo_Frame_Clasp4
+    100012: Desktop_Photo_Frame_Clasp5
+    100014: Desktop_Photo_Frame_Clasp6
+    100016: Desktop_Photo_Frame_Clasp7
+    100018: Desktop_Photo_Frame_Clasp8
+    100020: Desktop_Photo_Frame_Glass
+    100022: Desktop_Photo_Frame_Hinge
+    100024: Desktop_Photo_Frame_Support
+    400000: Desktop_Photo_Frame
+    400002: //RootNode
+    400004: Desktop_Photo_Frame_Clasp1
+    400006: Desktop_Photo_Frame_Clasp2
+    400008: Desktop_Photo_Frame_Clasp3
+    400010: Desktop_Photo_Frame_Clasp4
+    400012: Desktop_Photo_Frame_Clasp5
+    400014: Desktop_Photo_Frame_Clasp6
+    400016: Desktop_Photo_Frame_Clasp7
+    400018: Desktop_Photo_Frame_Clasp8
+    400020: Desktop_Photo_Frame_Glass
+    400022: Desktop_Photo_Frame_Hinge
+    400024: Desktop_Photo_Frame_Support
+    2300000: Desktop_Photo_Frame
+    2300002: Desktop_Photo_Frame_Clasp1
+    2300004: Desktop_Photo_Frame_Clasp2
+    2300006: Desktop_Photo_Frame_Clasp3
+    2300008: Desktop_Photo_Frame_Clasp4
+    2300010: Desktop_Photo_Frame_Clasp5
+    2300012: Desktop_Photo_Frame_Clasp6
+    2300014: Desktop_Photo_Frame_Clasp7
+    2300016: Desktop_Photo_Frame_Clasp8
+    2300018: Desktop_Photo_Frame_Glass
+    2300020: Desktop_Photo_Frame_Hinge
+    2300022: Desktop_Photo_Frame_Support
+    3300000: Desktop_Photo_Frame
+    3300002: Desktop_Photo_Frame_Clasp1
+    3300004: Desktop_Photo_Frame_Clasp2
+    3300006: Desktop_Photo_Frame_Clasp3
+    3300008: Desktop_Photo_Frame_Clasp4
+    3300010: Desktop_Photo_Frame_Clasp5
+    3300012: Desktop_Photo_Frame_Clasp6
+    3300014: Desktop_Photo_Frame_Clasp7
+    3300016: Desktop_Photo_Frame_Clasp8
+    3300018: Desktop_Photo_Frame_Glass
+    3300020: Desktop_Photo_Frame_Hinge
+    3300022: Desktop_Photo_Frame_Support
+    4300000: Desktop_Photo_Frame
+    4300002: Desktop_Photo_Frame_Clasp2
+    4300004: Desktop_Photo_Frame_Clasp3
+    4300006: Desktop_Photo_Frame_Clasp6
+    4300008: Desktop_Photo_Frame_Clasp7
+    4300010: Desktop_Photo_Frame_Clasp8
+    4300012: Desktop_Photo_Frame_Clasp5
+    4300014: Desktop_Photo_Frame_Clasp4
+    4300016: Desktop_Photo_Frame_Clasp1
+    4300018: Desktop_Photo_Frame_Support
+    4300020: Desktop_Photo_Frame_Hinge
+    4300022: Desktop_Photo_Frame_Glass
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

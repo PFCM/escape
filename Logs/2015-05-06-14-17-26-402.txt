@@ -1,0 +1,40 @@
+[0:0:0:3] (AmbienceGenerator) Beginning with clip 'Amb7'
+[0:0:0:56] (FirstPersonController) (player position) (1.29,0.965,1.21) facing (-3.258414E-07,0,-1)
+[0:0:0:56] (FirstPersonController) (player position) (1.29,0.965,1.21) facing (-3.258414E-07,0,-1)
+[0:0:4:122] (BaseDoor) Collision 1
+[0:0:4:166] (BaseDoor) loaded Bathroom
+[0:0:11:686] (BaseDoor) Collision 1
+[0:0:17:524] (BaseDoor) Collision 2
+[0:0:17:568] (BaseDoor) loaded Bedroom
+[0:0:17:568] (BaseRoomController) disabling a room.
+[0:0:19:826] (BaseDoor) Collision 1
+[0:0:20:443] (FirstPersonController) (player position) (-4.28271,0.9602581,-1.692379) facing (0.9238797,0,-0.3826834)
+[0:0:22:528] (BaseDoor) Collision 2
+[0:0:22:555] (BaseDoor) loaded Hallway2
+[0:0:22:555] (BaseRoomController) disabling a room.
+[0:0:26:947] (BaseDoor) Collision 1
+[0:0:26:974] (BaseDoor) loaded Bathroom
+[0:0:27:219] (AmbienceGenerator) beginning fade in of 'Amb4'
+[0:0:31:986] (AmbienceGenerator) fade complete.
+[0:0:32:184] (BaseDoor) Collision 1
+[0:0:36:206] (BaseDoor) Collision 2
+[0:0:36:207] (BaseRoomController) disabling a room.
+[0:0:36:207] (BaseDoor) Repositioned already loaded room: Bedroom
+[0:0:39:174] (BaseDoor) Collision 3
+[0:0:40:475] (FirstPersonController) (player position) (-8.516374,0.9232582,3.090484) facing (-0.2147342,0,-0.9766724)
+[0:0:54:336] (AmbienceGenerator) beginning fade in of 'Amb8'
+[0:0:59:341] (AmbienceGenerator) fade complete.
+[0:1:0:475] (FirstPersonController) (player position) (-8.151576,0.9232582,2.256171) facing (0.06278927,0,0.9980268)
+[0:1:1:76] (BaseDoor) Collision 4
+[0:1:1:761] (BaseDoor) Collision 5
+[0:1:3:127] (BaseDoor) Collision 6
+[0:1:5:345] (BaseDoor) Collision 7
+[0:1:6:480] (BaseDoor) Collision 8
+[0:1:17:122] (BaseDoor) Collision 9
+[0:1:18:622] (BaseDoor) Collision 10
+[0:1:20:491] (FirstPersonController) (player position) (-8.443402,0.9362582,4.515588) facing (-0.005234482,0,-0.9999866)
+[0:1:24:144] (BaseDoor) Collision 11
+[0:1:27:263] (AmbienceGenerator) beginning fade in of 'Amb6'
+[0:1:28:815] (BaseDoor) Collision 12
+[0:1:31:166] (BaseDoor) Collision 13
+[0:1:32:266] (AmbienceGenerator) fade complete.
