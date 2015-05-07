@@ -26,7 +26,11 @@ public class MonsterChase : MonoBehaviour {
 		
 	}
 
-	public void speedUp(){
-		speed = 4;
+	public bool speedUp(){
+		if (speed < 4) {
+			speed = 4;
+			return true;
+		}
+		return false;
 	}
 }

@@ -39,9 +39,14 @@ public class MonsterSpawnBehind : MonoBehaviour {
 		}
 	}
 	
-	public void startChasingPlayer(){
-		enraged = true;
-		targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
-		speed = 4;
+	public bool startChasingPlayer(){
+		//this check stops it from trigger multiple times when it shouldn't
+		if (enraged == false) {
+			enraged = true;
+			targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
+			speed = 4;
+			return true;
+		}
+		return false;
 	}
 }

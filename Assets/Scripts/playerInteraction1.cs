@@ -62,16 +62,19 @@ public class playerInteraction1 : MonoBehaviour {
 		if (Physics.Raycast (transform.position, camera.transform.forward, out hit, 10)) {
 			if(hit.transform.gameObject.tag == "MonsterChasing"){
 				//enrage monster
-				hit.transform.gameObject.GetComponent<MonsterChase>().speedUp();
+			if(	hit.transform.gameObject.GetComponent<MonsterChase>().speedUp()){
 				//start running
 				gameObject.GetComponent<FirstPersonController>().startRunning(500);//().loadBattery();
+				}
+
 			}
 
 			if(hit.transform.gameObject.tag == "MonsterSpawnBehind"){
-				//enrage monster
-				hit.transform.gameObject.GetComponent<MonsterSpawnBehind>().startChasingPlayer();
+				//CHECK if monster has already been spotted by player
+			if(	hit.transform.gameObject.GetComponent<MonsterSpawnBehind>().startChasingPlayer()){
 				//start running
-				gameObject.GetComponent<FirstPersonController>().startRunning(500);//().loadBattery();
+				gameObject.GetComponent<FirstPersonController>().startRunning(300);//().loadBattery();
+				}
 			}
 		}
 
