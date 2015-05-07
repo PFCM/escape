@@ -18,7 +18,7 @@ namespace Escape
 			public Core.BaseDoor[] doors;
 
 			public GameObject[] pickups;
-			public GameObject[] objects;
+			public PositionableObject[] objects;
 
 			public Transform entrance;
 
