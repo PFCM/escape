@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Escape.Rooms;
 
 //this generates random events in a room when it is spawned on when the player entres it
 //one of these would be generated with each room
 public class RoomEventGenerator : MonoBehaviour {
 	
 	//room this event generator is attached to
-	public GameObject Room;
+	public GameObject room;
 	
 	//the chosen event
 	private string eventChoice = "null";
@@ -15,9 +16,9 @@ public class RoomEventGenerator : MonoBehaviour {
 	private string eventType = "null";
 	
 	//list of events which happen when player enters a room
-	private string[] entryEvents = {"sound","flashAcross","monsterSpawnBehind","monsterChase"};
+	private string[] entryEvents = {"sound", "flashAcross","monsterSpawnBehind","monsterChase"};
 	//when the room spawns
-	private string[] spawnEvents = {"sound","monsterStanding","monsterSpawnBehind", "monsterChase"};
+	private string[] spawnEvents = {"sound", "shuffle","monsterStanding","monsterSpawnBehind", "monsterChase"};
 	//when a timer runs out
 	private string[] timedEvents = {"sound","monsterSpawnBehind","monsterChase"};
 
@@ -116,7 +117,7 @@ public class RoomEventGenerator : MonoBehaviour {
 		
 		//index of chosen event
 		int eventIndex = 0;
-		eventChance = 80;
+		eventChance = 60;
 		//roll to generate an event
 		if (eventChance > Random.Range (0, 100)) {
 			
@@ -177,7 +178,7 @@ public class RoomEventGenerator : MonoBehaviour {
 		}
 		
 	}
-	
+	//on spawn events
 	private void doEvent(){
 		if(eventChoice == "monsterStanding"){
 			
@@ -207,7 +208,10 @@ public class RoomEventGenerator : MonoBehaviour {
 			GameObject sound = Instantiate(Resources.Load("Events/RandomSoundGenerator")) as GameObject; 
 			sound.transform.position = gameObject.transform.position;
 		}
+		if (eventChoice == "shuffle") {
+			shuffleRoom();
 
+		}
 		
 		eventChoice = "null";
 		eventType = "null";
@@ -220,5 +224,21 @@ public class RoomEventGenerator : MonoBehaviour {
 
 
 	}
-	
+
+	private void shuffleRoom(){
+	//finds the type of room attached and calls shuffle on it
+		if (room.tag == "Bathroom") {
+			room.GetComponent<BathroomController> ().Shuffle ();
+		}
+		if (room.tag == "Bedroom") {
+			room.GetComponent<BedroomController> ().Shuffle ();
+		}
+		if (room.tag == "Hallway1") {
+			room.GetComponent<HallwayController> ().Shuffle ();
+		}
+		if (room.tag == "Hallway2") {
+			room.GetComponent<HallwayController> ().Shuffle ();
+		}
+	}
+
 }
