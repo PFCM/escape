@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Escape.Util;
 
 public class doorCloseScript : MonoBehaviour {
+
+	
+	// the name of the key required -- if none, no key
+	public string key; 
 
 	private bool opening = false;
 	private bool closing = false;
@@ -83,7 +88,14 @@ public class doorCloseScript : MonoBehaviour {
 		//starts timer to close or closes when you walk past/exit its range
 
 		if (closed == true) {
-			opening = true;
+			// check player has the key
+			if (key.Equals("") || key == null || PlayerStatus.UseKey(this.key)) {
+				opening = true;
+				Logging.Log("(Door) Opened " + key);
+			}
+			else {
+				Logging.Log("(Door) Open fail " + key);
+			}
 		} else {
 	
 			closing = true;

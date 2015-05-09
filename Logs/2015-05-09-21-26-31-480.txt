@@ -1,0 +1,1 @@
+[0:0:0:5] (AmbienceGenerator) Beginning with clip 'Amb4'

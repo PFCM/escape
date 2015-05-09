@@ -1,0 +1,2 @@
+[0:0:36:644] (AmbienceGenerator) beginning fade in of 'Amb5'
+[0:0:38:328] (AmbienceGenerator) fade complete.

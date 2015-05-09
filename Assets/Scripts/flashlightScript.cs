@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Escape.Core;
 
 public class flashlightScript : MonoBehaviour {
 
@@ -35,11 +36,11 @@ public class flashlightScript : MonoBehaviour {
 			flashlight.GetComponent<Light>().enabled = false;
 		if (Input.GetKeyDown (KeyCode.F) || Input.GetKeyDown (KeyCode.JoystickButton11)) {
 			//check if player has charge
-			if(charge <=0){
+			if(charge <=0 || !PlayerStatus.HasFlashlight()){
 				on =false;
 			}
 			else{
-			on = !on;
+				on = !on;
 			}
 		}
 		if(charge <=0){

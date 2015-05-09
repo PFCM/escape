@@ -1,0 +1,4 @@
+[0:0:0:6] (AmbienceGenerator) Beginning with clip 'Amb5'
+[0:0:10:280] (Player) Pickup EntranceHallKey
+[0:0:29:929] (AmbienceGenerator) beginning fade in of 'Amb5'
+[0:0:31:933] (AmbienceGenerator) fade complete.

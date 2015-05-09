@@ -1,0 +1,2 @@
+[0:0:0:4] (AmbienceGenerator) Beginning with clip 'Amb1'
+[0:0:16:868] (Player) Pickup EntranceHallKey
