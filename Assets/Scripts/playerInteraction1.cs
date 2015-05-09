@@ -12,19 +12,25 @@ public class playerInteraction1 : MonoBehaviour
 	
 	public Camera camera;
 	public float interactionDistance = 3f;
-	
+
+	//GUI stuff
+	public Color col = new Color(255,255,255,0);
+	private string guiDisplayedText = "";
+	private int guiTextChangeTimer = 800;
+	private GUIStyle startStyle = new GUIStyle();
+
 	// Use this for initialization
 	void Start ()
 	{
-		
+		startStyle.fontSize = 20;
+		startStyle.normal.textColor = Color.white;//(255,255,255);
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		
-		
-		
+
+		changeStartGuiText();
 		
 		RaycastHit hit;
 
@@ -90,10 +96,33 @@ public class playerInteraction1 : MonoBehaviour
 				//CHECK if monster has already been spotted by player
 				if (hit.transform.gameObject.GetComponent<MonsterSpawnBehind> ().startChasingPlayer ()) {
 					//start running
-					gameObject.GetComponent<FirstPersonController> ().startRunning (300);//().loadBattery();
+					gameObject.GetComponent<FirstPersonController> ().startRunning (300);
 				}
 			}
 		}
 
 	}
+	private void changeStartGuiText(){
+		guiTextChangeTimer --;
+		//set opacity and text
+		if (guiTextChangeTimer > 600) {
+			col.a = col.a + 0.005f;
+			guiDisplayedText = "'e' to interact";
+		} else {
+			if (guiTextChangeTimer < 350 && guiTextChangeTimer >2) {
+				col.a = col.a + 0.005f;
+				guiDisplayedText = "'f' to turn on flashlight";
+			}
+			else{
+				col.a = col.a - 0.005f;
+			}
+			
+		}
+	}
+	
+	void OnGUI () {
+		GUI.color = col;
+		GUI.Label (new Rect (500, 250, 500, 500), guiDisplayedText,startStyle);
+	}
+
 }
