@@ -48,6 +48,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 		private bool isRunning = false;
 		private int runTimer = 0;
+		public bool moving = false; //checking if player is moving
 
         // Use this for initialization
         private void Start()
@@ -89,7 +90,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
-		
+		//timer for player sprinting
 			runTimer--;
 
         }
@@ -107,6 +108,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             float speed;
             GetInput(out speed);
+			//moving = (speed > 0);
             // always move along the camera forward as it is the direction that it being aimed at
             Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
 
@@ -152,11 +154,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void ProgressStepCycle(float speed)
         {
-            if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
-            {
-                m_StepCycle += (m_CharacterController.velocity.magnitude + (speed*(m_IsWalking ? 1f : m_RunstepLenghten)))*
-                             Time.fixedDeltaTime;
-            }
+            if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0)) {
+				moving = true;
+				m_StepCycle += (m_CharacterController.velocity.magnitude + (speed * (m_IsWalking ? 1f : m_RunstepLenghten))) *
+					Time.fixedDeltaTime;
+			} else {
+				moving = false;
+			}
 
             if (!(m_StepCycle > m_NextStep))
             {
