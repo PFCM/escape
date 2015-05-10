@@ -1,0 +1,13 @@
+[0:0:0:81] (AmbienceGenerator) Beginning with clip 'Amb3'
+[0:0:3:554] (Player) Pickup Flashlight
+[0:0:7:626] (Player) Pickup EntranceHallKey
+[0:0:16:929] (BaseDoor) Collision 1
+[0:0:16:997] (BaseDoor) loaded Bedroom
+[0:0:22:991] (Player) UseKey EntranceHallKey 0
+[0:0:22:991] (Door) Opened EntranceHallKey
+[0:0:26:727] (BaseDoor) Collision 1
+[0:0:30:134] (AmbienceGenerator) beginning fade in of 'Amb8'
+[0:0:32:139] (AmbienceGenerator) fade complete.
+[0:0:34:259] (BaseDoor) Collision 2
+[0:0:34:477] (BaseDoor) loaded Hallway2
+[0:0:34:478] (BaseRoomController) disabling a room.

@@ -24,11 +24,13 @@ namespace Escape
 
 			private GameObject nextRoom;
 
+			public bool loaded = false;// has the room been loaded?
+
 			public GameObject exitDoorObject;
 
 			// how many collisions are needed before the room is loaded
 			public int collisionsRequired = 1;
-			private int collisions = 0; // how many have happened?
+			public int collisions = 0; // how many have happened?
 
 			void Start () 
 			{
@@ -73,7 +75,7 @@ namespace Escape
 				}
 
 
-
+				loaded = true;
 
 				return this.GetComponentInParent<BaseRoomController> ();//newRoom.GetComponent<BaseRoomController> ();
 			}
@@ -142,8 +144,13 @@ namespace Escape
 					if (other.tag.Equals ("Player")) { // temp tag
 						collisions++;
 						Logging.Log("(BaseDoor) Collision "+collisions);
-						if (collisions == collisionsRequired)
-							LoadNextRoom ();
+						if (collisions >= collisionsRequired && !loaded) {
+							doorCloseScript c = exitDoorObject.GetComponent<doorCloseScript> ();
+							if (c == null || PlayerStatus.HasKey(c.key))
+								LoadNextRoom ();
+							else 
+								Logging.Log("(BaseDoor) Not loaded - no key");
+						}
 					}
 				}
 			}

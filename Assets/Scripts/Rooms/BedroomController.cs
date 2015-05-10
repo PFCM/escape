@@ -30,8 +30,8 @@ namespace Escape.Rooms
 		override public void Shuffle()
 		{
 			CheckParentRoomStatus ();
-			objects [0].ChooseRandomPositionUniform ();
-			doors [0].collisionsRequired += 2;
+			objects [0].AdvancePosition();
+			doors [0].collisions = 0;
 		}
 	}
 }

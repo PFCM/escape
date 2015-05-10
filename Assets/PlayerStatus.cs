@@ -42,6 +42,8 @@ public class PlayerStatus : MonoBehaviour {
 
 	// checks if the player has a given key
 	public static bool HasKey(string name) {
+		if (name == null || name == "")
+			return true;
 		return instance.keys.ContainsKey(name) && instance.keys [name] > 0;
 	}
 

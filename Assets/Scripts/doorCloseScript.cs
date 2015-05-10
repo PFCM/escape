@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Escape.Util;
+using Escape.Core;
 
 public class doorCloseScript : MonoBehaviour {
 
@@ -19,9 +20,17 @@ public class doorCloseScript : MonoBehaviour {
 
 	public bool flippedDoor = false;
 
+	public BaseDoor trigger;
+
+	private bool _locked;
+	public bool locked {
+		get { return locked; }
+	}
+
 	// Use this for initialization
 	void Start () {
 		startRotationY = transform.rotation.eulerAngles.y;
+		_locked = key != null && key != "";
 	}
 	
 	// Update is called once per frame
@@ -87,10 +96,12 @@ public class doorCloseScript : MonoBehaviour {
 		//sets rotation to open
 		//starts timer to close or closes when you walk past/exit its range
 
-		if (closed == true) {
+		if (closed == true && trigger.loaded) {
 			// check player has the key
-			if (key.Equals("") || key == null || PlayerStatus.UseKey(this.key)) {
+			if (key == "" || key == null || !_locked 
+			    || PlayerStatus.UseKey(this.key)) {
 				opening = true;
+				_locked = false;
 				Logging.Log("(Door) Opened " + key);
 			}
 			else {
