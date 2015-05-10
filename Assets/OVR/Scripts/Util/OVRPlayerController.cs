@@ -56,7 +56,7 @@ public class OVRPlayerController : MonoBehaviour
 	/// <summary>
 	/// The rate of rotation when using the keyboard.
 	/// </summary>
-	public float RotationRatchet = 45.0f;
+	public float RotationRatchet = 0f;
 
 	/// <summary>
 	/// If true, reset the initial yaw of the player controller when the Hmd pose is recentered.
