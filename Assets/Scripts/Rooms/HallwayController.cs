@@ -28,8 +28,15 @@ public class HallwayController : BaseRoomController {
 	// called on reload
 	override public void Shuffle () 
 	{
+		base.Shuffle ();
 		Logging.Log ("(Hallway) Shuffled");
 		
 		this.CheckParentRoomStatus ();
+	}
+
+	
+	public override void ItemPickedUp(string name)
+	{
+		
 	}
 }

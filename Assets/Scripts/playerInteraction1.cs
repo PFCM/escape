@@ -14,10 +14,14 @@ public class playerInteraction1 : MonoBehaviour
 	public float interactionDistance = 3f;
 
 	//GUI stuff
-	public Color col = new Color(255,255,255,0);
+	public Color col = new Color (255, 255, 255, 0);
 	private string guiDisplayedText = "";
 	private int guiTextChangeTimer = 800;
-	private GUIStyle startStyle = new GUIStyle();
+	private GUIStyle startStyle = new GUIStyle ();
+
+	// object we are colliding (raycast won't hit things we are touching)
+	private GameObject colliding;
+	private int layerMask = ~(1 << 12);
 
 	// Use this for initialization
 	void Start ()
@@ -30,50 +34,53 @@ public class playerInteraction1 : MonoBehaviour
 	void Update ()
 	{
 
-		changeStartGuiText();
+		changeStartGuiText ();
 		
 		RaycastHit hit;
 
 
 		if (Input.GetButtonDown ("Interact")) {
+			Debug.DrawRay (camera.transform.position, camera.transform.forward);
+			GameObject other = null;
 			//sends out ray to find object player is looking at 
-			if (Physics.Raycast (camera.transform.position, camera.transform.forward, out hit, interactionDistance)) {
+			if (Physics.Raycast (camera.transform.position, camera.transform.forward, out hit, interactionDistance, layerMask)) {
+				other = hit.transform.gameObject;
+			} else if (colliding != null) {
+				if (Vector3.Distance (colliding.transform.position, camera.transform.position) <= interactionDistance) {
+					other = colliding;
+				}
+			}
 
+			if (other != null) {
 				//if the object is a battery
-				if (hit.transform.gameObject.tag == "battery") {
+				if (other.tag == "battery") {
 					//Debug.Log("Hit object " + camera.transform.gameObject.tag);
 					//when the user presses E destroy object and load battery
 					//destroys battery object
-					Destroy (hit.transform.gameObject);
+					Destroy (other);
 					gameObject.GetComponent<flashlightScript> ().loadBattery ();
-
-				}
-
-				//if(openableObject)
-				//object.open
-
-				//if the object is a battery
-				if (hit.transform.gameObject.tag == "door") {
+				
+				} else if (other.tag == "door") {
 					//Debug.Log("Hit object " + camera.transform.gameObject.tag);
 					//when the user presses E destroy object and load battery
 					//if (Input.GetKeyDown (KeyCode.E) || Input.GetKeyDown (KeyCode.JoystickButton1)) {
 					//destroys battery object
 					//Destroy (hit.transform.gameObject);
 					//gameObject.GetComponent<flashlightScript>().loadBatter
-					Debug.Log("hit door");
-					hit.transform.gameObject.GetComponent<doorCloseScript> ().activateDoor ();
-
+					Debug.Log ("hit door");
+					other.GetComponent<doorCloseScript> ().activateDoor ();
 				
-				}
-
-				if (hit.transform.tag == "Key") {
-					string name = hit.transform.GetComponent<Key> ().name;
+				
+				} else if (other.tag == "Key") {
+					Key key = other.GetComponent<Key>();
+					key.PickUp();
+					string name = key.name;
 					PlayerStatus.AddKey (name);
 					Logging.Log ("(Player) Pickup " + name);
-					Destroy (hit.transform.gameObject);
-				} else if (hit.transform.tag == "Flashlight") {
-					PlayerStatus.GiveFlashlight();
-					Destroy(hit.transform.gameObject);
+					Destroy (other);
+				} else if (other.tag == "Flashlight") {
+					PlayerStatus.GiveFlashlight ();
+					Destroy (other);
 				}
 			}
 		
@@ -82,7 +89,7 @@ public class playerInteraction1 : MonoBehaviour
 
 
 		//Longer range ray cast for sight instead of touch. Triggers sprinting.
-		if (Physics.Raycast (transform.position, camera.transform.forward, out hit, 10)) {
+		if (Physics.Raycast (transform.position, camera.transform.forward, out hit, 10, layerMask)) {
 			if (hit.transform.gameObject.tag == "MonsterChasing") {
 				//enrage monster
 				if (hit.transform.gameObject.GetComponent<MonsterChase> ().speedUp ()) {
@@ -102,27 +109,39 @@ public class playerInteraction1 : MonoBehaviour
 		}
 
 	}
-	private void changeStartGuiText(){
+
+	private void changeStartGuiText ()
+	{
 		guiTextChangeTimer --;
 		//set opacity and text
 		if (guiTextChangeTimer > 600) {
 			col.a = col.a + 0.005f;
-			guiDisplayedText = "'e' to interact";
+			guiDisplayedText = "press 'x' to interact";
 		} else {
-			if (guiTextChangeTimer < 350 && guiTextChangeTimer >2) {
+			if (guiTextChangeTimer < 350 && guiTextChangeTimer > 2) {
 				col.a = col.a + 0.005f;
-				guiDisplayedText = "'f' to turn on flashlight";
-			}
-			else{
+				guiDisplayedText = "press 'R3' to toggle flashlight";
+			} else {
 				col.a = col.a - 0.005f;
 			}
 			
 		}
 	}
 	
-	void OnGUI () {
+	void OnGUI ()
+	{
 		GUI.color = col;
-		GUI.Label (new Rect (500, 250, 500, 500), guiDisplayedText,startStyle);
+		GUI.Label (new Rect (500, 250, 500, 500), guiDisplayedText, startStyle);
+	}
+
+	void OnTriggerEnter (Collider other)
+	{
+		colliding = other.gameObject;
+	}
+
+	void OnTriggerExit (Collider other)
+	{
+		colliding = null;
 	}
 
 }

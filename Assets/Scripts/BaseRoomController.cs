@@ -54,7 +54,7 @@ namespace Escape
 					}
 				}
 				
-				if (check != null) {
+				if (check != null && check != this) {
 					check.gameObject.SetActive (false);
 					Logging.Log("(BaseRoomController) disabling a room.");
 				}
@@ -73,7 +73,21 @@ namespace Escape
 			public abstract Transform GetEntrance ();
 
 			// overriden by subclasses to provide a chance at shuffling the furniture
-			public abstract void Shuffle ();
+			public virtual void Shuffle () {
+				doorCloseScript[] d = GetComponentsInChildren<doorCloseScript> ();
+				foreach (doorCloseScript door in d) {
+					door.Reset();
+				}
+
+				foreach (BaseDoor bd in doors) {
+					bd.collisions = 0;
+					bd.loaded = false;
+					bd.exitDoorObject.SetActive(false);
+				}
+			}
+
+			// informs the controller an item has been picked up
+			public abstract void ItemPickedUp(string name);
 
 			// sets the parent room -- this is potentially handy
 			public void SetParentRoom (BaseRoomController parent) 

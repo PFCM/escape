@@ -1,0 +1,7 @@
+[0:0:0:3] (AmbienceGenerator) Beginning with clip 'Amb6'
+[0:0:4:641] (Player) Pickup Flashlight
+[0:0:20:721] (Player) Pickup EntranceHallKey
+[0:0:27:960] (BaseDoor) Collision 1
+[0:0:28:74] (BaseDoor) loaded Bedroom
+[0:0:30:65] (AmbienceGenerator) beginning fade in of 'Amb2'
+[0:0:32:98] (AmbienceGenerator) fade complete.

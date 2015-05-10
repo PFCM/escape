@@ -37,6 +37,12 @@ namespace Escape
 			{
 
 			}
+
+			
+			public override void ItemPickedUp(string name)
+			{
+				
+			}
 		}
 	}
 }

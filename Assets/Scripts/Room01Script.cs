@@ -19,5 +19,11 @@ namespace Escape {
 		}
 
 		override public void Shuffle () {}
+
+		
+		public override void ItemPickedUp(string name)
+		{
+			
+		}
 	}
 }

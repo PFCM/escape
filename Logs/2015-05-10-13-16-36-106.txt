@@ -1,0 +1,6 @@
+[0:0:0:3] (AmbienceGenerator) Beginning with clip 'Amb8'
+[0:0:6:382] (Player) Pickup Flashlight
+[0:0:35:923] (AmbienceGenerator) beginning fade in of 'Amb7'
+[0:0:37:925] (AmbienceGenerator) fade complete.
+[0:0:42:181] (BaseDoor) Collision 1
+[0:0:42:181] (BaseDoor) Not loaded - no key

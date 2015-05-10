@@ -28,7 +28,14 @@ namespace Escape.Rooms
 
 		override public void Shuffle() 
 		{
+			base.Shuffle ();
 			Logging.Log ("(Bathroom) shuffled!");
+		}
+
+		
+		public override void ItemPickedUp(string name)
+		{
+			
 		}
 	}
 }

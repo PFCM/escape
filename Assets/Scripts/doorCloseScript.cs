@@ -32,6 +32,11 @@ public class doorCloseScript : MonoBehaviour {
 		startRotationY = transform.rotation.eulerAngles.y;
 		_locked = key != null && key != "";
 	}
+
+	public void Reset() {
+		startRotationY = transform.rotation.eulerAngles.y;
+		_locked = key != null && key != "";
+	}
 	
 	// Update is called once per frame
 	void Update () {

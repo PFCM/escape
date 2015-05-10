@@ -34,7 +34,7 @@ namespace Escape
 
 			void Start () 
 			{
-				doorPosition = transform;
+				//doorPosition = transform;
 				if (weights == null) weights = new Dictionary<string, float> ();
 			}
 
@@ -84,6 +84,7 @@ namespace Escape
 			void ReloadRoom (GameObject root) {
 				LineUpFacing (root.transform);
 				root.SetActive (true);
+				exitDoorObject.SetActive (true);
 				BaseRoomController newRoom = root.GetComponent<BaseRoomController> ();
 				newRoom.SetParentRoom (this.GetComponentInParent<BaseRoomController> ());
 				newRoom.Shuffle ();

@@ -29,9 +29,16 @@ namespace Escape.Rooms
 
 		override public void Shuffle()
 		{
+			base.Shuffle ();
 			CheckParentRoomStatus ();
 			objects [0].AdvancePosition();
-			doors [0].collisions = 0;
+
+		}
+
+		
+		public override void ItemPickedUp(string name)
+		{
+			
 		}
 	}
 }
