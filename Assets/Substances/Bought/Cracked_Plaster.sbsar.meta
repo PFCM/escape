@@ -6,7 +6,7 @@ labels:
 - wall
 - damage
 - building
-timeCreated: 1431229271
+timeCreated: 1431409466
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -1204,14 +1204,14 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Age
       value:
-        scalar[0]: 0
+        scalar[0]: .057
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Cracks
       value:
-        scalar[0]: 0
+        scalar[0]: .108999997
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -1387,7 +1387,7 @@ SubstanceImporter:
         data:
           first:
             name: _BumpScale
-          second: .129999995
+          second: .310000002
         data:
           first:
             name: _OcclusionStrength
@@ -1420,7 +1420,7 @@ SubstanceImporter:
         data:
           first:
             name: _Color
-          second: {r: 1, g: 1, b: 1, a: 1}
+          second: {r: 1, g: .995910406, b: .948096871, a: 1}
         data:
           first:
             name: _EmissionColorUI
