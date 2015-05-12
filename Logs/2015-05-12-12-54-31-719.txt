@@ -1,0 +1,5 @@
+[0:0:0:0] (AmbienceGenerator) Beginning with clip 'Amb6'
+[0:0:0:79] (FirstPersonController) (player position) (1.29,0.965,1.21) facing (-3.258414E-07,0,-1)
+[0:0:0:79] (FirstPersonController) (player position) (1.29,0.965,1.21) facing (-3.258414E-07,0,-1)
+[0:0:5:810] (BaseDoor) Collision 1
+[0:0:6:340] (BaseDoor) loaded Bathroom
