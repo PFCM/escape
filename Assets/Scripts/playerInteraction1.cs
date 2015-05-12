@@ -82,6 +82,10 @@ public class playerInteraction1 : MonoBehaviour
 					PlayerStatus.GiveFlashlight ();
 					Destroy (other);
 				}
+				else if(other.tag == "Chime"){
+					print ("found");
+					other.GetComponent<ChimeScript>().activate ();
+				}
 			}
 		
 		} 

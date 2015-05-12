@@ -17,11 +17,14 @@ public class ChimeScript : MonoBehaviour {
 	}
 
 	public bool activate(){
+		print("order" +order);
 		if (chimePuzzleController.GetComponent<ChimePuzzleController> ().getCurrentOrder () == order) {
 			print("correct order" +order);
 			chimePuzzleController.GetComponent<ChimePuzzleController> ().increaseCurrentOrder ();
 			return true;
 		}
+		//player failed puzzle
+		chimePuzzleController.GetComponent<ChimePuzzleController> ().resetPuzzle ();
 		return false;
 	}
 
