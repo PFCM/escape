@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3f7c9b9fd6cc2174e8b089cd3fcafa9a
-timeCreated: 1431173359
+timeCreated: 1431412610
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -422,7 +422,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Boards_Y
       value:
-        scalar[0]: 21.5
+        scalar[0]: 32
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -582,7 +582,7 @@ SubstanceImporter:
             name: _MainTex
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 1, y: 8}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -617,7 +617,7 @@ SubstanceImporter:
             name: _EmissionMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 16, y: 8}
+            scale: {x: 1, y: 8}
             offset: {x: 0, y: 0}
         data:
           first:
