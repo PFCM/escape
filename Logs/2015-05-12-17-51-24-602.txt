@@ -1,0 +1,6 @@
+[0:0:0:890] (Door) Opened 
+[0:0:2:116] (Door) Opened 
+[0:0:3:98] (Door) Opened 
+[0:0:4:262] (Door) Opened 
+[0:0:5:166] (Door) Opened 
+[0:0:6:446] (Door) Opened 

@@ -5,14 +5,15 @@ using Escape.Core;
 
 public class doorCloseScript : MonoBehaviour {
 
+	public bool open = false;
+	public float doorOpenAngle = 90f; //angle the door will be when it is closed
+	public float doorCloseAngle = 0f; //angle the door will be when it is open
+	public float smooth = 2f;
+
+
 	
 	// the name of the key required -- if none, no key
 	public string key; 
-
-	private bool opening = false;
-	private bool closing = false;
-
-	private bool closed = true;
 
 	private int closeDoorTimer = 0;
 
@@ -41,81 +42,55 @@ public class doorCloseScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-	if (flippedDoor == false) {
-			if (opening == true) {
-				//if its open
-				if (transform.rotation.eulerAngles.y > startRotationY + 90) {
-					//start timer
-					closeDoorTimer = 300;
-					opening = false;
-					closed = false;
-				} else {
-					transform.Rotate (Time.deltaTime, 1, 0);
-				}
-			}
-			if (closing == true) {
-				//if its closed
-				if (transform.rotation.eulerAngles.y < startRotationY + 1) {
-					closing = false;
-					closed = true;
-				} else {
-					transform.Rotate (Time.deltaTime, -1, 0);
-				}
-			}
+		if (open) {
+			Quaternion targetRotation = Quaternion.Euler (0, doorOpenAngle, 0);
+			transform.localRotation = Quaternion.Slerp (transform.localRotation, targetRotation, smooth * Time.deltaTime);
 		} else {
-			if (opening == true) {
-				//if its open
-				if (transform.rotation.eulerAngles.y > startRotationY + 89) {
-					//start timer
-					closeDoorTimer = 150;
-					opening = false;
-					closed = false;
-				} else {
-					transform.Rotate (Time.deltaTime, 1, 0);
-				}
-			}
-			if (closing == true) {
-				//if its closed
-				if (transform.rotation.eulerAngles.y < startRotationY + 1) {
-					closing = false;
-					closed = true;
-				} else {
-					transform.Rotate (Time.deltaTime, -1, 0);
-				}
-			}
+			Quaternion targetRotationClose = Quaternion.Euler(0,doorCloseAngle,0);
+			//transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotationClose,0.05f);//Time.deltaTime);
+			transform.localRotation = Quaternion.RotateTowards(transform.localRotation, targetRotationClose, 200 * Time.deltaTime);
 		}
-		//Sets x and z rotation to 0 because something is causing the x and z rotation to change when they shouldnt be 
-		transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
 
-		//close door if timer reaches 0
-		if (closeDoorTimer == 0 && closed == false) {
-			closing = true;
+		if (closeDoorTimer == 0 && open == true){ //&& closed == false) {
+			open = false;
 		}
 		else{
 			closeDoorTimer--;
 		}
+
 	}
 
 	public void activateDoor(){
-		//open or close door
-		//sets rotation to open
-		//starts timer to close or closes when you walk past/exit its range
 
-		if (closed == true && trigger.loaded) {
-			// check player has the key
-			if (key == "" || key == null || !_locked 
-			    || PlayerStatus.UseKey(this.key)) {
-				opening = true;
-				_locked = false;
-				Logging.Log("(Door) Opened " + key);
+			if (!doorMoving() && trigger.loaded) {
+				// check player has the key
+				if (key == "" || key == null || !_locked 
+					|| PlayerStatus.UseKey (this.key)) {
+					open = !open;
+					if(open == true){
+						closeDoorTimer = 300;
+					}
+					_locked = false;
+					Logging.Log ("(Door) Opened " + key);
+				} else {
+					Logging.Log ("(Door) Open fail " + key);
+				}
 			}
-			else {
-				Logging.Log("(Door) Open fail " + key);
-			}
-		} else {
-	
-			closing = true;
+	}
+
+	//checks if the door is opening or closing
+	private bool doorMoving(){
+		if ((transform.rotation.eulerAngles.y < doorOpenAngle+10) && (transform.rotation.eulerAngles.y > doorOpenAngle-10 )) {
+			return false;
 		}
+		if((transform.rotation.eulerAngles.y < doorCloseAngle+10) && (transform.rotation.eulerAngles.y > doorCloseAngle-10 )){
+			return false;
+	}
+		//special case for when open rotation is 0
+		if(doorOpenAngle == 0 && (transform.rotation.eulerAngles.y < 360+10) && (transform.rotation.eulerAngles.y > 360-10 )){
+			return false;
+		}
+		return true;
 	}
 	
 }
