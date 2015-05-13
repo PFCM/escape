@@ -2,7 +2,7 @@ fileFormatVersion: 2
 guid: 023030ae7f524e24e87a4b181908f73a
 labels:
 - fabric
-timeCreated: 1431481740
+timeCreated: 1431483228
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -1215,7 +1215,7 @@ SubstanceImporter:
     name: LampCoverFabric 1
     prototypeName: Old_Fabric
     shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-    shaderKeywords: _EMISSION _NORMALMAP _PARALLAXMAP
+    shaderKeywords: _NORMALMAP _PARALLAXMAP
     renderQueue: -1
     inputs:
     - name: $normalformat
@@ -1331,14 +1331,14 @@ SubstanceImporter:
             name: _MainTex
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 4, y: 4}
             offset: {x: 0, y: 0}
         data:
           first:
             name: _BumpMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 4, y: 4}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -1352,7 +1352,7 @@ SubstanceImporter:
             name: _ParallaxMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 4, y: 4}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -1433,7 +1433,7 @@ SubstanceImporter:
         data:
           first:
             name: _EmissionScaleUI
-          second: 1
+          second: 0
         data:
           first:
             name: _Mode
@@ -1446,11 +1446,11 @@ SubstanceImporter:
         data:
           first:
             name: _EmissionColor
-          second: {r: .83088237, g: .813354611, b: .672037184, a: 1}
+          second: {r: 0, g: 0, b: 0, a: 0}
         data:
           first:
             name: _Color
-          second: {r: 1, g: 1, b: 1, a: 1}
+          second: {r: .889705896, g: .88384068, b: .804660499, a: 1}
         data:
           first:
             name: _EmissionColorUI
