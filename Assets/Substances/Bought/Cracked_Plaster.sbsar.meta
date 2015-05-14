@@ -6,7 +6,7 @@ labels:
 - wall
 - damage
 - building
-timeCreated: 1431414655
+timeCreated: 1431575909
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -1387,7 +1387,7 @@ SubstanceImporter:
         data:
           first:
             name: _BumpScale
-          second: .310000002
+          second: .200000003
         data:
           first:
             name: _OcclusionStrength
