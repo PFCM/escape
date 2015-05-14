@@ -1,0 +1,2 @@
+[0:0:0:5] (AmbienceGenerator) Beginning with clip 'Amb8'
+[0:0:3:946] (Player) Pickup Flashlight

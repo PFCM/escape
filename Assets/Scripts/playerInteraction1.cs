@@ -21,11 +21,15 @@ public class playerInteraction1 : MonoBehaviour
 
 	// object we are colliding (raycast won't hit things we are touching)
 	private GameObject colliding;
-	private int layerMask = ~(1 << 12);
+	private int layerMask;// = ~(1 << 12); // everything except player
+	private int noPickupLayerMask;// = layerMask & ~(1 << 11); // everything except player and pickups
 
 	// Use this for initialization
 	void Start ()
 	{
+		layerMask = ~(1 << 12);
+		noPickupLayerMask = layerMask & ~(1 << 11);
+
 		startStyle.fontSize = 20;
 		startStyle.normal.textColor = Color.white;//(255,255,255);
 	}
@@ -40,10 +44,15 @@ public class playerInteraction1 : MonoBehaviour
 
 
 		if (Input.GetButtonDown ("Interact")) {
-			Debug.DrawRay (camera.transform.position, camera.transform.forward);
 			GameObject other = null;
 			//sends out ray to find object player is looking at 
-			if (Physics.Raycast (camera.transform.position, camera.transform.forward, out hit, interactionDistance, layerMask)) {
+			// TODO: layerMask for interactions etc
+			// TODO: fix this biz for Oculus
+			if (Physics.Raycast (camera.transform.position, 
+			                     camera.transform.forward, 
+			                     out hit, 
+			                     interactionDistance, 
+			                     PlayerStatus.IsHolding()? noPickupLayerMask : layerMask)) {
 				other = hit.transform.gameObject;
 			} else if (colliding != null) {
 				if (Vector3.Distance (colliding.transform.position, camera.transform.position) <= interactionDistance) {
@@ -51,7 +60,14 @@ public class playerInteraction1 : MonoBehaviour
 				}
 			}
 
+			if (PlayerStatus.IsHolding() && 
+			    (other == null || other.tag != "Interactable")) {
+				PickupableObject obj = PlayerStatus.TakeObjectHeld ();
+				obj.Drop(this.transform);
+			}
+
 			if (other != null) {
+
 				//if the object is a battery
 				if (other.tag == "battery") {
 					//Debug.Log("Hit object " + camera.transform.gameObject.tag);
@@ -81,6 +97,16 @@ public class playerInteraction1 : MonoBehaviour
 				} else if (other.tag == "Flashlight") {
 					PlayerStatus.GiveFlashlight ();
 					Destroy (other);
+				} else if (other.tag == "Pickupable") {
+					PickupableObject p = other.GetComponent<PickupableObject>();
+					p.PickUp();
+					if (!PlayerStatus.IsHolding ())
+						PlayerStatus.GiveObjectToHold(p);
+				} else if (other.tag == "Interactable") {
+					PickupableObject held = null;
+					if (PlayerStatus.IsHolding ())
+						held = PlayerStatus.TakeObjectHeld();
+					other.GetComponent<InteractableObject> ().Interact (held);	
 				}
 				else if(other.tag == "Chime"){
 					print ("found");

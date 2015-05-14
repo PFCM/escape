@@ -1,0 +1,4 @@
+[0:0:0:5] (AmbienceGenerator) Beginning with clip 'Amb1'
+[0:0:14:860] (Player) Pickup Flashlight
+[0:0:29:191] (AmbienceGenerator) beginning fade in of 'Amb1'
+[0:0:31:203] (AmbienceGenerator) fade complete.
