@@ -8,7 +8,7 @@ namespace Escape.Rooms
 {
 	public class InfiniteHallway1Controller : BaseRoomController
 	{
-		
+
 		// Use this for initialization
 		void Start ()
 		{
@@ -32,11 +32,12 @@ namespace Escape.Rooms
 			base.Shuffle ();
 			Logging.Log ("(InfiniteHallway) shuffled!");
 		}
-		
+
 		
 		public override void ItemPickedUp(string name)
 		{
 			
 		}
+
 	}
 }

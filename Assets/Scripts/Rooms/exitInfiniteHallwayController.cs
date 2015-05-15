@@ -6,14 +6,14 @@ using Escape.Util;
 
 namespace Escape.Rooms
 {
-	public class InfiniteHallway2Controller : BaseRoomController
+	public class exitInfiniteController : BaseRoomController
 	{
 		
 		// Use this for initialization
 		void Start ()
 		{
 			//always loads next infinite hallway
-			doors [0].SetWeight ("InfiniteHallway3", 1);
+			doors [0].SetWeight ("Bathroom", 1);
 		}
 		
 		// Update is called once per frame
@@ -38,5 +38,6 @@ namespace Escape.Rooms
 		{
 			
 		}
+		
 	}
 }

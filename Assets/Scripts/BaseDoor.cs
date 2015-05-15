@@ -141,11 +141,13 @@ namespace Escape
 			// this is here for convenience, some doors may be triggered by other means
 			public void OnTriggerEnter(Collider other) 
 			{
+				//Just so the infinite hallway generates properly
 				if (nextRoom != null) {
-					if (nextRoom.tag == "InfiniteHallway1" || nextRoom.tag == "InfiniteHallway2") {
+					if (nextRoom.tag == "InfiniteHallway1" || nextRoom.tag == "InfiniteHallway2" ||nextRoom.tag == "InfiniteHallway3" ) {
 						nextRoom = null;
 					}
 				}
+
 				if (nextRoom == null) {
 					if (other.tag.Equals ("Player")) { // temp tag
 						collisions++;
