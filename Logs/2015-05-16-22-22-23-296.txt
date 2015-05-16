@@ -1,0 +1,28 @@
+[0:0:0:55] (BaseDoor) Collision 1
+[0:0:0:79] (BaseDoor) loaded InfiniteHallway2
+[0:0:6:917] (BaseDoor) Collision 1
+[0:0:8:252] (BaseDoor) loaded Bathroom
+[0:0:50:207] (BaseDoor) Collision 1
+[0:0:50:235] (BaseDoor) loaded InfiniteHallway3
+[0:0:50:243] (Door) Opened 
+[0:1:0:957] (BaseDoor) Collision 1
+[0:1:0:960] (InfiniteHallway) shuffled!
+[0:1:0:962] (BaseDoor) Repositioned already loaded room: InfiniteHallway1
+[0:1:1:41] (Door) Opened 
+[0:1:14:610] (BaseDoor) Collision 1
+[0:1:14:611] (InfiniteHallway) shuffled!
+[0:1:14:613] (BaseDoor) Repositioned already loaded room: InfiniteHallway2
+[0:1:14:644] (Door) Opened 
+[0:1:24:239] (BaseDoor) Collision 2
+[0:1:48:184] (BaseDoor) Collision 3
+[0:1:52:522] (BaseDoor) Collision 4
+[0:1:59:767] (Door) Opened 
+[0:2:5:349] (Door) Opened 
+[0:2:5:682] (BaseDoor) Collision 5
+[0:2:10:931] (Door) Opened 
+[0:2:46:722] (Door) Opened 
+[0:2:46:937] (BaseDoor) Collision 6
+[0:2:57:833] (Door) Opened 
+[0:2:58:83] (BaseDoor) Collision 1
+[0:2:58:85] (InfiniteHallway) shuffled!
+[0:2:58:87] (BaseDoor) Repositioned already loaded room: InfiniteHallway3

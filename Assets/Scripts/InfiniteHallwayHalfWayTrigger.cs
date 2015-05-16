@@ -5,7 +5,7 @@ using System.Collections;
 public class InfiniteHallwayHalfWayTrigger : MonoBehaviour {
 	
 	GameObject player;
-	public GameObject exitTrigger;
+	private bool triggered = false;
 
 	// Use this for initialization
 	void Start () {
@@ -19,15 +19,17 @@ public class InfiniteHallwayHalfWayTrigger : MonoBehaviour {
 
 	public void OnTriggerEnter(Collider other) 
 	{
+		if (other.tag == "Player") {
+			if (!triggered) {
+				GameObject monster = Instantiate (Resources.Load ("Monsters/MonsterHallwayChase")) as GameObject; 
+				monster.transform.position = gameObject.transform.position;
+				triggered = true;
+			}
+		}
 		//if (!player.GetComponent<PlayerStatus> ().isHallwayMonsterSpawned ()) {
 			//create monster behind player
 		//}
-		//sets the trigger to just behind this game object
 
-		//if it hasnt been triggered before
-		if (other.tag == "Player") {
-			exitTrigger.transform.position = new Vector3 (exitTrigger.transform.position.x + 2, exitTrigger.transform.position.y, exitTrigger.transform.position.z);
-		}
-		//start timer to set it as not been triggered before
+	
 	}
 }

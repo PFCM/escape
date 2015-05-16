@@ -1,0 +1,12 @@
+[0:0:0:74] (BaseDoor) Collision 1
+[0:0:0:100] (BaseDoor) loaded InfiniteHallway2
+[0:0:5:481] (BaseDoor) Collision 1
+[0:0:6:11] (BaseDoor) loaded Bathroom
+[0:0:8:990] (BaseDoor) Collision 1
+[0:0:9:18] (BaseDoor) loaded InfiniteHallway3
+[0:0:9:161] (BaseDoor) Collision 1
+[0:0:9:164] (Bathroom) shuffled!
+[0:0:9:166] (BaseDoor) Repositioned already loaded room: Bathroom
+[0:0:14:801] (Door) Opened 
+[0:0:15:360] (Door) Opened 
+[0:0:18:810] (BaseDoor) Collision 2

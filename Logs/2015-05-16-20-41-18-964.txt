@@ -1,0 +1,10 @@
+[0:0:0:80] (BaseDoor) Collision 1
+[0:0:0:100] (BaseDoor) loaded InfiniteHallway2
+[0:0:16:871] (BaseDoor) Collision 1
+[0:0:17:21] (Door) Opened 
+[0:0:18:861] (BaseDoor) loaded Bedroom
+[0:0:24:951] (Door) Opened 
+[0:0:31:62] (Door) Opened 
+[0:0:37:892] (Door) Opened 
+[0:0:45:953] (Door) Opened 
+[0:0:53:463] (Door) Opened 

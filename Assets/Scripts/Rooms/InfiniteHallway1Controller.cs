@@ -14,6 +14,7 @@ namespace Escape.Rooms
 		{
 			//always loads next infinite hallway
 			doors [0].SetWeight ("InfiniteHallway2", 1);
+			doors [1].SetWeight ("InfiniteHallwaySecret", 1);
 		}
 		
 		// Update is called once per frame

@@ -1,0 +1,2 @@
+[0:0:0:73] (BaseDoor) Collision 1
+[0:0:0:97] (BaseDoor) loaded InfiniteHallway2
