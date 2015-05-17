@@ -20,7 +20,6 @@ namespace Escape.Rooms
 			// locked door is door0
 			this.doors [0].SetWeight ("Bedroom", 1);
 			this.doors [1].SetWeight ("Bathroom", 1);
-			this.doors [1].SetWeight ("Bedroom", 1);
 
 
 			paintingsCorrect = new Dictionary<InteractableObject, bool> ();

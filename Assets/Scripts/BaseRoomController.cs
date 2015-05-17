@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 using Escape.Util;
 
@@ -34,6 +35,9 @@ namespace Escape
 			// the physical door used to come into this room
 			private GameObject entranceDoor;
 
+			// list of child rooms to deactivate when we ourselves are deactivated
+			private IList<BaseRoomController> children = new List<BaseRoomController> ();
+
 
 			// Use this for initialization
 			void Start ()
@@ -55,8 +59,23 @@ namespace Escape
 				}
 				
 				if (check != null && check != this) {
+					check.DisableChildrenExcept(this, this.parentRoom);
 					check.gameObject.SetActive (false);
 					Logging.Log("(BaseRoomController) disabling a room.");
+				}
+			}
+
+			public void AddChild (BaseRoomController child) 
+			{
+				children.Add (child);
+			}
+
+			public void DisableChildrenExcept(params BaseRoomController[] except) 
+			{
+				foreach (BaseRoomController child in children) {
+					if (!except.Contains(child)) {
+						child.gameObject.SetActive(false);
+					}
 				}
 			}
 	
@@ -82,7 +101,7 @@ namespace Escape
 				foreach (BaseDoor bd in doors) {
 					bd.collisions = 0;
 					bd.loaded = false;
-					bd.exitDoorObject.SetActive(false);
+					bd.exitDoorObject.gameObject.SetActive(false);
 				}
 			}
 
