@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d13251021c44f4786b280fbb6b27c53c
-timeCreated: 1430893782
+guid: 532cadeb33f7f473195a1dc4a6cac3c7
+timeCreated: 1431832034
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,30 +9,30 @@ ModelImporter:
     100002: //RootNode
     100004: Grandfather_Clock_Cabinet_Glass
     100006: Grandfather_Clock_Chime
-    100008: Grandfather_Clock_Glass
-    100010: pCylinder4
-    400000: //RootNode
-    400002: Grandfather_Clock
+    100008: Grandfather_Clock_Clockface
+    100010: Grandfather_Clock_Glass
+    400000: Grandfather_Clock
+    400002: //RootNode
     400004: Grandfather_Clock_Cabinet_Glass
     400006: Grandfather_Clock_Chime
-    400008: Grandfather_Clock_Glass
-    400010: pCylinder4
+    400008: Grandfather_Clock_Clockface
+    400010: Grandfather_Clock_Glass
     2300000: Grandfather_Clock
     2300002: Grandfather_Clock_Cabinet_Glass
     2300004: Grandfather_Clock_Chime
-    2300006: Grandfather_Clock_Glass
-    2300008: pCylinder4
+    2300006: Grandfather_Clock_Clockface
+    2300008: Grandfather_Clock_Glass
     3300000: Grandfather_Clock
     3300002: Grandfather_Clock_Cabinet_Glass
     3300004: Grandfather_Clock_Chime
-    3300006: Grandfather_Clock_Glass
-    3300008: pCylinder4
+    3300006: Grandfather_Clock_Clockface
+    3300008: Grandfather_Clock_Glass
     4300000: Grandfather_Clock
     4300002: Grandfather_Clock_Cabinet_Glass
     4300004: Grandfather_Clock_Glass
     4300006: Grandfather_Clock_Chime
-    4300008: pCylinder4
-    7400000: PendulumSwing
+    4300008: Grandfather_Clock_Clockface
+    7400000: ChimeSwing
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -51,7 +51,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: PendulumSwing
+      name: ChimeSwing
       takeName: Take 001
       firstFrame: 1
       lastFrame: 150
@@ -82,9 +82,9 @@ ModelImporter:
         weight: 1
       - path: Grandfather_Clock_Chime
         weight: 1
-      - path: Grandfather_Clock_Glass
+      - path: Grandfather_Clock_Clockface
         weight: 1
-      - path: pCylinder4
+      - path: Grandfather_Clock_Glass
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
