@@ -1,0 +1,7 @@
+[0:0:0:112] (BaseDoor) Collision 1
+[0:0:0:138] (BaseDoor) loaded InfiniteHallway2
+[0:0:0:140] (BaseDoor) Collision 1
+[0:0:0:142] (BaseDoor) Collision 1
+[0:0:0:469] (BaseDoor) loaded InfiniteHallwaySecret
+[0:0:0:516] (BaseDoor) loaded InfiniteHallway3
+[0:0:4:704] (Door) Opened 
