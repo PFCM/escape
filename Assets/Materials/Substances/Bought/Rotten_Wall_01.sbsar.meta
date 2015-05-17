@@ -7,7 +7,7 @@ labels:
 - paint
 - building
 - rust
-timeCreated: 1431425952
+timeCreated: 1431838884
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -372,7 +372,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Rust
       value:
-        scalar[0]: .477999985
+        scalar[0]: .469999999
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
