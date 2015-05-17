@@ -36,6 +36,8 @@ public class doorCloseScript : MonoBehaviour {
 
 	public void Reset() {
 		startRotationY = transform.rotation.eulerAngles.y;
+		doorOpenAngle = startRotationY + doorOpenAngle;
+		doorCloseAngle = startRotationY + doorCloseAngle;
 		_locked = key != null && key != "";
 	}
 	
@@ -79,15 +81,19 @@ public class doorCloseScript : MonoBehaviour {
 	}
 
 	//checks if the door is opening or closing
+	/*
+	 * changed to localRotation -- seems to fix issues with when rooms get loaded at different angles
+	 * paul
+	 */
 	private bool doorMoving(){
-		if ((transform.rotation.eulerAngles.y < doorOpenAngle+10) && (transform.rotation.eulerAngles.y > doorOpenAngle-10 )) {
+		if ((transform.localRotation.eulerAngles.y < doorOpenAngle+10) && (transform.localRotation.eulerAngles.y > doorOpenAngle-10 )) {
 			return false;
 		}
-		if((transform.rotation.eulerAngles.y < doorCloseAngle+10) && (transform.rotation.eulerAngles.y > doorCloseAngle-10 )){
+		if((transform.localRotation.eulerAngles.y < doorCloseAngle+10) && (transform.localRotation.eulerAngles.y > doorCloseAngle-10 )){
 			return false;
 	}
 		//special case for when open rotation is 0
-		if(doorOpenAngle == 0 && (transform.rotation.eulerAngles.y < 360+10) && (transform.rotation.eulerAngles.y > 360-10 )){
+		if(doorOpenAngle == 0 && (transform.localRotation.eulerAngles.y < 360+10) && (transform.localRotation.eulerAngles.y > 360-10 )){
 			return false;
 		}
 		return true;
