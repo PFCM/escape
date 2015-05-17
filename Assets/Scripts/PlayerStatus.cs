@@ -15,6 +15,9 @@ public class PlayerStatus : MonoBehaviour
 		get { return singleton; }
 	}
 
+	// holds all the rooms that have been loaded
+	private IDictionary<string, BaseRoomController> rooms;
+
 	public static PickupableObject heldObject {
 		get { return instance.holding; }
 	}
@@ -31,10 +34,23 @@ public class PlayerStatus : MonoBehaviour
 		if (singleton == null) {
 			singleton = this;
 			singleton.keys = new Dictionary<string, int> ();
+			singleton.rooms = new Dictionary<string, BaseRoomController> ();
 		} else {
 			Logging.Log ("(PlayerStatus) ERROR: initialised more than once.");
 		}
 	}
+
+	public static void AddRoom(BaseRoomController newRoom) {
+		singleton.rooms [newRoom.tag] = newRoom;
+	}
+
+	// will return null if room unloaded.
+	public static BaseRoomController GetRoomByTag (string tag) {
+		if (singleton.rooms.ContainsKey (tag))
+			return singleton.rooms [tag];
+		return null;
+	}
+
 
 	// adds a key to the inventory
 	// returns how many of the keys the player has

@@ -26,7 +26,7 @@ namespace Escape
 
 			public bool loaded = false;// has the room been loaded?
 
-			public GameObject exitDoorObject;
+			public doorCloseScript exitDoorObject;
 
 			// how many collisions are needed before the room is loaded
 			public int collisionsRequired = 1;
@@ -66,7 +66,7 @@ namespace Escape
 				LineUpFacing (newRoom.transform);
 				*/
 				//this.GetComponentInParent<BaseRoomController> ().gameObject.SetActive (false);
-				GameObject room = GameObject.FindGameObjectWithTag (result);
+				BaseRoomController room = PlayerStatus.GetRoomByTag (result);
 
 				if (room == null) {
 					StartCoroutine (LoadRoomAsLevel (result));
@@ -75,20 +75,21 @@ namespace Escape
 				}
 
 
-				loaded = true;
 
 				return this.GetComponentInParent<BaseRoomController> ();//newRoom.GetComponent<BaseRoomController> ();
 			}
+
 
 			// ensures a room that already exists is re-loaded approprioately into the correct position
 			void ReloadRoom (GameObject root) {
 				LineUpFacing (root.transform);
 				root.SetActive (true);
-				exitDoorObject.SetActive (true);
+				exitDoorObject.gameObject.SetActive (true);
 				BaseRoomController newRoom = root.GetComponent<BaseRoomController> ();
 				newRoom.SetParentRoom (this.GetComponentInParent<BaseRoomController> ());
 				newRoom.Shuffle ();
 				Logging.Log ("(BaseDoor) Repositioned already loaded room: " + root.tag);
+				loaded = true;
 			}
 
 			// this has to happen
@@ -121,9 +122,17 @@ namespace Escape
 				newRoomController.positioned = true;
 				this.nextRoom = newRoom;
 
-				exitDoorObject.SetActive (true);
+				exitDoorObject.gameObject.SetActive (true);
+
+				// store in PlayerStatus
+				PlayerStatus.AddRoom (newRoomController);
+				BaseRoomController thisRoom = GetComponentInParent<BaseRoomController> ();
+				if (thisRoom != null) {
+					thisRoom.AddChild(newRoomController);
+				}
 
 				Logging.Log ("(BaseDoor) loaded " + name);
+				loaded = true;
 			}
 
 			// Lines up a given transform so it is colocated with doorPosition, facing the opposite 
@@ -152,15 +161,31 @@ namespace Escape
 					if (other.tag.Equals ("Player")) { // temp tag
 						collisions++;
 						Logging.Log("(BaseDoor) Collision "+collisions);
-						if (collisions >= collisionsRequired && !loaded) { // TODO: is door closed?
-							doorCloseScript c = exitDoorObject.GetComponent<doorCloseScript> ();
-							if (c == null || PlayerStatus.HasKey(c.key))
-								LoadNextRoom ();
+						if (collisions >= collisionsRequired && !loaded) {
+							if (PlayerStatus.HasKey(exitDoorObject.key)) {
+								if ( exitDoorObject.IsClosed ()) {
+									LoadNextRoom ();
+								}
+								else {
+									Logging.Log("(BaseDoor) Waiting for door to close to load next room.");
+								} 
+							}
 							else 
 								Logging.Log("(BaseDoor) Not loaded - no key");
 						}
 					}
 				}
+			}
+
+			// waits until the door is closed, then loads the next room
+			IEnumerator WaitAndLoad(doorCloseScript door) 
+			{
+				if (door.open)
+					door.activateDoor ();
+				while (door.open) {
+					yield return new WaitForSeconds(0.1f);
+				}
+				LoadNextRoom ();
 			}
 
 			// sets a weight, initialises dictionary if this has not already been done

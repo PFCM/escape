@@ -50,7 +50,7 @@ public class doorCloseScript : MonoBehaviour {
 		} else {
 			Quaternion targetRotationClose = Quaternion.Euler(0,doorCloseAngle,0);
 			//transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotationClose,0.05f);//Time.deltaTime);
-			transform.localRotation = Quaternion.RotateTowards(transform.localRotation, targetRotationClose, 200 * Time.deltaTime);
+			transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotationClose, smooth * Time.deltaTime);
 		}
 
 		if (closeDoorTimer == 0 && open == true){ //&& closed == false) {
@@ -62,6 +62,11 @@ public class doorCloseScript : MonoBehaviour {
 
 	}
 
+	public bool IsClosed () {
+		return Mathf.Approximately (transform.localRotation.eulerAngles.y,
+		                           doorCloseAngle);
+	}
+
 	public void activateDoor(){
 
 			if (!doorMoving() && trigger.loaded) {
@@ -70,7 +75,7 @@ public class doorCloseScript : MonoBehaviour {
 					|| PlayerStatus.UseKey (this.key)) {
 					open = !open;
 					if(open == true){
-						closeDoorTimer = 300;
+						closeDoorTimer = 200;
 					}
 					_locked = false;
 					Logging.Log ("(Door) Opened " + key);
