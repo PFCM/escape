@@ -78,6 +78,7 @@ namespace Escape.Rooms
 				//Debug.Log("--" + i.name + "("+paintingsCorrect[i]+")");
 			}
 			if (win) {
+				PlayerStatus.AddKey("EntranceHallPaintingKey");
 				Logging.Log("Congratulations");
 			}
 		}
