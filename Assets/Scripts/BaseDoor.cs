@@ -152,7 +152,7 @@ namespace Escape
 					if (other.tag.Equals ("Player")) { // temp tag
 						collisions++;
 						Logging.Log("(BaseDoor) Collision "+collisions);
-						if (collisions >= collisionsRequired && !loaded) {
+						if (collisions >= collisionsRequired && !loaded) { // TODO: is door closed?
 							doorCloseScript c = exitDoorObject.GetComponent<doorCloseScript> ();
 							if (c == null || PlayerStatus.HasKey(c.key))
 								LoadNextRoom ();
