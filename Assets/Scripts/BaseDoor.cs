@@ -41,6 +41,8 @@ namespace Escape
 			// chooses a room probabilistically according to the weights
 			public BaseRoomController LoadNextRoom () 
 			{
+				
+				loaded = true;
 				float sum = 0;
 				foreach (float f in weights.Values) 
 				{
@@ -89,7 +91,6 @@ namespace Escape
 				newRoom.SetParentRoom (this.GetComponentInParent<BaseRoomController> ());
 				newRoom.Shuffle ();
 				Logging.Log ("(BaseDoor) Repositioned already loaded room: " + root.tag);
-				loaded = true;
 			}
 
 			// this has to happen
@@ -132,7 +133,6 @@ namespace Escape
 				}
 
 				Logging.Log ("(BaseDoor) loaded " + name);
-				loaded = true;
 			}
 
 			// Lines up a given transform so it is colocated with doorPosition, facing the opposite 
