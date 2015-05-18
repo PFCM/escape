@@ -8,6 +8,8 @@ public class doorCloseScript : MonoBehaviour {
 	public bool open = false;
 	public float doorOpenAngle = 90f; //angle the door will be when it is closed
 	public float doorCloseAngle = 0f; //angle the door will be when it is open
+	public float doorOpenAngleChoice1; //use the choices for selecting what angle it will open at depending on player position. is doorOpenAngle.
+	public float doorOpenAngleChoice2; //is doorCloseAngle - 90.
 	public float smooth = 2f;
 
 
@@ -30,6 +32,8 @@ public class doorCloseScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		doorOpenAngleChoice1 = doorOpenAngle;
+		doorOpenAngleChoice2 = doorCloseAngle - 90;
 		startRotationY = transform.rotation.eulerAngles.y;
 		_locked = key != null && key != "";
 	}
@@ -69,20 +73,38 @@ public class doorCloseScript : MonoBehaviour {
 
 	public void activateDoor(){
 
-			if (!doorMoving() && trigger.loaded) {
-				// check player has the key
-				if (key == "" || key == null || !_locked 
-					|| PlayerStatus.UseKey (this.key)) {
-					open = !open;
-					if(open == true){
-						closeDoorTimer = 200;
-					}
-					_locked = false;
-					Logging.Log ("(Door) Opened " + key);
-				} else {
-					Logging.Log ("(Door) Open fail " + key);
+		if (!doorMoving() && trigger.loaded) {
+			// check player has the key
+			if (key == "" || key == null || !_locked 
+			    || PlayerStatus.UseKey (this.key)) {
+				changeOpenAngle();
+				open = !open;
+				if(open == true){
+					closeDoorTimer = 200;
 				}
+				_locked = false;
+				Logging.Log ("(Door) Opened " + key);
+			} else {
+				Logging.Log ("(Door) Open fail " + key);
 			}
+		}
+
+	}
+
+	//makes it so it always opens outward from player to avoid clipping
+	private void changeOpenAngle(){
+		GameObject player = GameObject.FindGameObjectWithTag ("Player");
+
+		Vector3 directionToTarget = transform.position - player.transform.position;
+		float angleToPlayer = Vector3.Angle(transform.forward, directionToTarget);
+
+		if(Mathf.Abs(angleToPlayer) < 90){
+			doorOpenAngle = doorOpenAngleChoice2;
+		}
+		else{
+			doorOpenAngle = doorOpenAngleChoice1;
+		}
+
 	}
 
 	//checks if the door is opening or closing
