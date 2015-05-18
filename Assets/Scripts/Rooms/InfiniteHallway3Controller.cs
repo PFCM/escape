@@ -13,7 +13,7 @@ namespace Escape.Rooms
 		void Start ()
 		{
 			//always loads next infinite hallway
-			doors [0].SetWeight ("InfiniteHallway1", 1);
+			doors [0].SetWeight ("InfiniteHallway", 1);
 			doors [1].SetWeight ("InfiniteHallwaySecret", 1);
 		}
 		

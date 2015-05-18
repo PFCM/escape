@@ -152,7 +152,8 @@ namespace Escape
 			{
 				//Just so the infinite hallway generates properly
 				if (nextRoom != null) {
-					if (nextRoom.tag == "InfiniteHallway1" || nextRoom.tag == "InfiniteHallway2" ||nextRoom.tag == "InfiniteHallway3"|| nextRoom.tag == "InfiniteHallwaySecret") {
+					if (nextRoom.tag == "InfiniteHallway" || nextRoom.tag == "InfiniteHallway2" ||nextRoom.tag == "InfiniteHallway3"|| nextRoom.tag == "InfiniteHallwaySecret") {
+						print ("=============================================" + nextRoom.tag);
 						nextRoom = null;
 					}
 				}
