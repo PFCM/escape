@@ -23,6 +23,16 @@ public class WallPaintingPosition : InteractableObject {
 	
 	}
 
+	// drops the painting
+	public void Throw() {
+		if (currentPainting != null) {
+			Rigidbody rigid = currentPainting.GetComponent<Rigidbody> ();
+			rigid.isKinematic = false;
+			currentPainting.transform.Translate(currentPainting.transform.TransformDirection(new Vector3(0.1f,0f,0f)));
+			rigid.AddForce (this.transform.forward * Random.Range(50f,100f));
+		}
+	}
+
 	public override void Interact(PickupableObject with=null) {
 		if (with == null && currentPainting != null) { // then the player should pick up the current painting
 			PlayerStatus.GiveObjectToHold (currentPainting);

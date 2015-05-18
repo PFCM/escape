@@ -7,15 +7,20 @@ using Escape.Util;
 namespace Escape.Core
 {
 	[RequireComponent(typeof(Rigidbody))]
+	[RequireComponent(typeof(AudioSource))] // for collision sounds
 	public class PickupableObject : MonoBehaviour
 	{
 		private BaseRoomController room;
 		private Rigidbody rigidBody;
+		private AudioSource audio;
+
+		public AudioClip[] collisionSounds;
 
 		void Start () 
 		{
 			room = GetComponentInParent<BaseRoomController> ();
 			rigidBody = GetComponent<Rigidbody> ();
+			audio = GetComponent<AudioSource> ();
 		}
 
 		public void PickUp ()
@@ -29,6 +34,13 @@ namespace Escape.Core
 			rigidBody.isKinematic = false;
 			transform.SetParent (room.transform);
 			rigidBody.AddForce(from.forward * 100f);// fine tune the magic number
+		}
+
+		void OnCollisionEnter(Collision other) 
+		{
+			if (collisionSounds.Length > 0) {
+				audio.PlayOneShot(collisionSounds[Random.Range(0,collisionSounds.Length)]);
+			}
 		}
 	}
 }

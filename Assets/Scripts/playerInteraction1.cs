@@ -99,9 +99,10 @@ public class playerInteraction1 : MonoBehaviour
 					Destroy (other);
 				} else if (other.tag == "Pickupable") {
 					PickupableObject p = other.GetComponent<PickupableObject>();
-					p.PickUp();
-					if (!PlayerStatus.IsHolding ())
+					if (!PlayerStatus.IsHolding ()) {
+						p.PickUp();
 						PlayerStatus.GiveObjectToHold(p);
+					}
 				} else if (other.tag == "Interactable") {
 					PickupableObject held = null;
 					if (PlayerStatus.IsHolding ())

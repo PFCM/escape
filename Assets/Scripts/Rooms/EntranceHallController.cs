@@ -11,8 +11,10 @@ namespace Escape.Rooms
 		public Light switchableLight;
 		public string key = "EntranceHallKey";
 
-		public InteractableObject[] paintingPositions;
+		public WallPaintingPosition[] paintingPositions;
+		public AudioClip successSound;
 		private IDictionary<InteractableObject, bool> paintingsCorrect;
+		private bool solved = false;
 
 		// Use this for initialization
 		void Start ()
@@ -62,7 +64,8 @@ namespace Escape.Rooms
 		// called by the painting positions to tell the controller if they have the right paintings in them or not
 		public void PaintingPlaced(InteractableObject position, bool correct)  
 		{
-			if (paintingsCorrect.ContainsKey (position)) {
+			// do nothing if you've already solved the puzzle
+			if (!solved && paintingsCorrect.ContainsKey (position)) {
 				paintingsCorrect[position] = correct;
 				CheckPaintings();
 			}
@@ -77,7 +80,13 @@ namespace Escape.Rooms
 				//Debug.Log("--" + i.name + "("+paintingsCorrect[i]+")");
 			}
 			if (win) {
+				solved = true;
 				PlayerStatus.AddKey("EntranceHallPaintingKey");
+				// TODO: add keys to positions
+				foreach (WallPaintingPosition w in paintingPositions) {
+					w.Throw (); // paintings drop to the floor
+				}
+				paintingPositions[0].currentPainting.GetComponent<AudioSource> ().PlayOneShot (successSound);
 				Logging.Log("Congratulations");
 			}
 		}
