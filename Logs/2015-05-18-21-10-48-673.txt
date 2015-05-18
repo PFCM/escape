@@ -1,0 +1,8 @@
+[0:0:0:37] (BaseDoor) Collision 1
+[0:0:0:45] (BaseDoor) Collision 1
+[0:0:0:95] (BaseDoor) loaded InfiniteHallwaySecret
+[0:0:0:146] (BaseDoor) loaded InfiniteHallway2
+[0:0:0:148] (BaseDoor) Collision 1
+[0:0:0:180] (BaseDoor) loaded InfiniteHallway3
+[0:0:0:183] (BaseDoor) Collision 1
+[0:0:0:185] (BaseDoor) Waiting for door to close to load next room.
