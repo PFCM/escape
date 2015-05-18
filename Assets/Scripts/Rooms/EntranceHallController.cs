@@ -22,6 +22,8 @@ namespace Escape.Rooms
 			// locked door is door0
 			this.doors [0].SetWeight ("Bedroom", 1);
 			this.doors [1].SetWeight ("Bathroom", 1);
+			this.doors [1].SetWeight ("Hallway2", 1);
+			this.doors [2].SetWeight ("InfiniteHallway", 1);
 
 
 			paintingsCorrect = new Dictionary<InteractableObject, bool> ();
@@ -56,6 +58,7 @@ namespace Escape.Rooms
 		{
 			if (name.Equals (key)) {
 				switchableLight.enabled = true;
+				doors [0].LoadNextRoom (); // get ahead
 			} else if (name.Contains ("WallPainting")) {
 
 			}
@@ -81,7 +84,10 @@ namespace Escape.Rooms
 			}
 			if (win) {
 				solved = true;
-				PlayerStatus.AddKey("EntranceHallPaintingKey");
+				PlayerStatus.AddKey("PaintingPuzzleKey");
+				PlayerStatus.AddKey("PaintingPuzzleKey");
+				doors [1].LoadNextRoom ();
+				doors [2].LoadNextRoom ();
 				// TODO: add keys to positions
 				foreach (WallPaintingPosition w in paintingPositions) {
 					w.Throw (); // paintings drop to the floor
