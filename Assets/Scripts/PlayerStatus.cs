@@ -209,4 +209,10 @@ public class PlayerStatus : MonoBehaviour
 		runningTimer = -1;
 		isRunning = false;
 	}
+
+	public void killPlayer(){
+		//TODO
+		//play death animation
+		//change scene to first scene
+	}
 }

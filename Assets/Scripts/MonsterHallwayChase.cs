@@ -8,14 +8,18 @@ public class MonsterHallwayChase : MonoBehaviour {
 	public float speed = 4.2f;
 	private int despawnTimer = 0; //timer to delete the monster after the puzzle is done
 	private GameObject player;
+	private AudioSource audioSource;
+	public AudioClip scream;
 	
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		targetPosition = player.transform.position;
-		player.GetComponent<PlayerStatus> ().startRunning (60); //make player run immediatly
-
-		
+		player.GetComponent<PlayerStatus> ().startRunning (9999); //make player run immediatly
+		//plays a sound
+		audioSource = gameObject.GetComponent<AudioSource> ();
+		audioSource.clip = scream;
+		audioSource.Play();
 	}
 	
 	// Update is called once per frame
@@ -44,5 +48,11 @@ public class MonsterHallwayChase : MonoBehaviour {
 		speed = 0;
 		despawnTimer = 300;
 		player.GetComponent<PlayerStatus> ().stopRunning ();
+	}
+
+	void onCollisionEnter(Collision collision){
+		if(collision.gameObject.tag == "Player"){
+			collision.gameObject.GetComponent<PlayerStatus>().killPlayer();
+		}
 	}
 }
