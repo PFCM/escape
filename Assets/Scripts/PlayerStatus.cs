@@ -28,6 +28,11 @@ public class PlayerStatus : MonoBehaviour
 	// have we picked up the flashlight yet?
 	public bool haveFlashlight = false; 
 
+	public Transform mCamera; // main camera, or something else for OVR?
+
+	// anchor for the object we are holding
+	private SpringJoint springJoint;
+
 	// init the singleton
 	void Start ()
 	{
@@ -35,6 +40,16 @@ public class PlayerStatus : MonoBehaviour
 			singleton = this;
 			singleton.keys = new Dictionary<string, int> ();
 			singleton.rooms = new Dictionary<string, BaseRoomController> ();
+
+			GameObject obj = new GameObject("Dragger");
+			obj.transform.SetParent(this.transform);
+			obj.transform.Translate(transform.forward);
+			Rigidbody body = obj.AddComponent <Rigidbody> () as Rigidbody;
+			springJoint = obj.AddComponent <SpringJoint> ();
+			body.isKinematic = true;
+
+			if (mCamera == null) // if not set by hand
+				mCamera = Camera.main.transform;
 		} else {
 			Logging.Log ("(PlayerStatus) ERROR: initialised more than once.");
 		}
@@ -49,6 +64,17 @@ public class PlayerStatus : MonoBehaviour
 		if (singleton.rooms.ContainsKey (tag))
 			return singleton.rooms [tag];
 		return null;
+	}
+
+	// This is a coroutine that drags an object around with us
+	// mostly thanks to http://answers.unity3d.com/questions/31658/picking-upholding-objects.html
+	IEnumerator DragObject(float distance)
+	{
+		while (this.holding != null) {
+			springJoint.transform.position = mCamera.position + mCamera.forward*distance;
+			yield return new WaitForFixedUpdate();
+		}
+		springJoint.connectedBody = null;
 	}
 
 
@@ -98,16 +124,35 @@ public class PlayerStatus : MonoBehaviour
 
 
 	// Make the player hold an object
+	// (pickupablobject requires rigidbody so the getComponent is safe)
 	public static void GiveObjectToHold (PickupableObject obj)
 	{
 		if (instance.holding != null) {
 			Logging.Log ("(Player) trying to pick up while holding?");
 		} else {
 			instance.holding = obj;
-			obj.transform.SetParent (instance.transform);
-			obj.transform.position = instance.transform.position +
-				instance.transform.forward * 0.7f +
-					instance.transform.up*0.5f;
+			//obj.transform.SetParent (instance.transform);
+			//obj.transform.position = instance.transform.position +
+				//instance.transform.forward * 0.7f +
+					//instance.transform.up*0.5f;
+			instance.springJoint.transform.position = obj.transform.position;
+			Rigidbody connected = obj.GetComponent<Rigidbody> ();
+			//Vector3 anchor = instance.transform.TransformDirection(connected.centerOfMass) + 
+							// obj.transform.position;
+			//anchor = instance.springJoint.transform.InverseTransformPoint(anchor);
+			instance.springJoint.anchor = Vector3.zero;//anchor;
+			instance.springJoint.autoConfigureConnectedAnchor = true;
+			instance.springJoint.connectedBody = connected;
+			//instance.springJoint.connectedAnchor = obj.transform.TransformPoint(instance.transform.position);
+			connected.isKinematic = false;
+			// magic numbers -- make these public variables(probably yes, maybe move the lot to new script)?
+			instance.springJoint.spring = 100f;
+			instance.springJoint.damper = 20f;
+			instance.springJoint.maxDistance = 0.0001f;
+			instance.springJoint.minDistance = 0f;
+
+			instance.StartCoroutine(instance.DragObject(Vector3.Distance(instance.transform.position, obj.transform.position)));
+
 			Logging.Log ("(Player) now holding: " + obj.name);
 		}
 	}
