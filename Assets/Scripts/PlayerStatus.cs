@@ -7,7 +7,10 @@ using Escape.Core;
 //keys, event chance management
 public class PlayerStatus : MonoBehaviour
 {
-	
+
+	public bool isRunning = false;//used to tell fpscontrollers when player is running
+	private int runningTimer = 0;
+
 	private static int eventChance = 0;
 	public PickupableObject holding;
 	private static PlayerStatus singleton; // for efficiency/ease of access
@@ -54,6 +57,14 @@ public class PlayerStatus : MonoBehaviour
 		} else {
 			Logging.Log ("(PlayerStatus) ERROR: initialised more than once.");
 		}
+	}
+
+	void Update(){
+		
+		if (runningTimer == 0) {
+			stopRunning ();
+		}
+		runningTimer--;
 	}
 
 	public static void AddRoom(BaseRoomController newRoom) {
@@ -195,5 +206,21 @@ public class PlayerStatus : MonoBehaviour
 	public void addEventChance (int add)
 	{
 		eventChance = eventChance + add;
+	}
+
+	public void startRunning(int time){
+		isRunning = true;
+		runningTimer = time;
+	}
+	
+	public void stopRunning(){
+		runningTimer = -1;
+		isRunning = false;
+	}
+
+	public void killPlayer(){
+		//TODO
+		//play death animation
+		//change scene to first scene
 	}
 }

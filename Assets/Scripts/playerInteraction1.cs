@@ -125,7 +125,7 @@ public class playerInteraction1 : MonoBehaviour
 				//enrage monster
 				if (hit.transform.gameObject.GetComponent<MonsterChase> ().speedUp ()) {
 					//start running
-					gameObject.GetComponent<FirstPersonController> ().startRunning (500);//().loadBattery();
+					gameObject.GetComponent<PlayerStatus> ().startRunning (500);//().loadBattery();
 				}
 
 			}
@@ -134,7 +134,7 @@ public class playerInteraction1 : MonoBehaviour
 				//CHECK if monster has already been spotted by player
 				if (hit.transform.gameObject.GetComponent<MonsterSpawnBehind> ().startChasingPlayer ()) {
 					//start running
-					gameObject.GetComponent<FirstPersonController> ().startRunning (300);
+					gameObject.GetComponent<PlayerStatus> ().startRunning (300);
 				}
 			}
 		}

@@ -5,13 +5,13 @@ using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
 
 // ADDED 4/5 pfcm
-
+//PC FIRST PERSON CONTROLLER
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
 	[RequireComponent(typeof (CharacterController))]
 	[RequireComponent(typeof (AudioSource))]
-	public class PS4_FirstPersonController : MonoBehaviour
+	public class FirstPersonController : MonoBehaviour
 	{
 		[SerializeField] private bool m_IsWalking;
 		[SerializeField] private float m_WalkSpeed;
@@ -20,7 +20,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		[SerializeField] private float m_JumpSpeed;
 		[SerializeField] private float m_StickToGroundForce;
 		[SerializeField] private float m_GravityMultiplier;
-		[SerializeField] private PS4_MouseLook m_MouseLook;
+		[SerializeField] private MouseLook m_MouseLook;
 		[SerializeField] private bool m_UseFovKick;
 		[SerializeField] private FOVKick m_FovKick = new FOVKick();
 		[SerializeField] private bool m_UseHeadBob;
@@ -46,6 +46,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		private AudioSource m_AudioSource;
 		
 		
+		//private bool isRunning = false;
+		//	private int runTimer = 0;
+		public bool moving = false; //checking if player is moving
+		
 		// Use this for initialization
 		private void Start()
 		{
@@ -65,7 +69,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		// Update is called once per frame
 		private void Update()
 		{
-			//m_IsWalking = 
+			//	m_IsWalking = !(gameObject.GetComponent<PlayerStatus> ().isRunning);
 			RotateView();
 			// the jump state needs to read here to make sure it is not missed
 			if (!m_Jump)
@@ -86,10 +90,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			}
 			
 			m_PreviouslyGrounded = m_CharacterController.isGrounded;
-			
-			
-			
-			
 		}
 		
 		
@@ -105,6 +105,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		{
 			float speed;
 			GetInput(out speed);
+			//moving = (speed > 0);
 			// always move along the camera forward as it is the direction that it being aimed at
 			Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
 			
@@ -124,10 +125,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				
 				if (m_Jump)
 				{
-					m_MoveDir.y = m_JumpSpeed;
-					PlayJumpSound();
-					m_Jump = false;
-					m_Jumping = true;
+					//   m_MoveDir.y = m_JumpSpeed;
+					//   PlayJumpSound();
+					//   m_Jump = false;
+					//    m_Jumping = true;
 				}
 			}
 			else
@@ -150,10 +151,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		
 		private void ProgressStepCycle(float speed)
 		{
-			if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
-			{
-				m_StepCycle += (m_CharacterController.velocity.magnitude + (speed*(m_IsWalking ? 1f : m_RunstepLenghten)))*
+			if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0)) {
+				moving = true;
+				m_StepCycle += (m_CharacterController.velocity.magnitude + (speed * (m_IsWalking ? 1f : m_RunstepLenghten))) *
 					Time.fixedDeltaTime;
+			} else {
+				moving = false;
 			}
 			
 			if (!(m_StepCycle > m_NextStep))
@@ -219,7 +222,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			#if !MOBILE_INPUT
 			// On standalone builds, walk/run speed is modified by a key press.
 			// keep track of whether or not the character is walking or running
-			m_IsWalking = !(gameObject.GetComponent<PlayerStatus> ().isRunning);// !Input.GetKey(KeyCode.LeftShift);
+			m_IsWalking =!(gameObject.GetComponent<PlayerStatus> ().isRunning);
 			#endif
 			// set the desired speed to be walking or running
 			speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;

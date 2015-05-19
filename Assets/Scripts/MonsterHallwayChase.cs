@@ -1,40 +1,58 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class MonsterHallwayChase : MonoBehaviour {
-
-	private Vector3 targetPosition;
-	public float speed = 2f;
 	
+	private Vector3 targetPosition;
+	public float speed = 4.2f;
+	private int despawnTimer = 0; //timer to delete the monster after the puzzle is done
+	private GameObject player;
+	private AudioSource audioSource;
+	public AudioClip scream;
 	
 	// Use this for initialization
 	void Start () {
-		targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
+		player = GameObject.FindGameObjectWithTag ("Player");
+		targetPosition = player.transform.position;
+		player.GetComponent<PlayerStatus> ().startRunning (9999); //make player run immediatly
+		//plays a sound
+		audioSource = gameObject.GetComponent<AudioSource> ();
+		audioSource.clip = scream;
+		audioSource.Play();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		//may have to check player to see if they completed puzzle here
 		
 		targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
-		//targetPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y,gameObject.transform.forward); 
-		//targetPosition = new Vector3(gameObject.transform.forward.x,gameObject.transform.forward.y,gameObject.transform.forward.z);
-
-		//transform.position = Vector3.MoveTowards(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position,   speed*Time.deltaTime);
-		//transform.position = Vector3.MoveTowards(transform.position, targetPosition,   speed*Time.deltaTime);
-		//targetPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z-speed);
-	
 		transform.position = Vector3.MoveTowards(transform.position, targetPosition,   speed*Time.deltaTime);
+		
+		if (despawnTimer == 1) {
+			Destroy (gameObject);
+		}
+		despawnTimer--;
 	}
 	
 	public bool speedUp(){
 		if (speed < 4) {
-			speed = 4;
+			speed = 4.2f;
 			return true;
 		}
 		return false;
 	}
-
-	public void playerSolvedPuzzle(){
 	
+	//when player enters wardrobe/escapes the infinite hallway
+	public void playerSolvedPuzzle(){
+		speed = 0;
+		despawnTimer = 300;
+		player.GetComponent<PlayerStatus> ().stopRunning ();
+	}
+
+	void onCollisionEnter(Collision collision){
+		if(collision.gameObject.tag == "Player"){
+			collision.gameObject.GetComponent<PlayerStatus>().killPlayer();
+		}
 	}
 }
