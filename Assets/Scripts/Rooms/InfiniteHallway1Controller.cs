@@ -30,7 +30,7 @@ namespace Escape.Rooms
 		
 		override public void Shuffle() 
 		{
-			base.Shuffle ();
+		//	base.Shuffle ();
 			Logging.Log ("(InfiniteHallway) shuffled!");
 		}
 

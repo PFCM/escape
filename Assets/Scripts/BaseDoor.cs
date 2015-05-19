@@ -16,6 +16,8 @@ namespace Escape
 		// or in response to some other event
 		public class BaseDoor : MonoBehaviour
 		{
+			//Fix for infinite halls not spawning right.
+			public bool isInfiniteHallwayDoor = false;
 
 			public Dictionary<string, float> weights;
 			// this is the actual door position
@@ -150,10 +152,10 @@ namespace Escape
 			// this is here for convenience, some doors may be triggered by other means
 			public void OnTriggerEnter(Collider other) 
 			{
+
 				//Just so the infinite hallway generates properly
 				if (nextRoom != null) {
 					if (nextRoom.tag == "InfiniteHallway" || nextRoom.tag == "InfiniteHallway2" ||nextRoom.tag == "InfiniteHallway3"|| nextRoom.tag == "InfiniteHallwaySecret") {
-						print ("=============================================" + nextRoom.tag);
 						nextRoom = null;
 					}
 				}
@@ -173,6 +175,10 @@ namespace Escape
 							}
 							else 
 								Logging.Log("(BaseDoor) Not loaded - no key");
+						}
+						else if (isInfiniteHallwayDoor){
+							//Fix for infinite hallways
+							LoadNextRoom ();
 						}
 					}
 				}
