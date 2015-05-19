@@ -50,7 +50,7 @@ public class WallPaintingPosition : InteractableObject {
 			                          "correct" : "wrong"));
 			room.PaintingPlaced (this, currentPainting == correctPainting); // tell the room
 		} else if (with != null && currentPainting != null) {
-			with.Drop(with.transform);
+			PlayerStatus.GiveObjectToHold(with);
 		}
 	}
 }
