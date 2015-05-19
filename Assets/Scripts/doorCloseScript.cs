@@ -3,6 +3,7 @@ using System.Collections;
 using Escape.Util;
 using Escape.Core;
 
+[RequireComponent(typeof(AudioSource))] // needs to make sound
 public class doorCloseScript : MonoBehaviour {
 
 	public bool open = false;
@@ -12,6 +13,11 @@ public class doorCloseScript : MonoBehaviour {
 	public float doorOpenAngleChoice2; //is doorCloseAngle - 90.
 	public float smooth = 2f;
 
+	public AudioClip[] closeSounds;
+	public AudioClip[] openSounds;
+	public AudioClip[] lockedSounds;
+
+	private AudioSource audioSrc;
 
 	
 	// the name of the key required -- if none, no key
@@ -36,6 +42,8 @@ public class doorCloseScript : MonoBehaviour {
 		doorOpenAngleChoice2 = doorCloseAngle - 90;
 		startRotationY = transform.rotation.eulerAngles.y;
 		_locked = key != null && key != "";
+
+		audioSrc = GetComponent<AudioSource> ();
 	}
 
 	public void Reset() {
@@ -59,6 +67,7 @@ public class doorCloseScript : MonoBehaviour {
 
 		if (closeDoorTimer == 0 && open == true){ //&& closed == false) {
 			open = false;
+			playRandomSound(closeSounds);
 		}
 		else{
 			closeDoorTimer--;
@@ -72,23 +81,35 @@ public class doorCloseScript : MonoBehaviour {
 	}
 
 	public void activateDoor(){
-
-		if (!doorMoving() && trigger.loaded) {
+		if (!doorMoving () && trigger.loaded) {
 			// check player has the key
 			if (key == "" || key == null || !_locked 
-			    || PlayerStatus.UseKey (this.key)) {
-				changeOpenAngle();
+				|| PlayerStatus.UseKey (this.key)) {
+				changeOpenAngle ();
 				open = !open;
-				if(open == true){
+				playRandomSound (openSounds);
+				if (open == true) {
 					closeDoorTimer = 200;
 				}
 				_locked = false;
 				Logging.Log ("(Door) Opened " + key);
 			} else {
+				playRandomSound (lockedSounds);
 				Logging.Log ("(Door) Open fail " + key);
 			}
+		} else if (key != "" && key != null && !PlayerStatus.HasKey (key)) {
+			playRandomSound (lockedSounds);
+			Logging.Log ("(Door) Open fail " + key);
 		}
 
+	}
+
+	// plays random sound from clip array
+	private void playRandomSound(AudioClip[] clips) {
+		if (clips.Length > 0) {
+			audioSrc.pitch = Random.Range (0.8f, 1.2f); // TODO: fine tune the magic numbers
+			audioSrc.PlayOneShot (clips[Random.Range(0,clips.Length)]);
+		}
 	}
 
 	//makes it so it always opens outward from player to avoid clipping
