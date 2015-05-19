@@ -44,5 +44,6 @@ namespace Escape.Core
 				audio.PlayOneShot(collisionSounds[Random.Range(0,collisionSounds.Length)]);
 			}
 		}
+
 	}
 }

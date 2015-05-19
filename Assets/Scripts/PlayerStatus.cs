@@ -32,6 +32,7 @@ public class PlayerStatus : MonoBehaviour
 
 	// anchor for the object we are holding
 	private SpringJoint springJoint;
+	private float oldDrag,oldAngularDrag; // data about what we are holding
 
 	// init the singleton
 	void Start ()
@@ -146,10 +147,14 @@ public class PlayerStatus : MonoBehaviour
 			//instance.springJoint.connectedAnchor = obj.transform.TransformPoint(instance.transform.position);
 			connected.isKinematic = false;
 			// magic numbers -- make these public variables(probably yes, maybe move the lot to new script)?
-			instance.springJoint.spring = 100f;
-			instance.springJoint.damper = 20f;
-			instance.springJoint.maxDistance = 0.0001f;
+			instance.springJoint.spring = 50f;
+			instance.springJoint.damper = 5f;
+			instance.springJoint.maxDistance = 0.00f;
 			instance.springJoint.minDistance = 0f;
+			instance.oldDrag = connected.drag;
+			instance.oldAngularDrag = connected.angularDrag;
+			connected.drag = 7.5f;
+			connected.angularDrag = 5f;
 
 			instance.StartCoroutine(instance.DragObject(Vector3.Distance(instance.transform.position, obj.transform.position)));
 
@@ -167,6 +172,9 @@ public class PlayerStatus : MonoBehaviour
 		if (instance.holding == null)
 			return null;
 		PickupableObject h = instance.holding;
+		Rigidbody r = h.GetComponent<Rigidbody> ();
+		r.angularDrag = instance.oldAngularDrag;
+		r.drag = instance.oldDrag;
 		h.transform.SetParent (null);
 		instance.holding = null;
 		return h;
