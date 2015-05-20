@@ -110,8 +110,10 @@ public class playerInteraction1 : MonoBehaviour
 					other.GetComponent<InteractableObject> ().Interact (held);	
 				}
 				else if(other.tag == "Chime"){
-					print ("found");
 					other.GetComponent<ChimeScript>().activate ();
+				}
+				else if(other.tag == "Lightswitch"){
+					other.GetComponent<LightSwitchScript>().toggleOn();
 				}
 			}
 		
