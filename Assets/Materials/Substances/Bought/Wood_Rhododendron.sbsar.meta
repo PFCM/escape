@@ -8,7 +8,7 @@ labels:
 - texture
 - substance
 - seamless
-timeCreated: 1431834145
+timeCreated: 1432186800
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -316,14 +316,14 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: $randomseed
       value:
-        scalar[0]: 8433
+        scalar[0]: 1552
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Fibers
       value:
-        scalar[0]: .526000023
+        scalar[0]: 0
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -358,14 +358,14 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Emboss
       value:
-        scalar[0]: 5
+        scalar[0]: -5.71000004
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Angle
       value:
-        scalar[0]: .125
+        scalar[0]: .165000007
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -393,7 +393,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Contrast
       value:
-        scalar[0]: 0
+        scalar[0]: -.349000007
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -420,7 +420,7 @@ SubstanceImporter:
             name: _BumpMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 8, y: 8}
+            scale: {x: 8, y: 32}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -434,7 +434,7 @@ SubstanceImporter:
             name: _ParallaxMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 8, y: 8}
+            scale: {x: 8, y: 32}
             offset: {x: 0, y: 0}
         data:
           first:

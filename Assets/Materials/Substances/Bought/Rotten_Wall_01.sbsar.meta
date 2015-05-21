@@ -7,7 +7,7 @@ labels:
 - paint
 - building
 - rust
-timeCreated: 1431838884
+timeCreated: 1432187582
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -443,7 +443,7 @@ SubstanceImporter:
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 4, y: 2}
+      scale: {x: 16, y: 16}
       generateMipmaps: 1
       generateAllOutputs: 0
       animationUpdateRate: 0
@@ -455,14 +455,14 @@ SubstanceImporter:
             name: _MainTex
           second:
             texture: {instanceID: 0}
-            scale: {x: 4, y: 2}
+            scale: {x: 16, y: 16}
             offset: {x: 0, y: 0}
         data:
           first:
             name: _BumpMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 4, y: 2}
+            scale: {x: 16, y: 1}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -476,7 +476,7 @@ SubstanceImporter:
             name: _ParallaxMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 4, y: 2}
+            scale: {x: 16, y: 1}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -490,7 +490,7 @@ SubstanceImporter:
             name: _EmissionMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 4, y: 2}
+            scale: {x: 16, y: 16}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -638,7 +638,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: $randomseed
       value:
-        scalar[0]: 3578
+        scalar[0]: 1962
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -659,7 +659,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Paint_Erosion
       value:
-        scalar[0]: .236000001
+        scalar[0]: .287999988
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -737,7 +737,7 @@ SubstanceImporter:
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 2, y: 2}
+      scale: {x: 8, y: 8}
       generateMipmaps: 1
       generateAllOutputs: 0
       animationUpdateRate: 0
@@ -749,14 +749,14 @@ SubstanceImporter:
             name: _MainTex
           second:
             texture: {instanceID: 0}
-            scale: {x: 2, y: 2}
+            scale: {x: 8, y: 8}
             offset: {x: 0, y: 0}
         data:
           first:
             name: _BumpMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 2, y: 2}
+            scale: {x: 8, y: 16}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -770,7 +770,7 @@ SubstanceImporter:
             name: _ParallaxMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 2, y: 2}
+            scale: {x: 8, y: 16}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -784,7 +784,7 @@ SubstanceImporter:
             name: _EmissionMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 2, y: 2}
+            scale: {x: 8, y: 8}
             offset: {x: 0, y: 0}
         data:
           first:
