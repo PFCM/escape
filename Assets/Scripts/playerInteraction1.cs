@@ -155,7 +155,7 @@ public class playerInteraction1 : MonoBehaviour
 		col = guiText.color;
 		guiTextTimer --;
 
-		if (guiTextTimer > 300) {
+		if (guiTextTimer > 350) {
 			//fade in
 			col.a = col.a + 0.005f;
 		} else {
@@ -166,9 +166,9 @@ public class playerInteraction1 : MonoBehaviour
 	}
 
 	//resets timer and displays some new text for a time until it fades
-	private void displayGuiText(string text){
+	public void displayGuiText(string text){
 		guiText.text = text;
-		guiTextTimer = 600;
+		guiTextTimer = 700;
 	}
 
 
