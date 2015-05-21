@@ -41,16 +41,16 @@ public class doorCloseScript : MonoBehaviour {
 		doorOpenAngleChoice1 = doorOpenAngle;
 		doorOpenAngleChoice2 = doorCloseAngle - 90;
 		startRotationY = transform.rotation.eulerAngles.y;
-		_locked = key != null && key != "";
+		_locked = true;//key != null && key != "";
 
 		audioSrc = GetComponent<AudioSource> ();
 	}
 
 	public void Reset() {
-		startRotationY = transform.rotation.eulerAngles.y;
+		startRotationY = transform.localRotation.eulerAngles.y;
 		doorOpenAngle = startRotationY + doorOpenAngle;
 		doorCloseAngle = startRotationY + doorCloseAngle;
-		_locked = key != null && key != "";
+		_locked = true;//key != null && key != "";
 	}
 	
 	// Update is called once per frame
@@ -76,14 +76,17 @@ public class doorCloseScript : MonoBehaviour {
 	}
 
 	public bool IsClosed () {
-		return Mathf.Approximately (transform.localRotation.eulerAngles.y,
+		//Debug.Log (":" + transform.localEulerAngles.y + "," + doorCloseAngle);
+		return Mathf.Approximately (transform.localEulerAngles.y,
 		                           doorCloseAngle);
 	}
 
 	public void activateDoor(){
 		if (!doorMoving () && trigger.loaded) {
 			// check player has the key
-			if (key == "" || key == null || !_locked 
+			if (key == "" || key == null)
+				_locked = false;
+			if (!_locked 
 				|| PlayerStatus.UseKey (this.key)) {
 				changeOpenAngle ();
 				open = !open;
