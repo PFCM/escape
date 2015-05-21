@@ -2,6 +2,7 @@
 using System.Collections;
 using Escape.Core;
 
+[RequireComponent(typeof(AudioSource))]
 public class flashlightScript : MonoBehaviour {
 
 	// Use this for initialization
@@ -12,9 +13,13 @@ public class flashlightScript : MonoBehaviour {
 	public float brightness = 2.0f;
 	bool on = false;
 
+	private AudioSource audioSrc;
+	public AudioClip onSound;
+	public AudioClip offSound;
+
 	void Start()
 	{
-
+		audioSrc = GetComponent<AudioSource> ();
 	}
 	void Update()
 	{
@@ -41,17 +46,19 @@ public class flashlightScript : MonoBehaviour {
 			}
 			else{
 				on = !on;
+				PlaySound(on);
 			}
 		}
 		if(charge <=0){
 			on =false;
 		}
+	}
 
-
-			   
-		  
-
-
+	private void PlaySound(bool on) {
+		if (on)
+			audioSrc.PlayOneShot (onSound);
+		else
+			audioSrc.PlayOneShot (offSound);
 	}
 
 	public void flicker(){
