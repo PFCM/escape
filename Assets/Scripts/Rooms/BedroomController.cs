@@ -13,7 +13,9 @@ namespace Escape.Rooms
 		void Start ()
 		{
 			CheckParentRoomStatus ();
-			doors [0].SetWeight ("Hallway2", 1);
+			doors [0].SetWeight ("Hallway2", 1f);
+			doors [0].SetWeight ("Bathroom", 0.1f);
+			doors [0].SetWeight ("EntranceHall", 0.7f);
 		}
 	
 		// Update is called once per frame
