@@ -170,6 +170,7 @@ namespace Escape
 									LoadNextRoom ();
 								}
 								else {
+									//StartCoroutine(WaitAndLoad(exitDoorObject)); // probably nt a good idea
 									Logging.Log("(BaseDoor) Waiting for door to close to load next room.");
 								} 
 							}
@@ -187,8 +188,6 @@ namespace Escape
 			// waits until the door is closed, then loads the next room
 			IEnumerator WaitAndLoad(doorCloseScript door) 
 			{
-				if (door.open)
-					door.activateDoor ();
 				while (door.open) {
 					yield return new WaitForSeconds(0.1f);
 				}
