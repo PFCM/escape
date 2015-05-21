@@ -3,21 +3,26 @@ using System.Collections;
 using UnityStandardAssets.Characters.FirstPerson;
 using Escape.Core;
 using Escape.Util;
+using UnityEngine.UI;
 
 //this code handles everything to do with player interacting with other objects
 public class playerInteraction1 : MonoBehaviour
 {
 	
 	
-	
+
+
 	public Camera camera;
 	public float interactionDistance = 3f;
 
 	//GUI stuff
 	public Color col = new Color (255, 255, 255, 0);
 	private string guiDisplayedText = "";
-	private int guiTextChangeTimer = 800;
+	private int guiTextTimer = 0;
 	private GUIStyle startStyle = new GUIStyle ();
+
+	public UnityEngine.UI.Text guiText;
+
 
 	// object we are colliding (raycast won't hit things we are touching)
 	private GameObject colliding;
@@ -30,15 +35,15 @@ public class playerInteraction1 : MonoBehaviour
 		layerMask = ~(1 << 12);
 		noPickupLayerMask = layerMask & ~(1 << 11);
 
-		startStyle.fontSize = 20;
-		startStyle.normal.textColor = Color.white;//(255,255,255);
+		displayGuiText ("Press E to pick up items");
+		guiText.color = new Color(255,255,255,0);
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
 
-		changeStartGuiText ();
+		fadeGuiText ();
 		
 		RaycastHit hit;
 
@@ -95,6 +100,7 @@ public class playerInteraction1 : MonoBehaviour
 					Logging.Log ("(Player) Pickup " + name);
 					Destroy (other);
 				} else if (other.tag == "Flashlight") {
+					displayGuiText ("Press F to turn on flashlight");
 					PlayerStatus.GiveFlashlight ();
 					Destroy (other);
 				} else if (other.tag == "Pickupable") {
@@ -143,29 +149,28 @@ public class playerInteraction1 : MonoBehaviour
 
 	}
 
-	private void changeStartGuiText ()
+	//fades and redisplays text based on timer value
+	private void fadeGuiText ()
 	{
-		guiTextChangeTimer --;
-		//set opacity and text
-		if (guiTextChangeTimer > 600) {
+		col = guiText.color;
+		guiTextTimer --;
+
+		if (guiTextTimer > 300) {
+			//fade in
 			col.a = col.a + 0.005f;
-			guiDisplayedText = "press 'x' to interact";
 		} else {
-			if (guiTextChangeTimer < 350 && guiTextChangeTimer > 2) {
-				col.a = col.a + 0.005f;
-				guiDisplayedText = "press 'R3' to toggle flashlight";
-			} else {
-				col.a = col.a - 0.005f;
-			}
-			
+			//fade out
+			col.a = col.a - 0.005f;
 		}
+		guiText.color = col;
 	}
-	
-	void OnGUI ()
-	{
-		GUI.color = col;
-		GUI.Label (new Rect (500, 250, 500, 500), guiDisplayedText, startStyle);
+
+	//resets timer and displays some new text for a time until it fades
+	private void displayGuiText(string text){
+		guiText.text = text;
+		guiTextTimer = 600;
 	}
+
 
 	void OnTriggerEnter (Collider other)
 	{
