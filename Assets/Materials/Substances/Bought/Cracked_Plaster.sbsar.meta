@@ -6,7 +6,7 @@ labels:
 - wall
 - damage
 - building
-timeCreated: 1431905865
+timeCreated: 1432186891
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -1289,7 +1289,7 @@ SubstanceImporter:
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 16, y: 16}
+      scale: {x: 32, y: 32}
       generateMipmaps: 1
       generateAllOutputs: 0
       animationUpdateRate: 0
@@ -1301,14 +1301,14 @@ SubstanceImporter:
             name: _MainTex
           second:
             texture: {instanceID: 0}
-            scale: {x: 16, y: 16}
+            scale: {x: 32, y: 32}
             offset: {x: 0, y: 0}
         data:
           first:
             name: _BumpMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 16, y: 1}
+            scale: {x: 32, y: 3}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -1322,7 +1322,7 @@ SubstanceImporter:
             name: _ParallaxMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 16, y: 1}
+            scale: {x: 32, y: 3}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -1336,7 +1336,7 @@ SubstanceImporter:
             name: _EmissionMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 16, y: 16}
+            scale: {x: 32, y: 32}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -1863,7 +1863,7 @@ SubstanceImporter:
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 8, y: 8}
+      scale: {x: 32, y: 32}
       generateMipmaps: 1
       generateAllOutputs: 0
       animationUpdateRate: 0
@@ -1875,14 +1875,14 @@ SubstanceImporter:
             name: _MainTex
           second:
             texture: {instanceID: 0}
-            scale: {x: 8, y: 8}
+            scale: {x: 32, y: 32}
             offset: {x: 0, y: 0}
         data:
           first:
             name: _BumpMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 8, y: 8}
+            scale: {x: 32, y: 3}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -1896,7 +1896,7 @@ SubstanceImporter:
             name: _ParallaxMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 8, y: 8}
+            scale: {x: 32, y: 3}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -1910,7 +1910,7 @@ SubstanceImporter:
             name: _EmissionMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 32, y: 32}
             offset: {x: 0, y: 0}
         data:
           first:

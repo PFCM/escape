@@ -2,7 +2,7 @@ fileFormatVersion: 2
 guid: 023030ae7f524e24e87a4b181908f73a
 labels:
 - fabric
-timeCreated: 1431483228
+timeCreated: 1432187687
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -1027,14 +1027,14 @@ SubstanceImporter:
             name: _MainTex
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 4, y: 4}
             offset: {x: 0, y: 0}
         data:
           first:
             name: _BumpMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 4, y: 4}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -1048,7 +1048,7 @@ SubstanceImporter:
             name: _ParallaxMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 4, y: 4}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -1129,7 +1129,7 @@ SubstanceImporter:
         data:
           first:
             name: _EmissionScaleUI
-          second: 1
+          second: .439999998
         data:
           first:
             name: _Mode
@@ -1142,7 +1142,7 @@ SubstanceImporter:
         data:
           first:
             name: _EmissionColor
-          second: {r: .83088237, g: .813354611, b: .672037184, a: 1}
+          second: {r: .365588248, g: .357876033, b: .295696348, a: .439999998}
         data:
           first:
             name: _Color
