@@ -8,7 +8,7 @@ labels:
 - texture
 - substance
 - seamless
-timeCreated: 1432199064
+timeCreated: 1432199295
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -379,21 +379,21 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Saturation
       value:
-        scalar[0]: .238999993
+        scalar[0]: .47299999
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Luminosity
       value:
-        scalar[0]: .639999986
+        scalar[0]: .50999999
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Contrast
       value:
-        scalar[0]: -.0700000003
+        scalar[0]: -.349000007
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -532,7 +532,7 @@ SubstanceImporter:
         data:
           first:
             name: _Color
-          second: {r: .963235319, g: .960011482, b: .941987455, a: 1}
+          second: {r: .632352948, g: .611830354, b: .585856378, a: 1}
         data:
           first:
             name: _EmissionColorUI
