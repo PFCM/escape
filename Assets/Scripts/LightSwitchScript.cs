@@ -8,7 +8,8 @@ using Escape.Util;
 public class LightSwitchScript : InteractableObject {
 
 	public bool on = false;
-	public Light light;
+	public GameObject lightGroup;
+	private Light[] lights;
 
 	private AudioSource audioSrc;
 	public AudioClip onSound;
@@ -17,6 +18,7 @@ public class LightSwitchScript : InteractableObject {
 	void Start()
 	{
 		audioSrc = GetComponent<AudioSource> ();
+		lights = lightGroup.GetComponentsInChildren<Light> ();
 	}
 
 
@@ -25,9 +27,12 @@ public class LightSwitchScript : InteractableObject {
 			PlayerStatus.GiveObjectToHold (with);
 		//make sound
 		on = !on;
-		light.enabled = on;
+
+		foreach (Light light in lights) {
+			light.enabled = on;
+		}
 		playSound (on ? onSound : offSound);
-		Logging.Log (string.Format("(LightSwitch)({0}) {1}", name, on));
+		Logging.Log (string.Format("(LightSwitch)({0}) {1}", name, on? "On" : "Off"));
 	}
 
 	private void playSound(AudioClip clip) {
