@@ -112,9 +112,9 @@ public class playerInteraction1 : MonoBehaviour
 				else if(other.tag == "Chime"){
 					other.GetComponent<ChimeScript>().activate ();
 				}
-				else if(other.tag == "Lightswitch"){
+			/*	else if(other.tag == "Lightswitch"){
 					other.GetComponent<LightSwitchScript>().toggleOn();
-				}
+				}*/
 			}
 		
 		} 

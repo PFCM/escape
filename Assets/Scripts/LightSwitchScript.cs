@@ -1,26 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LightSwitchScript : MonoBehaviour {
+using Escape.Core;
+using Escape.Util;
+
+[RequireComponent(typeof(AudioSource))]
+public class LightSwitchScript : InteractableObject {
 
 	public bool on = false;
 	public Light light;
 
-	// Use this for initialization
-	void Start () {
+	private AudioSource audioSrc;
+	public AudioClip onSound;
+	public AudioClip offSound;
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	void Start()
+	{
+		audioSrc = GetComponent<AudioSource> ();
 	}
 
-	public void toggleOn(){
+
+	public override void Interact(PickupableObject with=null){
+		if (with != null)
+			PlayerStatus.GiveObjectToHold (with);
 		//make sound
 		on = !on;
 		light.enabled = on;
-		print ("player hit switch");
+		playSound (on ? onSound : offSound);
+		Logging.Log (string.Format("(LightSwitch)({0}) {1}", name, on));
 	}
 
+	private void playSound(AudioClip clip) {
+		audioSrc.pitch = Random.Range (0.9f, 1.1f); // some slight variation
+		audioSrc.clip = clip;
+		audioSrc.Play ();
+	}
 }
