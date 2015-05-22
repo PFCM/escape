@@ -1,32 +1,47 @@
 fileFormatVersion: 2
-guid: 4ab220ea839b24437bc31b2802f9680a
-timeCreated: 1432255150
+guid: ae79e3529481b498bb516dfa63f429ad
+timeCreated: 1429486658
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
     100002: BedBase
-    100004: Cushion1
-    100006: Mattress
-    100008: Pillow1
+    100004: Blanket
+    100006: Cushion
+    100008: Cushion1
+    100010: Mattress
+    100012: Pillow
+    100014: Pillow1
     400000: //RootNode
     400002: BedBase
-    400004: Cushion1
-    400006: Mattress
-    400008: Pillow1
+    400004: Blanket
+    400006: Cushion
+    400008: Cushion1
+    400010: Mattress
+    400012: Pillow
+    400014: Pillow1
     2300000: BedBase
-    2300002: Cushion1
-    2300004: Mattress
-    2300006: Pillow1
+    2300002: Blanket
+    2300004: Cushion
+    2300006: Cushion1
+    2300008: Mattress
+    2300010: Pillow
+    2300012: Pillow1
     3300000: BedBase
-    3300002: Cushion1
-    3300004: Mattress
-    3300006: Pillow1
+    3300002: Blanket
+    3300004: Cushion
+    3300006: Cushion1
+    3300008: Mattress
+    3300010: Pillow
+    3300012: Pillow1
     4300000: Mattress
     4300002: BedBase
-    4300004: Pillow1
-    4300006: Cushion1
+    4300004: Pillow
+    4300006: Blanket
+    4300008: Pillow1
+    4300010: Cushion
+    4300012: Cushion1
     9500000: //RootNode
   materials:
     importMaterials: 1

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: db9c29ece6157dc4c955d1e9d3b2695e
-timeCreated: 1431231298
+timeCreated: 1432255346
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -341,7 +341,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Luminosity
       value:
-        scalar[0]: .591000021
+        scalar[0]: .750999987
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -384,7 +384,7 @@ SubstanceImporter:
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 16, y: 8}
+      scale: {x: 8, y: 8}
       generateMipmaps: 1
       generateAllOutputs: 0
       animationUpdateRate: 0
@@ -396,7 +396,7 @@ SubstanceImporter:
             name: _MainTex
           second:
             texture: {instanceID: 0}
-            scale: {x: 16, y: 8}
+            scale: {x: 8, y: 8}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -431,7 +431,7 @@ SubstanceImporter:
             name: _EmissionMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 16, y: 8}
+            scale: {x: 8, y: 8}
             offset: {x: 0, y: 0}
         data:
           first:
