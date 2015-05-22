@@ -39,5 +39,9 @@ public class playerGUIScript : MonoBehaviour {
 	public void displayGuiText(string text){
 		guiText.text = text;
 		guiFadeTimer = 600;
+		//reset opacity
+		guiCol = guiText.color;
+		guiCol.a = 0;
+		guiText.color = guiCol;
 	}
 }
