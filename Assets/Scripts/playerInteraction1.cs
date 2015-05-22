@@ -10,19 +10,10 @@ public class playerInteraction1 : MonoBehaviour
 {
 	
 	
-
+	public bool isPS4Controller;
 
 	public Camera camera;
 	public float interactionDistance = 3f;
-
-	//GUI stuff
-	public Color col = new Color (255, 255, 255, 0);
-	private string guiDisplayedText = "";
-	private int guiTextTimer = 0;
-	private GUIStyle startStyle = new GUIStyle ();
-
-	public UnityEngine.UI.Text guiText;
-
 
 	// object we are colliding (raycast won't hit things we are touching)
 	private GameObject colliding;
@@ -35,15 +26,16 @@ public class playerInteraction1 : MonoBehaviour
 		layerMask = ~(1 << 12);
 		noPickupLayerMask = layerMask & ~(1 << 11);
 
-		displayGuiText ("Press E to pick up items");
-		guiText.color = new Color(255,255,255,0);
+		if (isPS4Controller) {
+			gameObject.GetComponent<playerGUIScript> ().displayGuiText ("Press X to pick up objects");
+		} else {
+			gameObject.GetComponent<playerGUIScript> ().displayGuiText ("Press E to pick up objects");
+		}
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-
-		fadeGuiText ();
 		
 		RaycastHit hit;
 
@@ -100,7 +92,12 @@ public class playerInteraction1 : MonoBehaviour
 					Logging.Log ("(Player) Pickup " + name);
 					Destroy (other);
 				} else if (other.tag == "Flashlight") {
-					displayGuiText ("Press F to turn on flashlight");
+					if(isPS4Controller){
+						gameObject.GetComponent<playerGUIScript>().displayGuiText ("Press R3 to turn on flashlight");
+					}
+					else{
+						gameObject.GetComponent<playerGUIScript>().displayGuiText ("Press F to turn on flashlight");
+					}
 					PlayerStatus.GiveFlashlight ();
 					Destroy (other);
 				} else if (other.tag == "Pickupable") {
@@ -147,28 +144,6 @@ public class playerInteraction1 : MonoBehaviour
 			}
 		}
 
-	}
-
-	//fades and redisplays text based on timer value
-	private void fadeGuiText ()
-	{
-		col = guiText.color;
-		guiTextTimer --;
-
-		if (guiTextTimer > 350) {
-			//fade in
-			col.a = col.a + 0.005f;
-		} else {
-			//fade out
-			col.a = col.a - 0.005f;
-		}
-		guiText.color = col;
-	}
-
-	//resets timer and displays some new text for a time until it fades
-	public void displayGuiText(string text){
-		guiText.text = text;
-		guiTextTimer = 700;
 	}
 
 

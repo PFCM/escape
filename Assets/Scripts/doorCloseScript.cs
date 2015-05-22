@@ -102,7 +102,7 @@ public class doorCloseScript : MonoBehaviour {
 			}
 		} else if (key != "" && key != null && !PlayerStatus.HasKey (key)) {
 			playRandomSound (lockedSounds);
-			GameObject.FindGameObjectWithTag("Player").GetComponent<playerInteraction1>().displayGuiText("Maybe I need a key...");
+			GameObject.FindGameObjectWithTag("Player").GetComponent<playerGUIScript>().displayGuiText("Maybe I need a key...");
 			Logging.Log ("(Door) Open fail " + key);
 		}
 
