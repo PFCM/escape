@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 83ef2f5d533fb423bbac8135ed117695
-timeCreated: 1432353589
+guid: aa48779db5ec14d599fecd5dc52e92ca
+timeCreated: 1432361382
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Hall_Long
+    4300000: Monster
     9500000: //RootNode
   materials:
     importMaterials: 1

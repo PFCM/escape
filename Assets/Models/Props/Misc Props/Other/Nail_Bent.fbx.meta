@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 83ef2f5d533fb423bbac8135ed117695
-timeCreated: 1432353589
+guid: faaf2992f96594b9db7f5b3ad52058fd
+timeCreated: 1432351448
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Hall_Long
+    4300000: Nail_Bent
     9500000: //RootNode
   materials:
     importMaterials: 1

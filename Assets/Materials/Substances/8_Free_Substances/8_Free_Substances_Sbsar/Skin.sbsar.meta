@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 49a95e6ec7cc59147af9d6f7be5ac323
-timeCreated: 1431174984
+timeCreated: 1432361781
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -91,7 +91,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Roughness
       value:
-        scalar[0]: .296000004
+        scalar[0]: .486999989
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -105,7 +105,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Stains
       value:
-        scalar[0]: .140000001
+        scalar[0]: .395000011
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -126,7 +126,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Scars_Scale
       value:
-        scalar[0]: .204999998
+        scalar[0]: 1
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -147,14 +147,14 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Freckles_Scale
       value:
-        scalar[0]: 0
+        scalar[0]: .418000013
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Naevus
       value:
-        scalar[0]: .162
+        scalar[0]: .244000003
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -183,7 +183,7 @@ SubstanceImporter:
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 8, y: 8}
+      scale: {x: 32, y: 32}
       generateMipmaps: 1
       generateAllOutputs: 0
       animationUpdateRate: 0
@@ -195,14 +195,14 @@ SubstanceImporter:
             name: _MainTex
           second:
             texture: {instanceID: 0}
-            scale: {x: 8, y: 8}
+            scale: {x: 32, y: 32}
             offset: {x: 0, y: 0}
         data:
           first:
             name: _BumpMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 8, y: 32}
+            scale: {x: 32, y: 3}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -216,7 +216,7 @@ SubstanceImporter:
             name: _ParallaxMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 8, y: 32}
+            scale: {x: 32, y: 3}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -230,7 +230,7 @@ SubstanceImporter:
             name: _EmissionMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 8, y: 8}
+            scale: {x: 32, y: 32}
             offset: {x: 0, y: 0}
         data:
           first:
