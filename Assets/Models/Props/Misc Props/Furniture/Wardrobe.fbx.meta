@@ -1,0 +1,109 @@
+fileFormatVersion: 2
+guid: c8291d5c070bc410fa41d68a272b4afa
+timeCreated: 1432438398
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Coat_Hanger
+    100002: pCube3
+    100004: pCylinder1
+    100006: pTorus3
+    100008: pTorus5
+    100010: Wardrobe
+    100012: //RootNode
+    100014: Wardrobe_Door_Left1
+    100016: Wardrobe_Door_Right1
+    400000: Coat_Hanger
+    400002: pCube3
+    400004: pCylinder1
+    400006: pTorus3
+    400008: pTorus5
+    400010: Wardrobe
+    400012: //RootNode
+    400014: Wardrobe_Door_Left1
+    400016: Wardrobe_Door_Right1
+    2300000: Coat_Hanger
+    2300002: pCube3
+    2300004: pCylinder1
+    2300006: pTorus3
+    2300008: pTorus5
+    2300010: Wardrobe
+    2300012: Wardrobe_Door_Left1
+    2300014: Wardrobe_Door_Right1
+    3300000: Coat_Hanger
+    3300002: pCube3
+    3300004: pCylinder1
+    3300006: pTorus3
+    3300008: pTorus5
+    3300010: Wardrobe
+    3300012: Wardrobe_Door_Left1
+    3300014: Wardrobe_Door_Right1
+    4300000: Wardrobe
+    4300002: pCube3
+    4300004: pCylinder1
+    4300006: pTorus3
+    4300008: pTorus5
+    4300010: Wardrobe_Door_Left1
+    4300012: Wardrobe_Door_Right1
+    4300014: Coat_Hanger
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
