@@ -20,6 +20,10 @@ public class PlayerStatus : MonoBehaviour
 
 	// holds all the rooms that have been loaded
 	private IDictionary<string, BaseRoomController> rooms;
+	// the audio source attached to the player
+	private AudioSource audioSrc;
+	// clips to play when receiving a key
+	public AudioClip[] keySounds;
 
 	public static PickupableObject heldObject {
 		get { return instance.holding; }
@@ -51,6 +55,8 @@ public class PlayerStatus : MonoBehaviour
 			Rigidbody body = obj.AddComponent <Rigidbody> () as Rigidbody;
 			springJoint = obj.AddComponent <SpringJoint> ();
 			body.isKinematic = true;
+
+			singleton.audioSrc = GetComponent<AudioSource>();
 
 			if (mCamera == null) // if not set by hand
 				mCamera = Camera.main.transform;
@@ -98,6 +104,7 @@ public class PlayerStatus : MonoBehaviour
 			instance.keys [name]++;
 		else
 			instance.keys [name] = 1;
+		instance.playRandomSound (instance.keySounds);
 		return instance.keys [name];
 	}
 
@@ -189,6 +196,14 @@ public class PlayerStatus : MonoBehaviour
 		h.transform.SetParent (null);
 		instance.holding = null;
 		return h;
+	}
+
+	// plays random sound from clip array
+	private void playRandomSound(AudioClip[] clips) {
+		if (clips.Length > 0) {
+			audioSrc.pitch = Random.Range (0.8f, 1.2f); // TODO: fine tune the magic numbers
+			audioSrc.PlayOneShot (clips[Random.Range(0,clips.Length)]);
+		}
 	}
 
 	// is the player holding anything
