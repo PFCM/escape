@@ -86,7 +86,28 @@ public class doorCloseScript : MonoBehaviour {
 	}
 
 	public void activateDoor(){
-		if (!doorMoving () && trigger.loaded) {
+		/*this condition is if the trigger isn't set. 
+		Its Just for doors inside of rooms which wont spawn new rooms such as the secret infinite hallway room.*/
+		if (!doorMoving () && trigger == null) {
+			// check player has the key
+			if (key == "" || key == null)
+				_locked = false;
+			if (!_locked 
+			    || PlayerStatus.UseKey (this.key)) {
+				changeOpenAngle ();
+				open = !open;
+				playRandomSound (openSounds);
+				if (open == true) {
+					closeDoorTimer = 200;
+				}
+				_locked = false;
+				Logging.Log ("(Door) Opened " + key);
+			} else {
+				playRandomSound (lockedSounds);
+				Logging.Log ("(Door) Open fail " + key);
+			}
+		}
+		else if (!doorMoving () && trigger.loaded) {
 			// check player has the key
 			if (key == "" || key == null)
 				_locked = false;
