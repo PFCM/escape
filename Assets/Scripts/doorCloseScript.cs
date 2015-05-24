@@ -42,8 +42,10 @@ public class doorCloseScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		doorOpenAngleChoice1 = doorOpenAngle;
-		doorOpenAngleChoice2 = doorCloseAngle - 90;
+		if (doorOpenAngleChoice1 == 0)
+			doorOpenAngleChoice1 = doorOpenAngle;
+		if (doorOpenAngleChoice2 == 0)
+			doorOpenAngleChoice2 = doorCloseAngle - 90;
 		startRotationY = transform.rotation.eulerAngles.y;
 		_locked = true;//key != null && key != "";
 
@@ -52,9 +54,13 @@ public class doorCloseScript : MonoBehaviour {
 
 	public void Reset() {
 		startRotationY = transform.localRotation.eulerAngles.y;
-		doorOpenAngle = startRotationY + doorOpenAngle;
+	/*	doorOpenAngle = startRotationY + doorOpenAngle;
 		doorCloseAngle = startRotationY + doorCloseAngle;
-		_locked = true;//key != null && key != "";
+		
+		doorOpenAngleChoice1 += startRotationY;
+		doorOpenAngleChoice2 += startRotationY;*/
+		open = false;
+		//_locked = true;//key != null && key != "";
 	}
 	
 	// Update is called once per frame

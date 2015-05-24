@@ -93,15 +93,22 @@ namespace Escape
 
 			// overriden by subclasses to provide a chance at shuffling the furniture
 			public virtual void Shuffle () {
-				doorCloseScript[] d = GetComponentsInChildren<doorCloseScript> ();
-				foreach (doorCloseScript door in d) {
-					door.Reset();
-				}
 
 				foreach (BaseDoor bd in doors) {
 					bd.collisions = 0;
 					bd.loaded = false;
-					bd.exitDoorObject.gameObject.SetActive(false);
+					bd.exitDoorObject.gameObject.SetActive(true);
+				}
+
+				
+				doorCloseScript[] d = GetComponentsInChildren<doorCloseScript> ();
+				foreach (doorCloseScript door in d) {
+					// TODO: make this less lame
+					// idea is to make sure all doors are reset, but that the door we are 
+					// about to walk through is inactive
+					door.Reset();
+					if (Vector3.Distance(door.transform.position, GetEntrance ().position) < 3f)
+						door.gameObject.SetActive(false);
 				}
 			}
 

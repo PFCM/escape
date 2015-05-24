@@ -53,8 +53,9 @@ namespace Escape.Rooms
 
 		public override void Shuffle() 
 		{
-			
 			base.Shuffle ();
+			// TODO: stop having to fix this case by case
+			doors [0].exitDoorObject.gameObject.SetActive (false);
 		}
 
 		public override void ItemPickedUp(string name)
