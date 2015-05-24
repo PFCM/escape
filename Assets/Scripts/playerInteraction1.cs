@@ -80,7 +80,7 @@ public class playerInteraction1 : MonoBehaviour
 					//destroys battery object
 					//Destroy (hit.transform.gameObject);
 					//gameObject.GetComponent<flashlightScript>().loadBatter
-					Debug.Log ("hit door");
+					//Debug.Log ("hit door");
 					other.GetComponent<doorCloseScript> ().activateDoor ();
 				
 				

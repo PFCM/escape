@@ -27,6 +27,7 @@ namespace Escape.Rooms
 			this.doors [1].SetWeight ("Hallway2", 1);
 			this.doors [2].SetWeight ("InfiniteHallway", 1);
 
+			PlayerStatus.AddRoom (this); // first room
 
 			paintingsCorrect = new Dictionary<InteractableObject, bool> ();
 			foreach(InteractableObject i in paintingPositions) {

@@ -8,11 +8,35 @@ public class HallwayController : BaseRoomController {
 	// the door into this hallway, needs to be deactivated on reload
 	public GameObject firstDoor;
 
+	private LightSwitchScript[] switches;
+
 	// Use this for initialization
 	void Start () {
 		doors [0].SetWeight ("Bathroom", 1);
+		doors [1].SetWeight ("EntranceHall", 1);
+
+		switches = GetComponentsInChildren<LightSwitchScript> ();
+		StartCoroutine (LightSwitchCheck());
 
 		this.CheckParentRoomStatus ();
+	}
+
+	IEnumerator LightSwitchCheck() {
+		while (true) {
+			// check switches
+			bool off = true;
+			foreach (LightSwitchScript ls in switches) {
+				off = off && !ls.on;
+			}
+			if (off) {
+				doors[1].LoadNextRoom ();
+				doorCloseScript door = doors[1].exitDoorObject;
+				PlayerStatus.AddKey(door.key);
+				door.activateDoor ();
+				break;
+			}
+			yield return new WaitForSeconds(0.2f);
+		}
 	}
 	
 	// Update is called once per frame

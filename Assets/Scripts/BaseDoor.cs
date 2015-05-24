@@ -75,7 +75,7 @@ namespace Escape
 				if (room == null) {
 					StartCoroutine (LoadRoomAsLevel (result));
 				} else {
-					ReloadRoom(room.transform.root.gameObject);
+					ReloadRoom(room.gameObject);
 				}
 
 
@@ -86,10 +86,10 @@ namespace Escape
 
 			// ensures a room that already exists is re-loaded approprioately into the correct position
 			void ReloadRoom (GameObject root) {
-				LineUpFacing (root.transform);
+				LineUpFacing (root.transform.root);
 				root.SetActive (true);
 				exitDoorObject.gameObject.SetActive (true);
-				BaseRoomController newRoom = root.GetComponent<BaseRoomController> ();
+				BaseRoomController newRoom = root.GetComponentInChildren<BaseRoomController> ();
 				newRoom.SetParentRoom (this.GetComponentInParent<BaseRoomController> ());
 				newRoom.Shuffle ();
 				Logging.Log ("(BaseDoor) Repositioned already loaded room: " + root.tag);

@@ -34,6 +34,10 @@ public class doorCloseScript : MonoBehaviour {
 	private bool _locked;
 	public bool locked {
 		get { return locked; }
+		set { 
+			Logging.Log ("(BaseDoor) locked: " + value);
+			_locked = value;
+		}
 	}
 
 	// Use this for initialization
@@ -86,15 +90,18 @@ public class doorCloseScript : MonoBehaviour {
 			// check player has the key
 			if (key == "" || key == null)
 				_locked = false;
-			if (!_locked 
-				|| PlayerStatus.UseKey (this.key)) {
+			bool doOpen = !_locked;
+			if (!doOpen) {
+				doOpen = PlayerStatus.UseKey(this.key);
+			}
+			if (doOpen) {
 				changeOpenAngle ();
 				open = !open;
 				playRandomSound (openSounds);
 				if (open == true) {
 					closeDoorTimer = 200;
 				}
-				_locked = false;
+				locked = false;
 				Logging.Log ("(Door) Opened " + key);
 			} else {
 				playRandomSound (lockedSounds);
