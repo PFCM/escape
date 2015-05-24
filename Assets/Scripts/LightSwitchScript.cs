@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 using Escape.Core;
 using Escape.Util;
@@ -17,10 +18,22 @@ public class LightSwitchScript : InteractableObject {
 
 	private Transform lightSwitch;
 
+	private IDictionary<Renderer, Color> emissions;
+	private Color black;
+	private IList<Renderer> keys;
+
 	void Start()
 	{
+		black = new Color (0f, 0f, 0f);
 		audioSrc = GetComponent<AudioSource> ();
 		lights = lightGroup.GetComponentsInChildren<Light> ();
+		emissions = new Dictionary<Renderer, Color> ();
+		Renderer[] renderers = lightGroup.GetComponentsInChildren<Renderer> ();
+		foreach (Renderer r in renderers) {
+			if (r.material.HasProperty("_EmissionColor")) // only interested in these ones
+				emissions[r] = black;
+		}
+
 		lightSwitch = transform.Find ("Light_Switch_Switch");
 	}
 
@@ -31,9 +44,28 @@ public class LightSwitchScript : InteractableObject {
 		//make sound
 		on = !on;
 
-		foreach (Light light in lights) {
-			light.enabled = on;
+		for (int i = 0; i < lights.Length; i++) {
+			lights[i].enabled = on;
+			// does it have any emissive materials?
+		/*	Renderer ren = lights[i].gameObject.GetComponent<Renderer> ();
+			if (ren != null) {
+				Material mat = ren.material;
+				Color emit = mat.GetColor("_Emission");
+				mat.SetColor("_Emission", emissions[i]);
+				emissions[i] = emit;
+			}*/
 		}
+
+		 keys = new List<Renderer>(emissions.Keys);
+		foreach (Renderer r in keys) {
+			Debug.Log("changing material");
+			Material mat = r.material;
+			Color emit = mat.GetColor("_EmissionColor");
+			mat.SetColor("_EmissionColor", emissions[r]);
+			r.material = mat;
+			emissions[r] = emit;
+		}
+
 		playSound (on ? onSound : offSound);
 
 		if (lightSwitch != null) { // if we found it, get it sorted
@@ -43,7 +75,7 @@ public class LightSwitchScript : InteractableObject {
 			if (which == 3) { // weird fix for an inexplicable problem
 				Debug.Log("Flipping");
 				angle *= -1f;
-			}
+			}	
 			lightSwitch.RotateAround(lightSwitch.position,
 			                         transform.right,
 			                         angle);// transform.TransformDirection(Vector3.up));
