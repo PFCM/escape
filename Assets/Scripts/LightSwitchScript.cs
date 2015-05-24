@@ -37,19 +37,20 @@ public class LightSwitchScript : InteractableObject {
 		playSound (on ? onSound : offSound);
 
 		if (lightSwitch != null) { // if we found it, get it sorted
-			float angle = on? 60f : -60f;
-			//Debug.Log((int)transform.rotation.eulerAngles.y / 90);
-			if (((int)transform.rotation.eulerAngles.y / 90) % 2 == 1) {
+			float angle = on? -60f : 60f;
+			Logging.Log("" + (int)(transform.localEulerAngles.y+1) / 90);
+			int which = (int)(transform.localEulerAngles.y+1) / 90; // which quadrant?
+			if (which == 3) { // weird fix for an inexplicable problem
 				Debug.Log("Flipping");
 				angle *= -1f;
 			}
 			lightSwitch.RotateAround(lightSwitch.position,
-			                         lightSwitch.TransformDirection(transform.up),
+			                         transform.right,
 			                         angle);// transform.TransformDirection(Vector3.up));
 		//	lightSwitch.Rotate(new Vector3(0f, on? 60f : -60f, 0f));
 		}
 
-		Logging.Log (string.Format("(LightSwitch)({0}) {1}", name, on? "On" : "Off"));
+		Logging.Log (string.Format("(LightSwitch)({0})({1}) {2}", transform.root.name, name, on? "On" : "Off"));
 	}
 
 	private void playSound(AudioClip clip) {
