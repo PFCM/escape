@@ -16,14 +16,19 @@ namespace Escape.Core
 
 		public AudioClip[] collisionSounds;
 
-		void Start () 
+		public void Init () 
 		{
 			room = GetComponentInParent<BaseRoomController> ();
 			rigidBody = GetComponent<Rigidbody> ();
 			audio = GetComponent<AudioSource> ();
 		}
 
-		public void PickUp ()
+		void Start () 
+		{
+			Init ();
+		}
+
+		public virtual void PickUp ()
 		{
 			rigidBody.isKinematic = true;
 			room.ItemPickedUp (name);
