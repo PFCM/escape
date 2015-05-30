@@ -15,6 +15,7 @@ namespace Escape.Core
 		private AudioSource audio;
 
 		public AudioClip[] collisionSounds;
+		private AudioClip lastSound;
 
 		public void Init () 
 		{
@@ -43,11 +44,7 @@ namespace Escape.Core
 
 		void OnCollisionEnter(Collision other) 
 		{
-			if (collisionSounds.Length > 0) {
-				// twiddle (technical term) the speed a little bit to pretend like we have more samples
-				audio.pitch = Random.Range(0.9f,1.1f);
-				audio.PlayOneShot(collisionSounds[Random.Range(0,collisionSounds.Length)]);
-			}
+			lastSound = AudioTools.PlayRandomSound (audio, collisionSounds, lastSound);
 		}
 
 	}

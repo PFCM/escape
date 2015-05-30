@@ -16,6 +16,7 @@ public class doorCloseScript : MonoBehaviour {
 	public AudioClip[] closeSounds;
 	public AudioClip[] openSounds;
 	public AudioClip[] lockedSounds;
+	private AudioClip lastSound;
 
 	private AudioSource audioSrc;
 
@@ -77,7 +78,7 @@ public class doorCloseScript : MonoBehaviour {
 
 		if (closeDoorTimer == 0 && open == true){ //&& closed == false) {
 			open = false;
-			playRandomSound(closeSounds);
+			lastSound = AudioTools.PlayRandomSound (audioSrc, closeSounds, lastSound);
 		}
 		else{
 			closeDoorTimer--;
@@ -94,26 +95,7 @@ public class doorCloseScript : MonoBehaviour {
 	public void activateDoor(){
 		/*this condition is if the trigger isn't set. 
 		Its Just for doors inside of rooms which wont spawn new rooms such as the secret infinite hallway room.*/
-		if (!doorMoving () && trigger == null) {
-			// check player has the key
-			if (key == "" || key == null)
-				_locked = false;
-			if (!_locked 
-			    || PlayerStatus.UseKey (this.key)) {
-				changeOpenAngle ();
-				open = !open;
-				playRandomSound (openSounds);
-				if (open == true) {
-					closeDoorTimer = 200;
-				}
-				_locked = false;
-				Logging.Log ("(Door) Opened " + key);
-			} else {
-				playRandomSound (lockedSounds);
-				Logging.Log ("(Door) Open fail " + key);
-			}
-		}
-		else if (!doorMoving () && trigger.loaded) {
+		if (!doorMoving () && (trigger == null || trigger.loaded)) {
 			// check player has the key
 			if (key == "" || key == null)
 				_locked = false;
@@ -124,31 +106,23 @@ public class doorCloseScript : MonoBehaviour {
 			if (doOpen) {
 				changeOpenAngle ();
 				open = !open;
-				playRandomSound (openSounds);
+				lastSound = AudioTools.PlayRandomSound (audioSrc, openSounds, lastSound);
 				if (open == true) {
 					closeDoorTimer = 200;
 				}
 				locked = false;
 				Logging.Log ("(Door) Opened " + key);
 			} else {
-				playRandomSound (lockedSounds);
+				lastSound = AudioTools.PlayRandomSound (audioSrc, lockedSounds, lastSound);
 				Logging.Log ("(Door) Open fail " + key);
 			}
 		} else if (key != "" && key != null && !PlayerStatus.HasKey (key)) {
-			playRandomSound (lockedSounds);
+			lastSound = AudioTools.PlayRandomSound (audioSrc, lockedSounds, lastSound);
 			if (_locked)
 				GameObject.FindGameObjectWithTag("Player").GetComponent<playerGUIScript>().displayGuiText("Maybe I need a key...");
 			Logging.Log ("(Door) Open fail " + key);
 		}
 
-	}
-
-	// plays random sound from clip array
-	private void playRandomSound(AudioClip[] clips) {
-		if (clips.Length > 0) {
-			audioSrc.pitch = Random.Range (0.8f, 1.2f); // TODO: fine tune the magic numbers
-			audioSrc.PlayOneShot (clips[Random.Range(0,clips.Length)]);
-		}
 	}
 
 	//makes it so it always opens outward from player to avoid clipping
