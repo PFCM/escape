@@ -11,7 +11,8 @@ public class flashlightScript : MonoBehaviour {
 	public double lossRate = 0.1;
 	//brightness of the torch
 	public float brightness = 2.0f;
-	bool on = false;
+	public bool on = false;
+	public bool forceFlicker = false;
 
 	private AudioSource audioSrc;
 	public AudioClip onSound;
@@ -26,7 +27,7 @@ public class flashlightScript : MonoBehaviour {
 		//drain battery
 		if (on == true) {
 			charge = charge -lossRate;
-			flicker (); //make flashlight flicker randomly, happens more with less battery
+			flicker (forceFlicker); //make flashlight flicker randomly, happens more with less battery
 
 			//reduce brightness if battery low
 			if(charge < 40){
@@ -61,18 +62,24 @@ public class flashlightScript : MonoBehaviour {
 			audioSrc.PlayOneShot (offSound);
 	}
 
-	public void flicker(){
+	public void flicker(bool forceFlicker){
 	//makes the flashlight flicker by randomly enabling and disabling.
 	//higher chance with lower battery
 		double flickerChance = (charge - 100)*-0.04;
 		float chance =  Random.Range(0.0f, 100.0f);
+		if (flickerChance < 7 && forceFlicker) {
+			flickerChance = 7;
+		}
 		if (chance < flickerChance) {
 			flashlight.GetComponent<Light>().intensity = 0;
 		} else {
-			flashlight.GetComponent<Light>().intensity = brightness;
-		//	flashlight.intensity = 100;
+			//smooths transition back to normal light
+			if(flashlight.GetComponent<Light>().intensity <brightness){
+				flashlight.GetComponent<Light>().intensity =0.1f + flashlight.GetComponent<Light>().intensity*2;
+			}
 		}
 	}
+
 
 	public void loadBattery(){
 		charge = charge + 50;
