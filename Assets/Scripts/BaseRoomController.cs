@@ -61,8 +61,16 @@ namespace Escape
 				if (check != null && check != this) {
 					check.DisableChildrenExcept(this, this.parentRoom);
 					check.gameObject.SetActive (false);
+					check.ClearChildren ();
 					Logging.Log("(BaseRoomController) disabling a room.");
 				}
+			}
+
+			// clears the children list, this is used when deactivating rooms as we don't want them to 
+			// come back to life in a different place with all their baggage from before
+			public void ClearChildren() 
+			{
+				children.Clear ();
 			}
 
 			public void AddChild (BaseRoomController child) 
@@ -74,6 +82,7 @@ namespace Escape
 			{
 				foreach (BaseRoomController child in children) {
 					if (!except.Contains(child)) {
+						child.ClearChildren ();
 						child.gameObject.SetActive(false);
 					}
 				}
@@ -119,6 +128,7 @@ namespace Escape
 			public void SetParentRoom (BaseRoomController parent) 
 			{
 				parentRoom = parent;
+				parent.AddChild (this);
 			}
 
 			public void SetEntranceDoor (GameObject door) 
