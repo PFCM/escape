@@ -10,7 +10,7 @@ namespace Escape.Core
 		// possible positions (position 0 should be the initial position)
 		public Transform[] positions;	
 
-		private int index;
+		private int index=0;
 	
 		// Use this for initialization
 		void Start ()
