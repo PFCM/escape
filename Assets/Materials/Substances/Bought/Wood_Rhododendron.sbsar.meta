@@ -8,7 +8,7 @@ labels:
 - texture
 - substance
 - seamless
-timeCreated: 1433910215
+timeCreated: 1433993814
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -1779,7 +1779,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Saturation
       value:
-        scalar[0]: .47299999
+        scalar[0]: .129999995
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -1932,7 +1932,7 @@ SubstanceImporter:
         data:
           first:
             name: _Color
-          second: {r: .632352948, g: .611830354, b: .585856378, a: 1}
+          second: {r: 1, g: 1, b: 1, a: 1}
         data:
           first:
             name: _EmissionColorUI
