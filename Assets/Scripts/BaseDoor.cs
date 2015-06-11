@@ -18,14 +18,11 @@ namespace Escape
 		{
 			//Fix for infinite halls not spawning right.
 			public bool isInfiniteHallwayDoor = false;
-
 			public Dictionary<string, float> weights;
 			// this is the actual door position
 			// the center of the doorway, on the very edge, facing out of the room
 			public Transform doorPosition;
-
 			private GameObject nextRoom;
-
 			public bool loaded = false;// has the room been loaded?
 
 			public doorCloseScript exitDoorObject;
@@ -34,30 +31,28 @@ namespace Escape
 			public int collisionsRequired = 1;
 			public int collisions = 0; // how many have happened?
 
-			void Start () 
+			void Start ()
 			{
 				//doorPosition = transform;
-				if (weights == null) weights = new Dictionary<string, float> ();
+				if (weights == null)
+					weights = new Dictionary<string, float> ();
 			}
 
 			// chooses a room probabilistically according to the weights
-			public BaseRoomController LoadNextRoom () 
+			public BaseRoomController LoadNextRoom ()
 			{
 				
 				loaded = true;
 				float sum = 0;
-				foreach (float f in weights.Values) 
-				{
+				foreach (float f in weights.Values) {
 					sum += f;
 				}
 				float rand = Random.Range (0f, sum);
 				sum = 0; // now we find which one this is in between
 				string result = null;
-				foreach (KeyValuePair<string, float> entry in weights) 
-				{
+				foreach (KeyValuePair<string, float> entry in weights) {
 					sum += entry.Value;
-					if (rand < sum) 
-					{
+					if (rand < sum) {
 						result = entry.Key;
 						break; // get outta here, we've found it
 					}
@@ -75,7 +70,7 @@ namespace Escape
 				if (room == null) {
 					StartCoroutine (LoadRoomAsLevel (result));
 				} else {
-					ReloadRoom(room.gameObject);
+					ReloadRoom (room.gameObject);
 				}
 
 
@@ -85,7 +80,8 @@ namespace Escape
 
 
 			// ensures a room that already exists is re-loaded approprioately into the correct position
-			void ReloadRoom (GameObject root) {
+			void ReloadRoom (GameObject root)
+			{
 				LineUpFacing (root.transform.root);
 				root.SetActive (true);
 				exitDoorObject.gameObject.SetActive (true);
@@ -99,7 +95,8 @@ namespace Escape
 			// Unity appears to not actually load the level until the end of the frame
 			// meaning that if you call FindX you won't find it, so good idea to 
 			// yield until it has actually loaded
-			IEnumerator LoadRoomAsLevel (string name) {
+			IEnumerator LoadRoomAsLevel (string name)
+			{
 				AsyncOperation async = Application.LoadLevelAdditiveAsync (name);
 				
 				yield return async;
@@ -114,7 +111,7 @@ namespace Escape
 				}
 
 				if (newRoom == null) {
-					Debug.LogError("Could not find the room supposedly loaded?");
+					Debug.LogError ("Could not find the room supposedly loaded?");
 					return false; 
 				}
 
@@ -131,7 +128,7 @@ namespace Escape
 				PlayerStatus.AddRoom (newRoomController);
 				BaseRoomController thisRoom = GetComponentInParent<BaseRoomController> ();
 				if (thisRoom != null) {
-					thisRoom.AddChild(newRoomController);
+					thisRoom.AddChild (newRoomController);
 				}
 
 				Logging.Log ("(BaseDoor) loaded " + name);
@@ -139,7 +136,7 @@ namespace Escape
 
 			// Lines up a given transform so it is colocated with doorPosition, facing the opposite 
 			// direction
-			public void LineUpFacing (Transform other) 
+			public void LineUpFacing (Transform other)
 			{
 				other.position = doorPosition.position;
 				other.forward = doorPosition.forward;
@@ -150,34 +147,31 @@ namespace Escape
 			// default -- choose a new room when the collider is triggered
 			// would have to have an attached collider with 'isTrigger' checked
 			// this is here for convenience, some doors may be triggered by other means
-			public void OnTriggerEnter(Collider other) 
+			public void OnTriggerEnter (Collider other)
 			{
 
 				//Just so the infinite hallway generates properly
 				if (nextRoom != null) {
-					if (nextRoom.tag == "InfiniteHallway" || nextRoom.tag == "InfiniteHallway2" ||nextRoom.tag == "InfiniteHallway3"|| nextRoom.tag == "InfiniteHallwaySecret") {
+					if (nextRoom.tag == "InfiniteHallway" || nextRoom.tag == "InfiniteHallway2" || nextRoom.tag == "InfiniteHallway3" || nextRoom.tag == "InfiniteHallwaySecret") {
 						nextRoom = null;
 					}
 				}
 
-				if (nextRoom == null) {
-					if (other.tag.Equals ("Player")) { // temp tag
+				if (nextRoom == null || !nextRoom.activeInHierarchy) {
+					if (other.gameObject.tag.Equals ("Player")) { // temp tag
 						collisions++;
-						Logging.Log("(BaseDoor) Collision "+collisions);
+						Logging.Log ("(BaseDoor) Collision " + collisions);
 						if (collisions >= collisionsRequired && !loaded) {
-							if (PlayerStatus.HasKey(exitDoorObject.key)) {
-								if ( exitDoorObject.IsClosed ()) {
+							if (PlayerStatus.HasKey (exitDoorObject.key)) {
+								if (exitDoorObject.IsClosed ()) {
 									LoadNextRoom ();
-								}
-								else {
-									//StartCoroutine(WaitAndLoad(exitDoorObject)); // probably nt a good idea
-									Logging.Log("(BaseDoor) Waiting for door to close to load next room.");
+								} else {
+									StartCoroutine(WaitAndLoad(exitDoorObject)); // probably nt a good idea
+									Logging.Log ("(BaseDoor) Waiting for door to close to load next room.");
 								} 
-							}
-							else 
-								Logging.Log("(BaseDoor) Not loaded - no key");
-						}
-						else if (isInfiniteHallwayDoor){
+							} else 
+								Logging.Log ("(BaseDoor) Not loaded - no key");
+						} else if (isInfiniteHallwayDoor) {
 							//Fix for infinite hallways
 							LoadNextRoom ();
 						}
@@ -185,22 +179,36 @@ namespace Escape
 				}
 			}
 
+			/* tests
+			void OnTriggerStay(Collider other)
+			{
+				if (!loaded && other.tag == "Player")
+					OnTriggerEnter (other);
+			}
+
+			void OnTriggerExit (Collider other)
+			{
+				Logging.Log (other.name + " LEFT " + name);
+				if (!loaded && other.tag == "Player")
+					OnTriggerEnter (other);
+			}*/
+
 			// waits until the door is closed, then loads the next room
-			IEnumerator WaitAndLoad(doorCloseScript door) 
+			IEnumerator WaitAndLoad (doorCloseScript door)
 			{
 				while (door.open) {
-					yield return new WaitForSeconds(0.1f);
+					yield return new WaitForSeconds (0.1f);
 				}
 				LoadNextRoom ();
 			}
 
 			// sets a weight, initialises dictionary if this has not already been done
-			public void SetWeight(string name, float weight) 
+			public void SetWeight (string name, float weight)
 			{
 				if (weights == null)
 					weights = new Dictionary<string, float> ();
 
-				weights[name] = weight;
+				weights [name] = weight;
 			}
 		}
 

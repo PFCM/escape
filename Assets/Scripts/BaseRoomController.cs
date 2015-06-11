@@ -70,6 +70,9 @@ namespace Escape
 			// come back to life in a different place with all their baggage from before
 			public void ClearChildren() 
 			{
+				/*for (BaseDoor door in doors) {
+					if (children.Contains(doors.g
+				}*/
 				children.Clear ();
 			}
 
