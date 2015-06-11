@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.Characters.FirstPerson;
+using Escape.Util;
 
 public class MonsterHallwayChase : MonoBehaviour {
 	
@@ -9,7 +10,7 @@ public class MonsterHallwayChase : MonoBehaviour {
 	private int despawnTimer = 0; //timer to delete the monster after the puzzle is done
 	private GameObject player;
 	private AudioSource audioSource;
-	public AudioClip scream;
+	public AudioClip[] scream;
 	
 	// Use this for initialization
 	void Start () {
@@ -18,8 +19,7 @@ public class MonsterHallwayChase : MonoBehaviour {
 		player.GetComponent<PlayerStatus> ().startRunning (9999); //make player run immediatly
 		//plays a sound
 		audioSource = gameObject.GetComponent<AudioSource> ();
-		audioSource.clip = scream;
-		audioSource.Play();
+		AudioTools.PlayRandomSound (audioSource, scream, null, 1.0f, 1.1f);
 	}
 	
 	// Update is called once per frame
