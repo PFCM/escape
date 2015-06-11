@@ -97,6 +97,7 @@ namespace Escape.Rooms
 					k.gameObject.SetActive(true);
 				}
 				paintingPositions[0].currentPainting.GetComponent<AudioSource> ().PlayOneShot (successSound);
+				PlayerStatus.IncreaseAmbientIntensity();
 				Logging.Log("Congratulations");
 			}
 		}

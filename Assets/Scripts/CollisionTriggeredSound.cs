@@ -21,7 +21,7 @@ namespace Escape
 
 		void OnTriggerEnter(Collider other) {
 			if (other.tag == "Player") {
-				AudioTools.PlayRandomSound(src, clips, lastClip);
+				lastClip = AudioTools.PlayRandomSound(src, clips, lastClip);
 			}
 		}
 	}

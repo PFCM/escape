@@ -25,6 +25,9 @@ public class PlayerStatus : MonoBehaviour
 	// clips to play when receiving a key
 	public AudioClip[] keySounds;
 
+	// a refernce to the ambience generator, slightly more convienient to do alter it through this class
+	private AmbienceGenerator ambience;
+
 	public static PickupableObject heldObject {
 		get { return instance.holding; }
 	}
@@ -49,6 +52,11 @@ public class PlayerStatus : MonoBehaviour
 			singleton.keys = new Dictionary<string, int> ();
 			singleton.rooms = new Dictionary<string, BaseRoomController> ();
 
+			singleton.ambience = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<AmbienceGenerator> ();
+			if (ambience == null) {
+				Logging.Log("(PlayerStatus) ERROR: no ambient sound source found.");
+			}
+
 			GameObject obj = new GameObject("Dragger");
 			obj.transform.SetParent(this.transform);
 			obj.transform.Translate(transform.forward);
@@ -71,6 +79,14 @@ public class PlayerStatus : MonoBehaviour
 			stopRunning ();
 		}
 		runningTimer--;
+	}
+
+	public static void SetAmbientIntensity(int level) {
+		singleton.ambience.SetIntensity (level);
+	}
+
+	public static void IncreaseAmbientIntensity() {
+		singleton.ambience.IncreaseIntensity ();
 	}
 
 	public static void AddRoom(BaseRoomController newRoom) {
@@ -200,10 +216,7 @@ public class PlayerStatus : MonoBehaviour
 
 	// plays random sound from clip array
 	private void playRandomSound(AudioClip[] clips) {
-		if (clips.Length > 0) {
-			audioSrc.pitch = Random.Range (0.8f, 1.2f); // TODO: fine tune the magic numbers
-			audioSrc.PlayOneShot (clips[Random.Range(0,clips.Length)]);
-		}
+		AudioTools.PlayRandomSound (instance.audioSrc, clips);
 	}
 
 	// is the player holding anything
