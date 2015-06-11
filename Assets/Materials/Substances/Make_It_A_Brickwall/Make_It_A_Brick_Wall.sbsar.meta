@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8cb1ded7b0fd6e74fbd141488f5c3a59
-timeCreated: 1431173965
+timeCreated: 1433992244
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -534,7 +534,7 @@ SubstanceImporter:
     name: Make_It_A_Brick_Wall
     prototypeName: Make_It_A_Brick_Wall
     shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-    shaderKeywords: 
+    shaderKeywords: _NORMALMAP _PARALLAXMAP
     renderQueue: -1
     inputs:
     - name: $normalformat
@@ -567,14 +567,14 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Bricks_Texture_Tiling_X
       value:
-        scalar[0]: 1
+        scalar[0]: 10
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Bricks_Texture_Tiling_Y
       value:
-        scalar[0]: 1
+        scalar[0]: 10
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -749,7 +749,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Bricks_Edges_Irregularity
       value:
-        scalar[0]: .150000006
+        scalar[0]: 0
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -819,21 +819,21 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Pre_Lighting
       value:
-        scalar[0]: .5
+        scalar[0]: .230000004
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Pre_Lighting_Shadows
       value:
-        scalar[0]: .349999994
+        scalar[0]: .280000001
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Pre_Lighting_Light_Angle
       value:
-        scalar[0]: .125
+        scalar[0]: .600000024
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -854,7 +854,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Normal_Intensity
       value:
-        scalar[0]: .5
+        scalar[0]: .270000011
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -883,7 +883,7 @@ SubstanceImporter:
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 1, y: 1}
+      scale: {x: 16, y: 16}
       generateMipmaps: 1
       generateAllOutputs: 0
       animationUpdateRate: 0
@@ -895,14 +895,14 @@ SubstanceImporter:
             name: _MainTex
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 16, y: 16}
             offset: {x: 0, y: 0}
         data:
           first:
             name: _BumpMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 16, y: 1}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -916,7 +916,7 @@ SubstanceImporter:
             name: _ParallaxMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 16, y: 1}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -930,7 +930,7 @@ SubstanceImporter:
             name: _EmissionMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 16, y: 16}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -1010,7 +1010,7 @@ SubstanceImporter:
         data:
           first:
             name: _EmissionColor
-          second: {r: 0, g: 0, b: 0, a: 1}
+          second: {r: 0, g: 0, b: 0, a: 0}
         data:
           first:
             name: _Color

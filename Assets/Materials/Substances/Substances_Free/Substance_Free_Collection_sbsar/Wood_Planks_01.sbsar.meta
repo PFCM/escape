@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a1ade89e15bd7374db3b2963ea589a38
-timeCreated: 1433908726
+timeCreated: 1433991795
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -327,7 +327,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Boards
       value:
-        scalar[0]: 10
+        scalar[0]: 8.5
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -390,7 +390,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Wood_Grain
       value:
-        scalar[0]: .412999988
+        scalar[0]: 0
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
