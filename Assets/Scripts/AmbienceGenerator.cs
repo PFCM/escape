@@ -63,6 +63,9 @@ namespace Escape.Core
 		public void SetIntensity(int value)
 		{
 			level = Mathf.Clamp (value, 0, clips.Length);
+			nextVolume = volume * (1.0f + volumeStep * level);
+			Logging.Log ("(AmbienceGenerator) intensity level " + level);
+			StartCoroutine (FadeVolume ());
 		}
 
 		// coroutine to fade the volume up over a couple of seconds
@@ -71,6 +74,7 @@ namespace Escape.Core
 		// it is necessary)
 		IEnumerator FadeVolume() 
 		{
+			Logging.Log ("(AmbienceGenerator) Beginning fade from " + volume + " to " + nextVolume);
 			float length = 2.0f; // length of fade in secs
 			float timeCounter = 0.0f;
 			float oneOverT = 1.0f / length;
