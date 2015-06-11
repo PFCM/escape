@@ -14,7 +14,7 @@ namespace Escape.Util
 		 * Optional third argument is an audio clip to not choose, to avoid
 		 * repetition
 		 */
-		public static AudioClip PlayRandomSound (AudioSource src, AudioClip[] clips, AudioClip except=null) 
+		public static AudioClip PlayRandomSound (AudioSource src, AudioClip[] clips, AudioClip except=null, float lower=0.85f, float higher=1.15f) 
 		{
 			if (clips.Length == 0)
 				return null;
@@ -23,7 +23,7 @@ namespace Escape.Util
 				index = (index+1) % clips.Length; // some of the arrays are likely to be small
 			}
 			src.clip = clips [index];
-			src.pitch = Random.Range (0.85f, 1.15f); //magic numbers, make these tunable (more default args?)
+			src.pitch = Random.Range (lower, higher);
 			src.Play ();
 			return clips[index];
 		}
