@@ -131,7 +131,7 @@ public class RoomEventGenerator : MonoBehaviour {
 		if (eventChance > Random.Range (0, 100)) {
 
 			eventIndex = Mathf.RoundToInt (Random.Range (0, Mathf.RoundToInt(events.Length)));
-			eventChoice = events[eventChoice];
+			eventChoice = events[eventIndex];
 
 
 			print (eventIndex);
@@ -146,14 +146,7 @@ public class RoomEventGenerator : MonoBehaviour {
 	//on spawn events
 	private void doEvent(){
 	}
-	
-	private void startTimedEvent(){
-		
-		//could customize timer for each event here
-		timer = 150;
 
-
-	}
 
 	//turns all of the lights in the room red
 	private void turnLightsRed(){
@@ -175,7 +168,7 @@ public class RoomEventGenerator : MonoBehaviour {
 
 	private void spawnBatteries(){
 		GameObject battery = Instantiate(Resources.Load("Monsters/MonsterChase")) as GameObject; 
-		battery.transform.position.Set(gameObject.transform.position);
+		battery.transform.position.Set(gameObject.transform.position.x,gameObject.transform.position.y,gameObject.transform.position.z);
 	}
 
 }
