@@ -11,21 +11,14 @@ public class RoomEventGenerator : MonoBehaviour {
 	
 	//the chosen event
 	private string eventChoice = "null";
-	
-	//the type of event out of entry, spawn or timed
-	private string eventType = "null";
-	
-	//list of events which happen when player enters a room
-	private string[] entryEvents = {"sound", "flashAcross","monsterSpawnBehind","monsterChase"};
-	//when the room spawns
-	private string[] spawnEvents = {"sound", "shuffle","monsterStanding","monsterSpawnBehind", "monsterChase"};
-	//when a timer runs out
-	private string[] timedEvents = {"sound","monsterSpawnBehind","monsterChase"};
 
+	private string[] events = {"monsterSpawnBehind", "monsterStanding", "flickerLights", "turnLightsRed", "spawnBatteries", "randomSound", "delusion", "ageRoom", "openObjects"}; 
 
+	//lights in the room, used for flickering, turning red, etc. 
+	public Light[] lights;
 
-
-	public int timer =0;
+	//lists of openable objects used for spawning batteries on and for randomly opening
+	public GameObject[] openableObjects;
 	
 	// Use this for initialization
 	void Start () {
@@ -38,32 +31,21 @@ public class RoomEventGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//timed events
-		if (timer < 1 && eventType == "timed") {
-			
-			if (eventChoice == "sound") {
-				GameObject sound = Instantiate(Resources.Load("Events/RandomSoundGenerator")) as GameObject; 
-				sound.transform.position = gameObject.transform.position;
+
+		//continuosly flicker lights
+		if(eventChoice == "flickerLights"){
+			//for each light
+			//on or off = random
+			for(int i =0;i<lights.Length;i++){
+
+				if(lights[i].intensity <1){
+					lights[i].intensity =0.1f + lights[i].intensity*2;
+				}else{
+				if(Random.Range (0,100) > 50){
+					lights[i].intensity=0;
+				}
 			}
-			if (eventChoice == "monsterSpawnBehind") {
-				
-				//spawn a monster
-				GameObject monster = Instantiate (Resources.Load ("Monsters/MonsterSpawnBehind")) as GameObject; 
-				
-				//set its position to generators position
-				monster.transform.position = gameObject.transform.position;
-			}
-			if(eventChoice == "monsterChase"){
-				//spawn a monster
-				GameObject monster = Instantiate(Resources.Load("Monsters/MonsterChase")) as GameObject; 
-				
-				//set its position to generators position
-				monster.transform.position = gameObject.transform.position;
-			}
-			eventChoice = "null";
-			eventType = "null";
-		} else {
-			timer--;
+		}
 		}
 	}
 	
@@ -71,39 +53,57 @@ public class RoomEventGenerator : MonoBehaviour {
 		//when the player enteres the room
 		if (other.tag == "Player"){ //&& eventType =="entry") {
 			
-			if(eventChoice == "sound"){
+			if(eventChoice == "randomSound"){
 				GameObject sound = Instantiate(Resources.Load("Events/RandomSoundGenerator")) as GameObject; 
 				sound.transform.position = gameObject.transform.position;
+				eventChoice = null;
 			}
-			
-			if(eventChoice == "monsterChase"){
+
+
+			if(eventChoice == "turnLightsRed"){
+				turnLightsRed();
+				eventChoice = null;
+			}
+
+			//this changes the players controls and makes their screen go red
+			if(eventChoice == "delusion"){
+				activateDelusionMode();
+				eventChoice = null;
+			}
+
+	
+			//change room wall type
+			if(eventChoice == "ageRoom"){
+				eventChoice = null;
+			}
+			if(eventChoice == "openObjects"){
+				openObjects();
+				eventChoice = null;
+			}
+
+
+			if(eventChoice == "monsterStanding"){
 				
 				//spawn a monster
 				GameObject monster = Instantiate(Resources.Load("Monsters/MonsterChase")) as GameObject; 
 				
 				//set its position to generators position
 				monster.transform.position = gameObject.transform.position;
+				eventChoice = null;
 			}
-			
-			if(eventChoice == "flashAcross"){
-				//spawn a monster
-				GameObject monster = Instantiate(Resources.Load("Monsters/MonsterFlashAcross")) as GameObject; 
-				
-				//set its position to generators position
-				monster.transform.position = gameObject.transform.position;
-				print ("event: monster flash across");
-			}
+
 			if(eventChoice == "monsterSpawnBehind"){
 				//spawn a monster
 				GameObject monster = Instantiate(Resources.Load("Monsters/MonsterSpawnBehind")) as GameObject; 
 				//monster.transform.position = gameObject.transform.position;
+				eventChoice = null;
 			}
-			eventChoice = null;
-			eventType = null;
+
 		}
 		
 	}
 	
+
 	public void chooseEvent(){
 		//choose an event and its activation type (timed, player-enter or on-spawn)
 		
@@ -117,104 +117,34 @@ public class RoomEventGenerator : MonoBehaviour {
 		
 		//index of chosen event
 		int eventIndex = 0;
-		eventChance = 60;
-		//roll to generate an event
+		eventChance = 60; //TODO get rid of this
+
+		//roll to include rare events
+		if(eventChance > Random.Range (0, 100)){
+			string[] events = {"monsterSpawnBehind", "monsterStanding", "flickerLights", "turnLightsRed", "spawnBatteries", "randomSound", "delusion", "ageRoom"}; 
+		}
+		else{
+			string[] events = {"flickerLights", "turnLightsRed", "spawnBatteries", "randomSound", "ageRoom"}; 
+		}
+
+		//roll to choose event
 		if (eventChance > Random.Range (0, 100)) {
-			
-			int typeChoice = Mathf.RoundToInt (Random.Range (0,3));
-			
-			//select eventType
-			if(typeChoice == 0){
-				eventType = "entry";
-			}else if(typeChoice ==1){
-				eventType = "onSpawn";
-			}else{
-				eventType = "timed";
-			}
-			
-			//get the size of the list matching the eventType
-			if(eventType == "entry"){
-				chosenArraySize = entryEvents.Length;
-			}else if(eventType == "onSpawn"){
-				chosenArraySize = spawnEvents.Length;
-			}
-			else{
-				chosenArraySize = timedEvents.Length;
-			}
-			
-			
-			//get index of chosen event, selects from first half
-			eventIndex = Mathf.RoundToInt (Random.Range (0, Mathf.RoundToInt(chosenArraySize/2)));
-			
-			
-			//increase eventIndex by scaled amount based on players event chance, making more intense the further the player goes
-			//increase by 1 until roll to increase fails
-			while((eventChance > Random.Range(0,100)) && (eventIndex<chosenArraySize-1)){
-				eventIndex++;
-			}
-			
-			//get the size of the list matching the eventType
-			if(eventType == "entry"){
-				eventChoice = entryEvents[eventIndex];
-			}else if(eventType == "onSpawn"){
-				eventChoice = spawnEvents[eventIndex];
-			}
-			else{
-				eventChoice = timedEvents[eventIndex];
-			}
-			
-			
+
+			eventIndex = Mathf.RoundToInt (Random.Range (0, Mathf.RoundToInt(events.Length)));
+			eventChoice = events[eventChoice];
+
+
 			print (eventIndex);
 			print (eventChoice);
-			print (eventType);
-			
-			//call an action based on even type
-			if (eventType == "onSpawn") {
-				doEvent ();
-			} else if (eventType == "timed") {
-				
-				startTimedEvent ();
+		
+			if(eventChoice == "spawnBatteries"){
+				spawnBatteries();
 			}
 		}
 		
 	}
 	//on spawn events
 	private void doEvent(){
-		if(eventChoice == "monsterStanding"){
-			
-			//spawn a monster
-			GameObject monster = Instantiate(Resources.Load("Monsters/MonsterStanding")) as GameObject; 
-			
-			//set its position to generators position
-			monster.transform.position = gameObject.transform.position;
-		}
-		if(eventChoice == "monsterSpawnBehind"){
-			
-			//spawn a monster
-			GameObject monster = Instantiate(Resources.Load("Monsters/MonsterSpawnBehind")) as GameObject; 
-			
-			//set its position to generators position
-			monster.transform.position = gameObject.transform.position;
-		}
-		if(eventChoice == "monsterChase"){
-			
-			//spawn a monster
-			GameObject monster = Instantiate(Resources.Load("Monsters/MonsterChase")) as GameObject; 
-			
-			//set its position to generators position
-			monster.transform.position = gameObject.transform.position;
-		}
-		if(eventChoice == "sound"){
-			GameObject sound = Instantiate(Resources.Load("Events/RandomSoundGenerator")) as GameObject; 
-			sound.transform.position = gameObject.transform.position;
-		}
-		if (eventChoice == "shuffle") {
-			shuffleRoom();
-
-		}
-		
-		eventChoice = "null";
-		eventType = "null";
 	}
 	
 	private void startTimedEvent(){
@@ -225,20 +155,27 @@ public class RoomEventGenerator : MonoBehaviour {
 
 	}
 
-	private void shuffleRoom(){
-	//finds the type of room attached and calls shuffle on it
-		if (room.tag == "Bathroom") {
-			room.GetComponent<BathroomController> ().Shuffle ();
+	//turns all of the lights in the room red
+	private void turnLightsRed(){
+		for(int i = 0; i<lights.Length;i++){
+			lights[i].color = Color.red;
 		}
-		if (room.tag == "Bedroom") {
-			room.GetComponent<BedroomController> ().Shuffle ();
+	}
+
+	private void openObjects(){
+		for(int i = 0; i<openableObjects.Length;i++){
+			//openableObjects[i].open();
 		}
-		if (room.tag == "Hallway1") {
-			room.GetComponent<HallwayController> ().Shuffle ();
-		}
-		if (room.tag == "Hallway2") {
-			room.GetComponent<HallwayController> ().Shuffle ();
-		}
+	}
+
+	private void activateDelusionMode(){
+		//lights go red, player movement changes
+		//have to reset when player enters new room
+	}
+
+	private void spawnBatteries(){
+		GameObject battery = Instantiate(Resources.Load("Monsters/MonsterChase")) as GameObject; 
+		battery.transform.position.Set(gameObject.transform.position);
 	}
 
 }
