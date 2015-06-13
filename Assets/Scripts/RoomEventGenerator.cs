@@ -34,25 +34,39 @@ public class RoomEventGenerator : MonoBehaviour {
 
 		//continuosly flicker lights
 		if(eventChoice == "flickerLights"){
+
 			//for each light
 			//on or off = random
+			print ("" + lights.Length);
 			for(int i =0;i<lights.Length;i++){
-
+				print ("FLICKERING LIGHT");
+				//lights[i].intensity=0;
 				if(lights[i].intensity <1){
-					lights[i].intensity =0.1f + lights[i].intensity*2;
+					lights[i].intensity =0.05f + lights[i].intensity*1.2f;
 				}else{
-				if(Random.Range (0,100) > 50){
+				if(Random.Range (0,100) > 90){
+						print ("turned light " + i + " off");
 					lights[i].intensity=0;
+				}
+				//if(Random.Range (0,100) > 50){
+				//	print ("turned light " + i + " off");
+			//		lights[i].intensity=0;
+			//	}
+			//	else{
+			//		print ("turned light " + i + " on");
+			//		lights[i].intensity=1;
 				}
 			}
 		}
 		}
-	}
+
 	
 	public void OnTriggerEnter(Collider other){
 		//when the player enteres the room
 		if (other.tag == "Player"){ //&& eventType =="entry") {
-			
+
+			print (eventChoice + " TRIGGERED EVENT");
+
 			if(eventChoice == "randomSound"){
 				GameObject sound = Instantiate(Resources.Load("Events/RandomSoundGenerator")) as GameObject; 
 				sound.transform.position = gameObject.transform.position;
@@ -85,7 +99,7 @@ public class RoomEventGenerator : MonoBehaviour {
 			if(eventChoice == "monsterStanding"){
 				
 				//spawn a monster
-				GameObject monster = Instantiate(Resources.Load("Monsters/MonsterChase")) as GameObject; 
+				GameObject monster = Instantiate(Resources.Load("Monsters/MonsterSpawnBehind")) as GameObject; 
 				
 				//set its position to generators position
 				monster.transform.position = gameObject.transform.position;
@@ -93,6 +107,7 @@ public class RoomEventGenerator : MonoBehaviour {
 			}
 
 			if(eventChoice == "monsterSpawnBehind"){
+				print (eventChoice + " spawned monster");
 				//spawn a monster
 				GameObject monster = Instantiate(Resources.Load("Monsters/MonsterSpawnBehind")) as GameObject; 
 				//monster.transform.position = gameObject.transform.position;
@@ -117,7 +132,7 @@ public class RoomEventGenerator : MonoBehaviour {
 		
 		//index of chosen event
 		int eventIndex = 0;
-		eventChance = 60; //TODO get rid of this
+		eventChance = 110; //TODO get rid of this
 
 		//roll to include rare events
 		if(eventChance > Random.Range (0, 100)){
@@ -133,9 +148,8 @@ public class RoomEventGenerator : MonoBehaviour {
 			eventIndex = Mathf.RoundToInt (Random.Range (0, Mathf.RoundToInt(events.Length)));
 			eventChoice = events[eventIndex];
 
-
-			print (eventIndex);
-			print (eventChoice);
+		
+			print (eventChoice + "EVENT CHOICE");
 		
 			if(eventChoice == "spawnBatteries"){
 				spawnBatteries();
@@ -167,8 +181,8 @@ public class RoomEventGenerator : MonoBehaviour {
 	}
 
 	private void spawnBatteries(){
-		GameObject battery = Instantiate(Resources.Load("Monsters/MonsterChase")) as GameObject; 
-		battery.transform.position.Set(gameObject.transform.position.x,gameObject.transform.position.y,gameObject.transform.position.z);
+		//GameObject battery = Instantiate(Resources.Load("Misc/Battery")) as GameObject; 
+		//battery.transform.position.Set(gameObject.transform.position.x-2,gameObject.transform.position.y,gameObject.transform.position.z-2);
 	}
 
 }

@@ -75,7 +75,7 @@ public class flashlightScript : MonoBehaviour {
 		} else {
 			//smooths transition back to normal light
 			if(flashlight.GetComponent<Light>().intensity <brightness){
-				flashlight.GetComponent<Light>().intensity =0.1f + flashlight.GetComponent<Light>().intensity*2;
+				flashlight.GetComponent<Light>().intensity =0.1f + flashlight.GetComponent<Light>().intensity*1.5f;
 			}
 		}
 	}
