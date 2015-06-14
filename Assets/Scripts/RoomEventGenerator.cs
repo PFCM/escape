@@ -48,13 +48,7 @@ public class RoomEventGenerator : MonoBehaviour {
 						print ("turned light " + i + " off");
 					lights[i].intensity=0;
 				}
-				//if(Random.Range (0,100) > 50){
-				//	print ("turned light " + i + " off");
-			//		lights[i].intensity=0;
-			//	}
-			//	else{
-			//		print ("turned light " + i + " on");
-			//		lights[i].intensity=1;
+				
 				}
 			}
 		}
@@ -62,6 +56,7 @@ public class RoomEventGenerator : MonoBehaviour {
 
 	
 	public void OnTriggerEnter(Collider other){
+		chooseEvent ();
 		//when the player enteres the room
 		if (other.tag == "Player"){ //&& eventType =="entry") {
 
@@ -99,7 +94,7 @@ public class RoomEventGenerator : MonoBehaviour {
 			if(eventChoice == "monsterStanding"){
 				
 				//spawn a monster
-				GameObject monster = Instantiate(Resources.Load("Monsters/MonsterSpawnBehind")) as GameObject; 
+				GameObject monster = Instantiate(Resources.Load("Monsters/MonsterStanding")) as GameObject; 
 				
 				//set its position to generators position
 				monster.transform.position = gameObject.transform.position;
@@ -148,12 +143,13 @@ public class RoomEventGenerator : MonoBehaviour {
 			eventIndex = Mathf.RoundToInt (Random.Range (0, Mathf.RoundToInt(events.Length)));
 			eventChoice = events[eventIndex];
 
-		
 			print (eventChoice + "EVENT CHOICE");
 		
 			if(eventChoice == "spawnBatteries"){
 				spawnBatteries();
 			}
+		}else{
+			eventChoice = "null";
 		}
 		
 	}

@@ -4,7 +4,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class MonsterSpawnBehind : MonoBehaviour {
 	
-	private int timer = 300;
+	private int timer = 10;
 	private Vector3 targetPosition;
 	public int speed = 2;
 	

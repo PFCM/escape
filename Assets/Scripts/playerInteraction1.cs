@@ -139,8 +139,12 @@ public class playerInteraction1 : MonoBehaviour
 				//CHECK if monster has already been spotted by player
 				if (hit.transform.gameObject.GetComponent<MonsterSpawnBehind> ().startChasingPlayer ()) {
 					//start running
-					gameObject.GetComponent<PlayerStatus> ().startRunning (300);
+					gameObject.GetComponent<PlayerStatus> ().startRunning (10);
 				}
+			}
+
+			if (hit.transform.gameObject.tag == "MonsterStanding") {
+				hit.transform.gameObject.GetComponent<MonsterStanding> ().spotted ();
 			}
 		}
 
