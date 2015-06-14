@@ -7,7 +7,7 @@ public class MonsterStanding : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		
+		timer = 150;
 	}
 	
 	// Update is called once per frame
@@ -19,8 +19,8 @@ public class MonsterStanding : MonoBehaviour {
 	}
 
 	public void spotted(){
-		if(timer>30){
-		timer = 30;
+		if(timer>20){
+		//timer = 20;
 		}
 	}
 }

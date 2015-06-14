@@ -6,9 +6,6 @@ using Escape.Rooms;
 //one of these would be generated with each room
 public class RoomEventGenerator : MonoBehaviour {
 	
-	//room this event generator is attached to
-	public GameObject room;
-	
 	//the chosen event
 	private string eventChoice = "null";
 
@@ -102,7 +99,7 @@ public class RoomEventGenerator : MonoBehaviour {
 				GameObject monster = Instantiate(Resources.Load("Monsters/MonsterStanding")) as GameObject; 
 				
 				//set its position to generators position
-				monster.transform.position = gameObject.transform.position;
+				monster.transform.position = new Vector3(transform.localPosition.x+Random.Range(-0.5f,0.5f),transform.localPosition.y,transform.localPosition.z+Random.Range(-0.5f,0.5f));//gameObject.transform.position;
 				eventChoice = null;
 			}
 
@@ -133,7 +130,7 @@ public class RoomEventGenerator : MonoBehaviour {
 		
 		//index of chosen event
 		int eventIndex = 0;
-		eventChance = 90; //TODO get rid of this
+		eventChance = 50; //TODO get rid of this
 
 		//roll to include rare events
 		if(eventChance > Random.Range (0, 100)){
