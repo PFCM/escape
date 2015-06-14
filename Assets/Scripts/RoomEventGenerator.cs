@@ -23,12 +23,17 @@ public class RoomEventGenerator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-		chooseEvent();
+	//	chooseEvent();
 		
 		//increase player event chance 
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerStatus> ().addEventChance (10);
 	}
-	
+
+	void  OnEnable()
+	{
+		chooseEvent ();
+	}
+
 	// Update is called once per frame
 	void Update () {
 
@@ -56,7 +61,7 @@ public class RoomEventGenerator : MonoBehaviour {
 
 	
 	public void OnTriggerEnter(Collider other){
-		chooseEvent ();
+		//chooseEvent ();
 		//when the player enteres the room
 		if (other.tag == "Player"){ //&& eventType =="entry") {
 
@@ -115,6 +120,7 @@ public class RoomEventGenerator : MonoBehaviour {
 	
 
 	public void chooseEvent(){
+		eventChoice = "null";
 		//choose an event and its activation type (timed, player-enter or on-spawn)
 		
 		//get player event chance
@@ -127,7 +133,7 @@ public class RoomEventGenerator : MonoBehaviour {
 		
 		//index of chosen event
 		int eventIndex = 0;
-		eventChance = 110; //TODO get rid of this
+		eventChance = 90; //TODO get rid of this
 
 		//roll to include rare events
 		if(eventChance > Random.Range (0, 100)){
