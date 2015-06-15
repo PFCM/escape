@@ -14,6 +14,10 @@ public class flashlightScript : MonoBehaviour {
 	public bool on = false;
 	public bool forceFlicker = false;
 
+	//whether torch flicering or not
+	public bool flickering = false;
+	public int flickerTimer;
+
 	private Color normalColor; 
 
 	private AudioSource audioSrc;
@@ -22,15 +26,25 @@ public class flashlightScript : MonoBehaviour {
 
 	void Start()
 	{
+		flickering = false;
+		flickerTimer = 0;
 		audioSrc = GetComponent<AudioSource> ();
 		normalColor =	flashlight.color;
 	}
 	void Update()
 	{
+		if(flickerTimer <=1){
+			flickering = false;
+		}
+		if(flickerTimer >0){
+			flickerTimer--;
+		}
+
 		//drain battery
 		if (on == true) {
 			charge = charge -lossRate;
-			flicker (forceFlicker); //make flashlight flicker randomly, happens more with less battery
+
+			flicker (flickering);
 
 			//reduce brightness if battery low
 			if(charge < 40){
@@ -68,27 +82,38 @@ public class flashlightScript : MonoBehaviour {
 	public void flicker(bool forceFlicker){
 	//makes the flashlight flicker by randomly enabling and disabling.
 	//higher chance with lower battery
-		double flickerChance = (charge - 100)*-0.04;
+		double flickerChance = 0;//(charge - 100)*-0.04;
 		float chance =  Random.Range(0.0f, 100.0f);
 		if (flickerChance < 7 && forceFlicker) {
 			flickerChance = 7;
 		}
 		if (chance < flickerChance) {
 			flashlight.GetComponent<Light>().intensity = 0;
+			flashlight.GetComponent<Light>().intensity =- flashlight.GetComponent<Light>().intensity*0.5f;
 		} else {
 			//smooths transition back to normal light
 			if(flashlight.GetComponent<Light>().intensity <brightness){
-				flashlight.GetComponent<Light>().intensity =0.1f + flashlight.GetComponent<Light>().intensity*1.5f;
+				flashlight.GetComponent<Light>().intensity =0.1f + flashlight.GetComponent<Light>().intensity*1.1f;
 			}
 		}
 	}
 
 	public void setColorRed(bool setRed){
 		if(setRed){
-			flashlight.color = Color.red;
+			flashlight.color = new Color(flashlight.color.r,flashlight.color.g-0.05f,flashlight.color.b-0.05f); //Color.red;
 		}
 		else{
-			flashlight.color = normalColor;
+			//flashlight.color = normalColor;
+			if(flashlight.color.b < normalColor.b && flashlight.color.g < normalColor.g){
+			flashlight.color = new Color(flashlight.color.r,flashlight.color.g+0.05f,flashlight.color.b+0.05f);
+			}
+		}
+	}
+
+	public void flickerOnce(){
+		flickering = true;
+		if(flickerTimer <1){
+		flickerTimer = 60;
 		}
 	}
 

@@ -20,6 +20,8 @@ public class playerInteraction1 : MonoBehaviour
 	private int layerMask;// = ~(1 << 12); // everything except player
 	private int noPickupLayerMask;// = layerMask & ~(1 << 11); // everything except player and pickups
 
+	private GameObject lastHit = null;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -154,14 +156,23 @@ public class playerInteraction1 : MonoBehaviour
 			if(hit.transform.gameObject.tag == "Interactable" || hit.transform.gameObject.tag == "Pickupable"){
 
 				if(gameObject.GetComponent<flashlightScript>().on){
+					if(lastHit ==null && hit.transform.gameObject !=null){
+						lastHit = hit.transform.gameObject;
+					}else if(lastHit!= hit.transform.gameObject){
+						lastHit = hit.transform.gameObject;
+						gameObject.GetComponent<flashlightScript>().flickerOnce();
+					}
 					//gameObject.GetComponent<flashlightScript>().forceFlicker = true;
-					gameObject.GetComponent<flashlightScript>().setColorRed(true);
+				//	gameObject.GetComponent<flashlightScript>().setColorRed(true);
+
 				}
+			
 			}
-			else{
+
 				//gameObject.GetComponent<flashlightScript>().forceFlicker = false;
-				gameObject.GetComponent<flashlightScript>().setColorRed(false);
-			}
+			//	gameObject.GetComponent<flashlightScript>().setColorRed(false);
+				//gameObject.GetComponent<flashlightScript>().flickerOnce();
+
 
 		}
 
