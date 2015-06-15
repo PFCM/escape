@@ -8,7 +8,7 @@ labels:
 - texture
 - substance
 - seamless
-timeCreated: 1434333225
+timeCreated: 1434334190
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -980,7 +980,7 @@ SubstanceImporter:
             name: _BumpMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 8, y: 1}
+            scale: {x: 8, y: 16}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -994,7 +994,7 @@ SubstanceImporter:
             name: _ParallaxMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 8, y: 1}
+            scale: {x: 8, y: 16}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -1055,11 +1055,11 @@ SubstanceImporter:
         data:
           first:
             name: _Glossiness
-          second: .36500001
+          second: .291000009
         data:
           first:
             name: _BumpScale
-          second: 1
+          second: .430000007
         data:
           first:
             name: _OcclusionStrength
