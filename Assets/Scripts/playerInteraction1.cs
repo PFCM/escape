@@ -154,11 +154,13 @@ public class playerInteraction1 : MonoBehaviour
 			if(hit.transform.gameObject.tag == "Interactable" || hit.transform.gameObject.tag == "Pickupable"){
 
 				if(gameObject.GetComponent<flashlightScript>().on){
-					gameObject.GetComponent<flashlightScript>().forceFlicker = true;
+					//gameObject.GetComponent<flashlightScript>().forceFlicker = true;
+					gameObject.GetComponent<flashlightScript>().setColorRed(true);
 				}
 			}
 			else{
-				gameObject.GetComponent<flashlightScript>().forceFlicker = false;
+				//gameObject.GetComponent<flashlightScript>().forceFlicker = false;
+				gameObject.GetComponent<flashlightScript>().setColorRed(false);
 			}
 
 		}
