@@ -7,7 +7,7 @@ labels:
 - paint
 - building
 - rust
-timeCreated: 1434331859
+timeCreated: 1434333067
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -1456,7 +1456,7 @@ SubstanceImporter:
         data:
           first:
             name: _Color
-          second: {r: 1, g: .909069538, b: .733293712, a: 1}
+          second: {r: .933823526, g: .898708463, b: .830828309, a: 1}
         data:
           first:
             name: _EmissionColorUI
