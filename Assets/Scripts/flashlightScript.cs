@@ -14,6 +14,8 @@ public class flashlightScript : MonoBehaviour {
 	public bool on = false;
 	public bool forceFlicker = false;
 
+	private Color normalColor; 
+
 	private AudioSource audioSrc;
 	public AudioClip onSound;
 	public AudioClip offSound;
@@ -21,6 +23,7 @@ public class flashlightScript : MonoBehaviour {
 	void Start()
 	{
 		audioSrc = GetComponent<AudioSource> ();
+		normalColor =	flashlight.color;
 	}
 	void Update()
 	{
@@ -77,6 +80,15 @@ public class flashlightScript : MonoBehaviour {
 			if(flashlight.GetComponent<Light>().intensity <brightness){
 				flashlight.GetComponent<Light>().intensity =0.1f + flashlight.GetComponent<Light>().intensity*1.5f;
 			}
+		}
+	}
+
+	public void setColorRed(bool setRed){
+		if(setRed){
+			flashlight.color = Color.red;
+		}
+		else{
+			flashlight.color = normalColor;
 		}
 	}
 
