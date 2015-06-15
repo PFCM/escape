@@ -19,6 +19,7 @@ public class flashlightScript : MonoBehaviour {
 	public int flickerTimer;
 
 	private Color normalColor; 
+	public Color highlightColor;
 
 	private AudioSource audioSrc;
 	public AudioClip onSound;
@@ -101,6 +102,7 @@ public class flashlightScript : MonoBehaviour {
 	public void setColorRed(bool setRed){
 		if(setRed){
 			flashlight.color = new Color(flashlight.color.r,flashlight.color.g-0.05f,flashlight.color.b-0.05f); //Color.red;
+			flashlight.color = highlightColor;
 		}
 		else{
 			//flashlight.color = normalColor;
