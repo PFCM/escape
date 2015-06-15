@@ -7,7 +7,7 @@ labels:
 - paint
 - building
 - rust
-timeCreated: 1433992304
+timeCreated: 1434331859
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -1344,7 +1344,7 @@ SubstanceImporter:
             name: _BumpMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 32, y: 3}
+            scale: {x: 32, y: 32}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -1358,7 +1358,7 @@ SubstanceImporter:
             name: _ParallaxMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 32, y: 3}
+            scale: {x: 32, y: 32}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -1419,7 +1419,7 @@ SubstanceImporter:
         data:
           first:
             name: _Glossiness
-          second: .370000005
+          second: .063000001
         data:
           first:
             name: _BumpScale
@@ -1456,7 +1456,7 @@ SubstanceImporter:
         data:
           first:
             name: _Color
-          second: {r: 1, g: 1, b: 1, a: 1}
+          second: {r: 1, g: .909069538, b: .733293712, a: 1}
         data:
           first:
             name: _EmissionColorUI
