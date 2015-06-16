@@ -22,7 +22,8 @@ namespace Escape.Rooms
 		void Start ()
 		{
 			// locked door is door0
-			this.doors [0].SetWeight ("Bedroom", 1);
+			//this.doors [0].SetWeight ("Bedroom", 1);
+			this.doors [0].SetWeight ("MazeRoom", 1);
 			this.doors [1].SetWeight ("Bathroom", 1);
 			this.doors [1].SetWeight ("Hallway2", 1);
 			this.doors [2].SetWeight ("InfiniteHallway", 1);
