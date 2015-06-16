@@ -8,7 +8,7 @@ labels:
 - texture
 - substance
 - seamless
-timeCreated: 1434334190
+timeCreated: 1434420621
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -2773,7 +2773,7 @@ SubstanceImporter:
         data:
           first:
             name: _Glossiness
-          second: .36500001
+          second: .105999999
         data:
           first:
             name: _BumpScale
