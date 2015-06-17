@@ -6,7 +6,7 @@ labels:
 - wall
 - damage
 - building
-timeCreated: 1433907622
+timeCreated: 1434502779
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -1274,7 +1274,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Luminosity
       value:
-        scalar[0]: .834999979
+        scalar[0]: .109999999
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -2359,7 +2359,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Cracks
       value:
-        scalar[0]: 0
+        scalar[0]: .200000003
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -2422,7 +2422,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Luminosity
       value:
-        scalar[0]: .596000016
+        scalar[0]: .280000001
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
