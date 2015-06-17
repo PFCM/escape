@@ -27,9 +27,9 @@ public class WallPaintingPosition : InteractableObject {
 	public void Throw() {
 		if (currentPainting != null) {
 			Rigidbody rigid = currentPainting.GetComponent<Rigidbody> ();
-			//currentPainting.transform.Translate(Vector3.forward * 0.5f);
+			currentPainting.transform.Translate(Vector3.forward * 0.2f);
 			rigid.isKinematic = false;
-			rigid.AddForce (rigid.transform.forward * Random.Range(50f,100f));
+			rigid.AddForce (transform.forward * Random.Range(50f,100f));
 		}
 	}
 
