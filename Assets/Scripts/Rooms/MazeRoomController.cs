@@ -12,6 +12,8 @@ public class MazeRoomController : BaseRoomController {
 		generator = GetComponent<MazeGenerator> ();
 		generator.GenerateMaze ();
 
+		PlayerStatus.SetAmbientIntensity (999);
+
 		doors [0].SetWeight ("EntranceHall", 1);
 	}
 

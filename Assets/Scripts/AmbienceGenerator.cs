@@ -62,7 +62,7 @@ namespace Escape.Core
 		// manually set the level of intensity
 		public void SetIntensity(int value)
 		{
-			level = Mathf.Clamp (value, 0, clips.Length);
+			level = Mathf.Clamp (value, 0, clips.Length-1);
 			nextVolume = volume * (1.0f + volumeStep * level);
 			Logging.Log ("(AmbienceGenerator) intensity level " + level);
 			StartCoroutine (FadeVolume ());
@@ -86,6 +86,7 @@ namespace Escape.Core
 
 				yield return new WaitForSeconds (0.01f);
 			}
+			Logging.Log ("(AmbienceGenerator) Volume fade complete");
 		}
 
 		// Use this for initialization
@@ -109,7 +110,7 @@ namespace Escape.Core
 		// random clip from the array
 		private AudioClip RandomClip ()
 		{
-			return clips [level][Random.Range (0, clips.Length)];
+			return clips [level][Random.Range (0, clips[level].clips.Length)];
 		}
 
 		private void SetupAudioSource (AudioSource a)
