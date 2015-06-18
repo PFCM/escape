@@ -20,7 +20,7 @@ public class MonsterStanding : MonoBehaviour {
 
 	public void spotted(){
 		if(timer>20){
-		//timer = 20;
+		timer = 20;
 		}
 	}
 }

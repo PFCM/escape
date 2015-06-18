@@ -23,11 +23,12 @@ public class RoomEventGenerator : MonoBehaviour {
 	//	chooseEvent();
 		
 		//increase player event chance 
-		GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerStatus> ().addEventChance (10);
+
 	}
 
 	void  OnEnable()
 	{
+		GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerStatus> ().addEventChance (5);
 		chooseEvent ();
 	}
 
@@ -97,9 +98,10 @@ public class RoomEventGenerator : MonoBehaviour {
 				
 				//spawn a monster
 				GameObject monster = Instantiate(Resources.Load("Monsters/MonsterStanding")) as GameObject; 
-				
-				//set its position to generators position
-				monster.transform.position = new Vector3(transform.localPosition.x+Random.Range(-0.5f,0.5f),transform.localPosition.y,transform.localPosition.z+Random.Range(-0.5f,0.5f));//gameObject.transform.position;
+
+				Vector3 targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
+				targetPosition = targetPosition + (GameObject.FindGameObjectWithTag ("Player").transform.forward * 2);
+				monster.transform.position = targetPosition;
 				eventChoice = null;
 			}
 
@@ -130,10 +132,10 @@ public class RoomEventGenerator : MonoBehaviour {
 		
 		//index of chosen event
 		int eventIndex = 0;
-		eventChance = 50; //TODO get rid of this
+		//eventChance = 50; //TODO get rid of this
 
 		//roll to include rare events
-		if(eventChance > Random.Range (0, 100)){
+		if(eventChance > Random.Range (0, 80)){
 			string[] events = {"monsterSpawnBehind", "monsterStanding", "flickerLights", "turnLightsRed", "spawnBatteries", "randomSound", "delusion", "ageRoom"}; 
 		}
 		else{
@@ -146,6 +148,7 @@ public class RoomEventGenerator : MonoBehaviour {
 			eventIndex = Mathf.RoundToInt (Random.Range (0, Mathf.RoundToInt(events.Length)));
 			eventChoice = events[eventIndex];
 
+			eventChoice = "spawnbatteries";
 			print (eventChoice + "EVENT CHOICE");
 		
 			if(eventChoice == "spawnBatteries"){
@@ -180,7 +183,12 @@ public class RoomEventGenerator : MonoBehaviour {
 	}
 
 	private void spawnBatteries(){
-		//GameObject battery = Instantiate(Resources.Load("Misc/Battery")) as GameObject; 
+		GameObject battery = Instantiate(Resources.Load("Misc/Battery")) as GameObject; 
+		Vector3 targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
+		targetPosition = targetPosition + (GameObject.FindGameObjectWithTag ("Player").transform.forward * 2);
+		//targetPosition = new Vector3 (0,0,0);
+		battery.transform.position = targetPosition;
+		eventChoice = "null";
 		//battery.transform.position.Set(gameObject.transform.position.x-2,gameObject.transform.position.y,gameObject.transform.position.z-2);
 	}
 
