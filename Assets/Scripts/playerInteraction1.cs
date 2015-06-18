@@ -153,7 +153,7 @@ public class playerInteraction1 : MonoBehaviour
 		//RAYCAST FOR DETECTING WHETHER TORCH IS SHINING ON A TARGET
 		if (Physics.Raycast (camera.transform.position, camera.transform.forward, out hit, 10, layerMask)) {
 		
-			if(hit.transform.gameObject.tag == "Interactable" || hit.transform.gameObject.tag == "Pickupable"){
+			if(hit.transform.gameObject.tag == "Interactable" || hit.transform.gameObject.tag == "Pickupable" || hit.transform.gameObject.tag == "battery"){
 
 				if(gameObject.GetComponent<flashlightScript>().on){
 					if(lastHit ==null && hit.transform.gameObject !=null){
@@ -168,10 +168,6 @@ public class playerInteraction1 : MonoBehaviour
 				}
 			
 			}
-
-				//gameObject.GetComponent<flashlightScript>().forceFlicker = false;
-			//	gameObject.GetComponent<flashlightScript>().setColorRed(false);
-				//gameObject.GetComponent<flashlightScript>().flickerOnce();
 
 
 		}

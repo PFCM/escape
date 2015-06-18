@@ -250,5 +250,7 @@ public class PlayerStatus : MonoBehaviour
 		//TODO
 		//play death animation
 		//change scene to first scene
+		transform.position =new Vector3(transform.position.x,transform.position.y-0.5f,transform.position.z);
+		Application.LoadLevel("EntranceHall");
 	}
 }
