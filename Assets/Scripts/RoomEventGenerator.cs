@@ -112,6 +112,9 @@ public class RoomEventGenerator : MonoBehaviour {
 				//monster.transform.position = gameObject.transform.position;
 				eventChoice = null;
 			}
+			if(eventChoice == "spawnBatteries"){
+				spawnBatteries();
+			}
 
 		}
 		
@@ -151,9 +154,7 @@ public class RoomEventGenerator : MonoBehaviour {
 			eventChoice = "spawnbatteries";
 			print (eventChoice + "EVENT CHOICE");
 		
-			if(eventChoice == "spawnBatteries"){
-				spawnBatteries();
-			}
+
 		}else{
 			eventChoice = "null";
 		}
