@@ -29,6 +29,7 @@ public class MazeRoomController : BaseRoomController {
 	
 	override public void Shuffle() 
 	{
+		generator.GenerateMaze ();
 		base.Shuffle ();
 	}
 	

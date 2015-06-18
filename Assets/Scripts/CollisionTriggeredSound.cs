@@ -9,6 +9,7 @@ namespace Escape
 	public class CollisionTriggeredSound : MonoBehaviour
 	{
 		public AudioClip[] clips;
+		public bool onExit = false; // play one of the sounds when collider is exited as well?
 		private AudioClip lastClip;
 
 		private AudioSource src;
@@ -21,6 +22,12 @@ namespace Escape
 
 		void OnTriggerEnter(Collider other) {
 			if (other.tag == "Player") {
+				lastClip = AudioTools.PlayRandomSound(src, clips, lastClip);
+			}
+		}
+
+		void OnTriggerExit(Collider other) {
+			if (other.tag == "Player" && onExit) {
 				lastClip = AudioTools.PlayRandomSound(src, clips, lastClip);
 			}
 		}
