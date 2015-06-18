@@ -5,7 +5,7 @@ public class MonsterChase : MonoBehaviour {
 	
 	public int timer = 500;
 	private Vector3 targetPosition;
-	public int speed = 2;
+	public int speed = 4;
 	
 	
 	// Use this for initialization
@@ -21,7 +21,7 @@ public class MonsterChase : MonoBehaviour {
 		
 		timer--;
 		if(timer<1){
-			Destroy (gameObject);
+			//Destroy (gameObject);
 		}
 		
 	}
