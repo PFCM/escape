@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 1b178626921a14d2b90986eb6df53e62
-timeCreated: 1434606404
+guid: a7c0e5481b0ba4fd2a547f011370fa77
+timeCreated: 1434607718
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,8 +9,8 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Rocking_Horse
-    7400000: RockingHorse_Idle
+    4300000: Rocking_Horse_Animated
+    7400000: RockingHorse_Rock
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -21,7 +21,7 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
@@ -29,7 +29,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: RockingHorse_Idle
+      name: RockingHorse_Rock
       takeName: Take 001
       firstFrame: 1
       lastFrame: 99
@@ -39,7 +39,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       loopTime: 1
-      loopBlend: 1
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
