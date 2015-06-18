@@ -169,10 +169,6 @@ public class playerInteraction1 : MonoBehaviour
 			
 			}
 
-				//gameObject.GetComponent<flashlightScript>().forceFlicker = false;
-			//	gameObject.GetComponent<flashlightScript>().setColorRed(false);
-				//gameObject.GetComponent<flashlightScript>().flickerOnce();
-
 
 		}
 
