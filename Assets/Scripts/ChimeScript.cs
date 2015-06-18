@@ -6,8 +6,13 @@ public class ChimeScript : MonoBehaviour {
 	public int order;
 	public GameObject chimePuzzleController;
 
+	public AudioClip failSound;
+	public AudioClip succeedSound;
+	public AudioSource audioSource;
+
 	// Use this for initialization
 	void Start () {
+		audioSource = GetComponent<AudioSource> ();
 		order = -1;
 	}
 	
@@ -21,8 +26,12 @@ public class ChimeScript : MonoBehaviour {
 		if (chimePuzzleController.GetComponent<ChimePuzzleController> ().getCurrentOrder () == order) {
 			print("correct order" +order);
 			chimePuzzleController.GetComponent<ChimePuzzleController> ().increaseCurrentOrder ();
+			audioSource.clip = succeedSound;
+			audioSource.Play ();
 			return true;
 		}
+		audioSource.clip = failSound;
+		audioSource.Play ();
 		//player failed puzzle
 		chimePuzzleController.GetComponent<ChimePuzzleController> ().resetPuzzle ();
 		return false;
