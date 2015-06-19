@@ -6,7 +6,7 @@ using Escape.Util;
 public class MonsterHallwayChase : MonoBehaviour {
 	
 	private Vector3 targetPosition;
-	public float speed = 5.5f;
+	public float speed = 5.3f;
 	private int despawnTimer = 0; //timer to delete the monster after the puzzle is done
 	private GameObject player;
 	private AudioSource audioSource;
