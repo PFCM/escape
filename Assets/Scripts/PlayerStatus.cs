@@ -8,6 +8,10 @@ using Escape.Core;
 public class PlayerStatus : MonoBehaviour
 {
 
+	//total keys for main door
+	private static int mainDoorKeys;
+	private static int totalMainDoorKeys;
+
 	public bool isRunning = false;//used to tell fpscontrollers when player is running
 	private int runningTimer = 0;
 
@@ -48,6 +52,8 @@ public class PlayerStatus : MonoBehaviour
 	void Start ()
 	{
 		if (singleton == null) {
+			mainDoorKeys =0;
+			totalMainDoorKeys =5;
 			singleton = this;
 			singleton.keys = new Dictionary<string, int> ();
 			singleton.rooms = new Dictionary<string, BaseRoomController> ();
@@ -142,6 +148,17 @@ public class PlayerStatus : MonoBehaviour
 			return true;
 		}
 
+		return false;
+	}
+
+	public static void addMainDoorKey(){
+		mainDoorKeys++;
+	}
+
+	public static bool canOpenMainDoor(){
+		if(mainDoorKeys >= totalMainDoorKeys){
+			return true;
+		}
 		return false;
 	}
 
@@ -247,9 +264,6 @@ public class PlayerStatus : MonoBehaviour
 	}
 
 	public void killPlayer(){
-		//TODO
-		//play death animation
-		//change scene to first scene
 		transform.position =new Vector3(transform.position.x,transform.position.y-0.5f,transform.position.z);
 		Application.LoadLevel("EntranceHall");
 	}
