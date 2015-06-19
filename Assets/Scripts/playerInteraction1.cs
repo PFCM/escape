@@ -199,6 +199,8 @@ public class playerInteraction1 : MonoBehaviour
 			//exitButton.transform.position = new Vector3(exitButton.transform.position.x+200,exitButton.transform.position.y,exitButton.transform.position.z);
 			exitButton.transform.gameObject.SetActive(true);
 			resumeButton.transform.gameObject.SetActive(true);
+			exitButton.interactable =true;
+			resumeButton.interactable =true;
 		}
 		else{
 	
