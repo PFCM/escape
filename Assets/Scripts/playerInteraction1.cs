@@ -22,6 +22,8 @@ public class playerInteraction1 : MonoBehaviour
 
 	private GameObject lastHit = null;
 
+	private bool paused;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -41,6 +43,19 @@ public class playerInteraction1 : MonoBehaviour
 		
 		RaycastHit hit;
 
+		if( Input.GetButtonDown("Pause"))
+		{
+			paused = !paused;
+
+			if(paused){
+				//Bring up pause menu overlay
+					Time.timeScale = 0;
+			}
+			else{
+				//get rid of pause menu
+				Time.timeScale = 1;
+			}
+		}
 
 		if (Input.GetButtonDown ("Interact")) {
 			GameObject other = null;
