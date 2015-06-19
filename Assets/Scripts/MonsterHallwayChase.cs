@@ -6,12 +6,13 @@ using Escape.Util;
 public class MonsterHallwayChase : MonoBehaviour {
 	
 	private Vector3 targetPosition;
-	public float speed = 4.2f;
+	public float speed = 5.5f;
 	private int despawnTimer = 0; //timer to delete the monster after the puzzle is done
 	private GameObject player;
 	private AudioSource audioSource;
 	public AudioClip[] scream;
-	
+	public AudioClip killPlayerScream;
+
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -50,9 +51,11 @@ public class MonsterHallwayChase : MonoBehaviour {
 		player.GetComponent<PlayerStatus> ().stopRunning ();
 	}
 
-	void onCollisionEnter(Collision collision){
-		if(collision.gameObject.tag == "Player"){
-			collision.gameObject.GetComponent<PlayerStatus>().killPlayer();
+	public void OnTriggerEnter(Collider other){
+		if(other.tag =="Player"){
+			audioSource.clip = killPlayerScream;
+			audioSource.Play();
+			other.GetComponent<PlayerStatus>().killPlayer();
 		}
 	}
 }

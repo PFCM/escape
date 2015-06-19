@@ -21,7 +21,9 @@ public class InfiniteRoomEndTrigger : MonoBehaviour {
 	if (other.tag == "Player" && !triggered) {
 			other.gameObject.GetComponent<PlayerStatus>().stopRunning();
 			//stops monster
+			if(GameObject.FindGameObjectWithTag("MonsterHallwayChase") !=null){
 			GameObject.FindGameObjectWithTag("MonsterHallwayChase").GetComponent<MonsterHallwayChase>().playerSolvedPuzzle();
+			}
 			triggered = true;
 		}
 	}
