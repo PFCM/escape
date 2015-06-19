@@ -27,6 +27,16 @@ namespace Escape.Util
 			src.Play ();
 			return clips[index];
 		}
+
+		/* Returns RMS value of a block of samples */
+		public static float GetRMS(float[] samples)
+		{
+			float sum = 0;
+			for (int i = 0; i < samples.Length; i++) {
+				sum += samples[i] * samples[i]; // sum of squares
+			}
+			return Mathf.Sqrt (sum / samples.Length); // root of the mean of the squares :)
+		}
 	}
 }
 
