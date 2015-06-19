@@ -26,6 +26,9 @@ public class playerInteraction1 : MonoBehaviour
 	public Button exitButton;
 	public Button resumeButton;
 
+	private int torchFlickerMessageTimer = -1;
+	private int torchDrainMessageTimer = -1;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -114,6 +117,8 @@ public class playerInteraction1 : MonoBehaviour
 					else{
 						gameObject.GetComponent<playerGUIScript>().displayGuiText ("Press F to turn on flashlight");
 					}
+					torchFlickerMessageTimer = 500;
+					torchDrainMessageTimer = 1100;
 					PlayerStatus.GiveFlashlight ();
 					Destroy (other);
 				} else if (other.tag == "Pickupable") {
@@ -139,7 +144,7 @@ public class playerInteraction1 : MonoBehaviour
 					other.GetComponent<LightSwitchScript>().toggleOn();
 				}*/
 			}
-		
+
 		} 
 		
 
@@ -189,7 +194,17 @@ public class playerInteraction1 : MonoBehaviour
 
 
 		}
-
+		torchFlickerMessageTimer--;
+		torchDrainMessageTimer--;
+		if(torchFlickerMessageTimer==0){
+			print ("Printing message");
+			gameObject.GetComponent<playerGUIScript>().displayGuiText ("The torch will Flicker when looking at important objects");
+		}
+		
+		if(torchDrainMessageTimer==0){
+			print ("Printing message");
+			gameObject.GetComponent<playerGUIScript>().displayGuiText ("Pick up batteries to restore torch power.");
+		}
 	}
 
 	private void togglePause(){
