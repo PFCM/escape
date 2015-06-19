@@ -131,6 +131,10 @@ public class playerInteraction1 : MonoBehaviour
 				else if(other.tag == "Chime"){
 					other.GetComponent<ChimeScript>().activate ();
 				}
+				else if(other.tag == "mainDoorKey"){
+					PlayerStatus.addMainDoorKey ();
+					GameObject.Destroy (other);
+				}
 			/*	else if(other.tag == "Lightswitch"){
 					other.GetComponent<LightSwitchScript>().toggleOn();
 				}*/
@@ -167,7 +171,7 @@ public class playerInteraction1 : MonoBehaviour
 		//RAYCAST FOR DETECTING WHETHER TORCH IS SHINING ON A TARGET
 		if (Physics.Raycast (camera.transform.position, camera.transform.forward, out hit, 10, layerMask)) {
 		
-			if(hit.transform.gameObject.tag == "Interactable" || hit.transform.gameObject.tag == "Pickupable" || hit.transform.gameObject.tag == "battery"){
+			if(hit.transform.gameObject.tag == "Interactable" || hit.transform.gameObject.tag == "Pickupable" || hit.transform.gameObject.tag == "battery" || hit.transform.gameObject.tag == "mainDoorKey"){
 
 				if(gameObject.GetComponent<flashlightScript>().on){
 					if(lastHit ==null && hit.transform.gameObject !=null){
