@@ -1,0 +1,155 @@
+fileFormatVersion: 2
+guid: f8f2eb4bc6e1145c3ada5d7705f03041
+timeCreated: 1434672852
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Attic
+    100002: //RootNode
+    100004: Attic_Door_Trim
+    100006: Attic_Trim
+    100008: Attic_Trim1
+    100010: Attic_Trim2
+    100012: Attic_Trim_6
+    100014: SupportBeam
+    100016: SupportBeam1
+    100018: SupportBeam2
+    100020: SupportBeam3
+    100022: SupportBeam4
+    100024: SupportBeam5
+    100026: SupportBeam6
+    100028: SupportBeam7
+    100030: SupportBeam8
+    100032: SupportBeam9
+    100034: SupportBeam_Large
+    100036: SupportBeam_Large1
+    100038: transform1
+    100040: transform2
+    100042: transform3
+    400000: //RootNode
+    400002: Attic
+    400004: Attic_Door_Trim
+    400006: Attic_Trim
+    400008: Attic_Trim1
+    400010: Attic_Trim2
+    400012: Attic_Trim_6
+    400014: SupportBeam
+    400016: SupportBeam1
+    400018: SupportBeam2
+    400020: SupportBeam3
+    400022: SupportBeam4
+    400024: SupportBeam5
+    400026: SupportBeam6
+    400028: SupportBeam7
+    400030: SupportBeam8
+    400032: SupportBeam9
+    400034: SupportBeam_Large
+    400036: SupportBeam_Large1
+    400038: transform1
+    400040: transform2
+    400042: transform3
+    2300000: Attic
+    2300002: Attic_Door_Trim
+    2300004: Attic_Trim
+    2300006: SupportBeam
+    2300008: SupportBeam1
+    2300010: SupportBeam2
+    2300012: SupportBeam3
+    2300014: SupportBeam4
+    2300016: SupportBeam5
+    2300018: SupportBeam6
+    2300020: SupportBeam7
+    2300022: SupportBeam8
+    2300024: SupportBeam9
+    2300026: SupportBeam_Large
+    2300028: SupportBeam_Large1
+    3300000: Attic
+    3300002: Attic_Door_Trim
+    3300004: Attic_Trim
+    3300006: SupportBeam
+    3300008: SupportBeam1
+    3300010: SupportBeam2
+    3300012: SupportBeam3
+    3300014: SupportBeam4
+    3300016: SupportBeam5
+    3300018: SupportBeam6
+    3300020: SupportBeam7
+    3300022: SupportBeam8
+    3300024: SupportBeam9
+    3300026: SupportBeam_Large
+    3300028: SupportBeam_Large1
+    4300000: Attic
+    4300002: SupportBeam
+    4300004: SupportBeam1
+    4300006: SupportBeam2
+    4300008: SupportBeam3
+    4300010: SupportBeam4
+    4300012: SupportBeam5
+    4300014: SupportBeam6
+    4300016: SupportBeam7
+    4300018: SupportBeam8
+    4300020: SupportBeam9
+    4300022: SupportBeam_Large
+    4300024: SupportBeam_Large1
+    4300026: Attic_Door_Trim
+    4300028: Attic_Trim
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
