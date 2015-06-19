@@ -23,6 +23,8 @@ public class playerInteraction1 : MonoBehaviour
 	private GameObject lastHit = null;
 
 	private bool paused;
+	public Button exitButton;
+	public Button resumeButton;
 
 	// Use this for initialization
 	void Start ()
@@ -35,6 +37,11 @@ public class playerInteraction1 : MonoBehaviour
 		} else {
 			gameObject.GetComponent<playerGUIScript> ().displayGuiText ("Press E to pick up objects");
 		}
+
+		exitButton.onClick.AddListener(() => { Application.Quit (); });
+		resumeButton.onClick.AddListener(() => { togglePause(); });
+		exitButton.transform.gameObject.SetActive(false);
+		resumeButton.transform.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -45,16 +52,8 @@ public class playerInteraction1 : MonoBehaviour
 
 		if( Input.GetButtonDown("Pause"))
 		{
-			paused = !paused;
+			togglePause ();
 
-			if(paused){
-				//Bring up pause menu overlay
-					Time.timeScale = 0;
-			}
-			else{
-				//get rid of pause menu
-				Time.timeScale = 1;
-			}
 		}
 
 		if (Input.GetButtonDown ("Interact")) {
@@ -189,6 +188,27 @@ public class playerInteraction1 : MonoBehaviour
 
 	}
 
+	private void togglePause(){
+		paused = !paused;
+		
+		if(paused){
+			
+			//Bring up pause menu overlay
+			Time.timeScale = 0;
+			//exitButton.transform.position = new Vector3(resumeButton.transform.position.x+200,resumeButton.transform.position.y,exitButton.transform.position.z);
+			//exitButton.transform.position = new Vector3(exitButton.transform.position.x+200,exitButton.transform.position.y,exitButton.transform.position.z);
+			exitButton.transform.gameObject.SetActive(true);
+			resumeButton.transform.gameObject.SetActive(true);
+		}
+		else{
+	
+			exitButton.transform.gameObject.SetActive(false);
+			resumeButton.transform.gameObject.SetActive(false);
+
+			//get rid of pause menu
+			Time.timeScale = 1;
+		}
+	}
 
 	void OnTriggerEnter (Collider other)
 	{
