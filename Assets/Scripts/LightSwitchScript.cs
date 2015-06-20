@@ -8,6 +8,8 @@ using Escape.Util;
 [RequireComponent(typeof(AudioSource))]
 public class LightSwitchScript : InteractableObject {
 
+	public bool onByDefault = false;
+
 	public bool on = false;
 	public GameObject lightGroup;
 	private Light[] lights;
@@ -35,6 +37,9 @@ public class LightSwitchScript : InteractableObject {
 		}
 
 		lightSwitch = transform.Find ("Light_Switch_Switch");
+		if(!onByDefault && Random.Range (0,100)>75){
+		Interact (null);
+		}
 	}
 
 

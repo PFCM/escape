@@ -73,12 +73,16 @@ public class RoomEventGenerator : MonoBehaviour {
 
 
 			if(eventChoice == "turnLightsRed"){
+				GameObject sound = Instantiate(Resources.Load("Events/RandomSoundGenerator")) as GameObject; 
+				sound.transform.position = gameObject.transform.position;
 				turnLightsRed();
 				eventChoice = null;
 			}
 
 			//this changes the players controls and makes their screen go red
 			if(eventChoice == "delusion"){
+				GameObject sound = Instantiate(Resources.Load("Events/RandomSoundGenerator")) as GameObject; 
+				sound.transform.position = gameObject.transform.position;
 				activateDelusionMode();
 				eventChoice = null;
 			}
@@ -88,32 +92,27 @@ public class RoomEventGenerator : MonoBehaviour {
 			if(eventChoice == "ageRoom"){
 				eventChoice = null;
 			}
-			if(eventChoice == "openObjects"){
-				openObjects();
-				eventChoice = null;
-			}
 
 
 			if(eventChoice == "monsterStanding"){
-				
+				GameObject sound = Instantiate(Resources.Load("Events/RandomSoundGenerator")) as GameObject; 
+				sound.transform.position = gameObject.transform.position;
 				//spawn a monster
 				GameObject monster = Instantiate(Resources.Load("Monsters/MonsterStanding")) as GameObject; 
 
 				Vector3 targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
-				targetPosition = targetPosition + (GameObject.FindGameObjectWithTag ("Player").transform.forward * 2);
+				targetPosition = targetPosition + (GameObject.FindGameObjectWithTag ("Player").transform.forward * 1.5f);
 				monster.transform.position = targetPosition;
 				eventChoice = null;
 			}
 
 			if(eventChoice == "monsterSpawnBehind"){
+
 				print (eventChoice + " spawned monster");
 				//spawn a monster
 				GameObject monster = Instantiate(Resources.Load("Monsters/MonsterSpawnBehind")) as GameObject; 
 				//monster.transform.position = gameObject.transform.position;
 				eventChoice = null;
-			}
-			if(eventChoice == "spawnBatteries"){
-				spawnBatteries();
 			}
 
 		}
@@ -135,14 +134,13 @@ public class RoomEventGenerator : MonoBehaviour {
 		
 		//index of chosen event
 		int eventIndex = 0;
-		//eventChance = 50; //TODO get rid of this
 
 		//roll to include rare events
 		if(eventChance > Random.Range (0, 80)){
-			string[] events = {"monsterSpawnBehind", "monsterStanding", "flickerLights", "turnLightsRed", "spawnBatteries", "randomSound", "delusion", "ageRoom"}; 
+			string[] events = {"monsterSpawnBehind", "monsterStanding", "flickerLights", "turnLightsRed", "randomSound", "delusion", "ageRoom"}; 
 		}
 		else{
-			string[] events = {"flickerLights", "turnLightsRed", "spawnBatteries", "randomSound", "ageRoom"}; 
+			string[] events = {"flickerLights", "turnLightsRed", "randomSound", "ageRoom"}; 
 		}
 
 		//roll to choose event
@@ -151,7 +149,6 @@ public class RoomEventGenerator : MonoBehaviour {
 			eventIndex = Mathf.RoundToInt (Random.Range (0, Mathf.RoundToInt(events.Length)));
 			eventChoice = events[eventIndex];
 
-			eventChoice = "spawnbatteries";
 			print (eventChoice + "EVENT CHOICE");
 		
 
