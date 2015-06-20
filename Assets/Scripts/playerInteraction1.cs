@@ -140,12 +140,17 @@ public class playerInteraction1 : MonoBehaviour
 					PlayerStatus.addMainDoorKey ();
 					GameObject.Destroy (other);
 				}
+			} else if (other.tag == "mainDoor") {
+				if(PlayerStatus.canOpenMainDoor()){
+					other.GetComponent<doorCloseScript>().activateDoor();
+				}
+			}
 			/*	else if(other.tag == "Lightswitch"){
 					other.GetComponent<LightSwitchScript>().toggleOn();
 				}*/
 			}
 
-		} 
+		 
 		
 
 
