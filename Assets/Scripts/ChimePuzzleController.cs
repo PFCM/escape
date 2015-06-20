@@ -17,6 +17,7 @@ public class ChimePuzzleController : MonoBehaviour {
 	}
 
 	private void randomizeChimeOrder(){
+
 		int numOfChimes = chimes.Length;
 		int chimeOrder = 0;
 
@@ -26,7 +27,7 @@ public class ChimePuzzleController : MonoBehaviour {
 			//choose a random chime
 		//continue until all chimes are given a number
 		while(chimeOrder<chimes.Length){	
-			print (chimeOrder);
+
 			int chosenChime = Mathf.RoundToInt(Random.Range (0,chimes.Length));
 			//if it hasnt been set, set it
 			if(chimes[chosenChime].GetComponent<ChimeScript>().setOrder(chimeOrder)){
@@ -52,7 +53,10 @@ public class ChimePuzzleController : MonoBehaviour {
 	}
 
 	private void puzzleComplete(){
-		print ("Player completed chime puzzle");
+		print ("player completed puzzle");
+		GameObject key = Instantiate(Resources.Load("Keys/mainDoorKey")) as GameObject; 
+		key.transform.position = gameObject.transform.position;
 		//give a key or unlock some room
+
 	}
 }

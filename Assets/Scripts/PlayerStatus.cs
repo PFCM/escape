@@ -267,4 +267,11 @@ public class PlayerStatus : MonoBehaviour
 		transform.position =new Vector3(transform.position.x,transform.position.y-0.5f,transform.position.z);
 		Application.LoadLevel("EntranceHall");
 	}
+
+	public static int getMainDoorKeys(){
+		return mainDoorKeys;
+	}
+	public static int getTotalMainDoorKeys(){
+		return totalMainDoorKeys;
+	}
 }

@@ -13,7 +13,7 @@ public class ChimeScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		audioSource = GetComponent<AudioSource> ();
-		order = -1;
+		//order = -1;
 	}
 	
 	// Update is called once per frame

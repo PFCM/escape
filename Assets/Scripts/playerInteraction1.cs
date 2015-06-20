@@ -138,6 +138,7 @@ public class playerInteraction1 : MonoBehaviour
 				}
 				else if(other.tag == "mainDoorKey"){
 					PlayerStatus.addMainDoorKey ();
+					gameObject.GetComponent<playerGUIScript>().displayGuiText(PlayerStatus.getMainDoorKeys() + "/" + PlayerStatus.getTotalMainDoorKeys() + " exit keys found"); 
 					GameObject.Destroy (other);
 				}
 			} else if (other.tag == "mainDoor") {
