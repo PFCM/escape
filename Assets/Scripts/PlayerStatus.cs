@@ -152,6 +152,7 @@ public class PlayerStatus : MonoBehaviour
 	}
 
 	public static void addMainDoorKey(){
+		instance.playRandomSound (instance.keySounds);
 		mainDoorKeys++;
 	}
 
