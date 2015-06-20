@@ -46,7 +46,7 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 	private void spawnKey(){
 		//chooses a random position and makes a key from it
 		int chosenPosition = Random.Range (0,keyPositions.Length-1);
-		GameObject key = Instantiate(Resources.Load("")) as GameObject; 
+		GameObject key = Instantiate(Resources.Load("Keys/mainDoorKey")) as GameObject; 
 		key.transform.position = keyPositions[chosenPosition].transform.position;
 	}
 	
