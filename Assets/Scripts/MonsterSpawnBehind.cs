@@ -10,6 +10,7 @@ public class MonsterSpawnBehind : MonoBehaviour {
 	
 	private bool enraged = false;
 	private AudioSource audioSource;
+	public AudioClip scareSound;
 	public AudioClip[] footstepSounds;
 
 
@@ -55,6 +56,8 @@ public class MonsterSpawnBehind : MonoBehaviour {
 	public bool startChasingPlayer(){
 		//this check stops it from trigger multiple times when it shouldn't
 		if (enraged == false) {
+			GameObject sound = Instantiate(Resources.Load("Events/RandomSoundGenerator")) as GameObject; 
+			sound.transform.position = gameObject.transform.position;
 			enraged = true;
 			targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
 			speed = 4;
