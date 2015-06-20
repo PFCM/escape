@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Escape.Core;
 
 public class PanicRoomPuzzleController : MonoBehaviour {
 
@@ -35,6 +36,10 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 			GameObject monster = Instantiate(Resources.Load("Monsters/MonsterChase")) as GameObject; 
 			monster.transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z +4);
 		}
+//		if(keySpawned && key == null){
+//			PlayerStatus.addMainDoorKey();
+//			GameObject.FindGameObjectWithTag("Player").GetComponent<playerGUIScript>().displayGuiText(PlayerStatus.getMainDoorKeys() + "/" + PlayerStatus.getTotalMainDoorKeys() + " exit keys found");
+//		}
 	}
 
 	public void OnTriggerEnter(Collider other){
@@ -58,8 +63,10 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 	private void spawnKey(){
 		//chooses a random position and makes a key from it
 		int chosenPosition = Random.Range (0,keyPositions.Length-1);
-		key = Instantiate(Resources.Load("Keys/mainDoorKey")) as GameObject; 
+		key = Instantiate(Resources.Load("Keys/Key")) as GameObject; 
 		key.transform.position = keyPositions[chosenPosition].transform.position;
+		key.GetComponent<Key>().name = "Livingroom";
+		key.GetComponent<Key>().mainDoorKey = false;
 		keySpawned = true;
 	}
 	
