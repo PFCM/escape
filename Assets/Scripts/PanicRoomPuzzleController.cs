@@ -14,6 +14,10 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 
 	private int spawnMonsterTimer;
 
+	public GameObject key;
+	private bool keySpawned;
+	private bool playerSolvedPuzzle;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -24,7 +28,10 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 	void Update () {
 		spawnMonsterTimer--;
 
-		if(spawnMonsterTimer <0){
+		//if key Something
+		//player solved puzzle
+
+		if(spawnMonsterTimer <0 && !playerSolvedPuzzle){
 			GameObject monster = Instantiate(Resources.Load("Monsters/MonsterChase")) as GameObject; 
 			monster.transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z +4);
 		}
@@ -36,7 +43,7 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 		//sounds play
 		if(other.gameObject.tag == "Player" && !triggered){
 		triggered = true;
-		spawnMonsterTimer = 3000;	
+		spawnMonsterTimer = 2500;	
 		spawnKey();
 		for(int i =0;i<lights.Length;i++){
 			lights[i].color = Color.red;
@@ -51,8 +58,9 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 	private void spawnKey(){
 		//chooses a random position and makes a key from it
 		int chosenPosition = Random.Range (0,keyPositions.Length-1);
-		GameObject key = Instantiate(Resources.Load("Keys/mainDoorKey")) as GameObject; 
+		key = Instantiate(Resources.Load("Keys/mainDoorKey")) as GameObject; 
 		key.transform.position = keyPositions[chosenPosition].transform.position;
+		keySpawned = true;
 	}
 	
 }
