@@ -6,6 +6,8 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 	public GameObject [] keyPositions;
 	public Light [] lights;
 
+	private bool triggered = false;
+
 	private AudioSource audioSource;
 
 	public AudioClip horrorSound;
@@ -15,7 +17,7 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-
+		triggered = false;
 	}
 	
 	// Update is called once per frame
@@ -32,6 +34,8 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 		//all doors close
 		//lights turn red
 		//sounds play
+		if(other.gameObject.tag == "Player" && !triggered){
+		triggered = true;
 		spawnMonsterTimer = 3000;	
 		spawnKey();
 		for(int i =0;i<lights.Length;i++){
@@ -40,6 +44,7 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 
 		audioSource.clip = horrorSound;
 		audioSource.Play ();
+		}
 
 	}
 
