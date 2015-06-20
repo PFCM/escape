@@ -93,13 +93,6 @@ public class playerInteraction1 : MonoBehaviour
 					gameObject.GetComponent<flashlightScript> ().loadBattery ();
 				
 				} else if (other.tag == "door") {
-					//Debug.Log("Hit object " + camera.transform.gameObject.tag);
-					//when the user presses E destroy object and load battery
-					//if (Input.GetKeyDown (KeyCode.E) || Input.GetKeyDown (KeyCode.JoystickButton1)) {
-					//destroys battery object
-					//Destroy (hit.transform.gameObject);
-					//gameObject.GetComponent<flashlightScript>().loadBatter
-					//Debug.Log ("hit door");
 					other.GetComponent<doorCloseScript> ().activateDoor ();
 				
 				
@@ -146,9 +139,6 @@ public class playerInteraction1 : MonoBehaviour
 					other.GetComponent<doorCloseScript>().activateDoor();
 				}
 			}
-			/*	else if(other.tag == "Lightswitch"){
-					other.GetComponent<LightSwitchScript>().toggleOn();
-				}*/
 			}
 
 		 
@@ -182,7 +172,7 @@ public class playerInteraction1 : MonoBehaviour
 		//RAYCAST FOR DETECTING WHETHER TORCH IS SHINING ON A TARGET
 		if (Physics.Raycast (camera.transform.position, camera.transform.forward, out hit, 10, layerMask)) {
 		
-			if(hit.transform.gameObject.tag == "Interactable" || hit.transform.gameObject.tag == "Pickupable" || hit.transform.gameObject.tag == "battery" || hit.transform.gameObject.tag == "mainDoorKey" ||hit.transform.gameObject.tag == "Chime" ){
+			if(hit.transform.gameObject.tag == "Interactable" || hit.transform.gameObject.tag == "Pickupable" || hit.transform.gameObject.tag == "battery" || hit.transform.gameObject.tag == "mainDoorKey" ||hit.transform.gameObject.tag == "Chime" || hit.transform.gameObject.tag == "Key" ){
 
 				if(gameObject.GetComponent<flashlightScript>().on){
 					if(lastHit ==null && hit.transform.gameObject !=null){
