@@ -13,12 +13,8 @@ public class BatterySpawnPositionScript : MonoBehaviour {
 		
 	}
 	
-	public void OnTriggerEnter(Collider other){
-		
-	}
-	
 	private void SpawnBattery(){
-		if(Random.Range (0,100) >0){
+		if(Random.Range (0,100) >50){
 			GameObject battery = Instantiate(Resources.Load("Misc/Battery")) as GameObject; 
 			battery.transform.position = transform.position;
 		}
