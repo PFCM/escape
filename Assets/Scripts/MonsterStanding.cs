@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MonsterStanding : MonoBehaviour {
 	
-	public int timer = 200;
+	public int timer = 150;
 	
 	// Use this for initialization
 	void Start () {
