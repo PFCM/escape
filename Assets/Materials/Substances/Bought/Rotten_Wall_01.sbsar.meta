@@ -7,7 +7,7 @@ labels:
 - paint
 - building
 - rust
-timeCreated: 1434874502
+timeCreated: 1434874680
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -2108,8 +2108,8 @@ SubstanceImporter:
     - name: Paint_Color
       value:
         scalar[0]: 1
-        scalar[1]: .963235319
-        scalar[2]: .963235319
+        scalar[1]: .713235259
+        scalar[2]: .713235259
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Paint_Erosion
@@ -2170,7 +2170,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Saturation
       value:
-        scalar[0]: .43599999
+        scalar[0]: .254000008
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
