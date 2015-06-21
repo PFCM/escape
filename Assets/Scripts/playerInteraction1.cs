@@ -199,7 +199,7 @@ public class playerInteraction1 : MonoBehaviour
 		
 		if(torchDrainMessageTimer==0){
 			print ("Printing message");
-			gameObject.GetComponent<playerGUIScript>().displayGuiText ("Pick up batteries to restore torch power.");
+			gameObject.GetComponent<playerGUIScript>().displayGuiText ("The torch will drain quickly. Pick up batteries to recharge it.");
 		}
 	}
 
