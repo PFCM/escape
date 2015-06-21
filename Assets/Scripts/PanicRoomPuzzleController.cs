@@ -40,13 +40,6 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 			GameObject monster = Instantiate(Resources.Load("Monsters/MonsterChase")) as GameObject; 
 			monster.transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z +4);
 		}
-//		if(keySpawned && key == null){
-//			PlayerStatus.addMainDoorKey();
-//			GameObject.FindGameObjectWithTag("Player").GetComponent<playerGUIScript>().displayGuiText(PlayerStatus.getMainDoorKeys() + "/" + PlayerStatus.getTotalMainDoorKeys() + " exit keys found");
-//		}
-	//	if(key ==null){
-		//	playerSolvedPuzzle=true;
-		//}
 	}
 
 	public void OnTriggerEnter(Collider other){
