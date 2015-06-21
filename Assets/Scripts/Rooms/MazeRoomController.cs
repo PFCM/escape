@@ -6,6 +6,8 @@ using Escape.Util;
 public class MazeRoomController : BaseRoomController {
 	private MazeGenerator generator;
 
+	// chance of a wandering monster
+
 
 	// Use this for initialization
 	void Start () {
