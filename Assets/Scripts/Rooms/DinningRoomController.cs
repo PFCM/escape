@@ -13,9 +13,9 @@ namespace Escape.Rooms
 		void Start ()
 		{
 			CheckParentRoomStatus ();
-			doors [0].SetWeight ("Hallway2", 1f);
-			doors [1].SetWeight ("Bathroom", 1f);
-			doors [1].SetWeight ("Bedroom", 0.5f);
+			doors [0].SetWeight ("Attic", 1f);
+			//doors [1].SetWeight ("Bathroom", 1f);
+			//doors [1].SetWeight ("Bedroom", 0.5f);
 			//doors [0].SetWeight ("Bathroom", 0.1f);
 			//doors [0].SetWeight ("EntranceHall", 0.7f);
 		}
