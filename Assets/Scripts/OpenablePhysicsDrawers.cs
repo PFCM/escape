@@ -23,7 +23,7 @@ public class OpenablePhysicsDrawers : OpenableObject {
 	};
 	private State state = State.CLOSED; // state of the current drawer
 	private int currentDrawer;
-	private float startX;
+	private Vector3 startPos;
 
 	// Use this for initialization
 	void Start () {
@@ -45,16 +45,16 @@ public class OpenablePhysicsDrawers : OpenableObject {
 			if (state == State.CLOSED) {
 				PlaySound (openSound);
 				state = State.OPENING;
-				startX = drawers[currentDrawer].position.x;
-				StartCoroutine(MoveDrawer(startX,
-				                          startX + openDistance,
+				startPos = drawers[currentDrawer].position;
+				StartCoroutine(MoveDrawer(startPos,
+				                          startPos + openDistance * drawers[currentDrawer].forward,
 				                          openSound.length,
 				                          State.OPEN));
 			} else if (state == State.OPEN) {
 				state = State.CLOSING;
 				PlaySound (closeSound);
-				StartCoroutine(MoveDrawer(drawers[currentDrawer].position.x,
-				                          startX,
+				StartCoroutine(MoveDrawer(drawers[currentDrawer].position,
+				                          startPos,
 				                          closeSound.length,
 				                          State.CLOSED,
 				                          true));
@@ -63,14 +63,12 @@ public class OpenablePhysicsDrawers : OpenableObject {
 	}
 
 	// moves the current drawer's x position from from to to in time seconds, leaves state appropriately
-	IEnumerator MoveDrawer(float from, float to, float time, State finalState, bool increment=false) {
+	IEnumerator MoveDrawer(Vector3 from, Vector3 to, float time, State finalState, bool increment=false) {
 		float counter = 0;
-		float step = 1.0f / (time * 50f); // doesn't quite match up with the length of the sounds, but that was awkwardly slow
-		Debug.Log (step);
+		float step = 1.0f / (time * 10f); // doesn't quite match up with the length of the sounds, but that was awkwardly slow
+		//Debug.Log (step);
 		while (counter < 1.0f) {
-			Vector3 pos = drawers[currentDrawer].position;
-			pos.x = Mathf.SmoothStep(from, to, counter);
-			drawers[currentDrawer].position = pos;
+			drawers[currentDrawer].position = Vector3.Lerp(from, to, counter);
 			counter += step;
 			yield return new WaitForSeconds(0.005f);
 		}
