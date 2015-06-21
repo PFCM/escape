@@ -30,5 +30,13 @@ namespace Escape.Rooms
 			// do something
 			Logging.Log ("(Nursery) Player picked up " + name);
 		}
+
+		public override void Shuffle() // TODO: move this into super class, even just as a helper
+		{
+			base.Shuffle ();
+			foreach (PositionableObject obj in objects) {
+				obj.ChooseRandomPositionUniform ();
+			}
+		}
 	}
 }
