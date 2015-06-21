@@ -51,7 +51,7 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 		//sounds play
 		if(other.gameObject.tag == "Player" && !triggered){
 		triggered = true;
-		spawnMonsterTimer = 2500;	
+		spawnMonsterTimer = 2200;	
 		spawnKey();
 		for(int i =0;i<lights.Length;i++){
 			lights[i].color = Color.red;
