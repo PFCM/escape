@@ -19,9 +19,12 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 	private bool keySpawned;
 	private bool playerSolvedPuzzle;
 
+	public BaseRoomController livingRoomController;
+
 	// Use this for initialization
 	void Start () {
-	
+		audioSource = gameObject.GetComponent<AudioSource> ();
+		spawnMonsterTimer=-1;
 		triggered = false;
 	}
 	
@@ -32,7 +35,7 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 		//if key Something
 		//player solved puzzle
 
-		if(spawnMonsterTimer <0 && !playerSolvedPuzzle){
+		if(spawnMonsterTimer ==0 && !playerSolvedPuzzle){
 			GameObject monster = Instantiate(Resources.Load("Monsters/MonsterChase")) as GameObject; 
 			monster.transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z +4);
 		}
@@ -65,8 +68,9 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 		int chosenPosition = Random.Range (0,keyPositions.Length-1);
 		key = Instantiate(Resources.Load("Keys/Key")) as GameObject; 
 		key.transform.position = keyPositions[chosenPosition].transform.position;
-		key.GetComponent<Key>().name = "Livingroom";
-		key.GetComponent<Key>().mainDoorKey = false;
+		key.GetComponent<Key>().name = "LivingRoomKey";
+		key.GetComponent<Key>().mainDoorKey = true;
+		key.GetComponent<Key>().controller = livingRoomController;
 		keySpawned = true;
 	}
 	

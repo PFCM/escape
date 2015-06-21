@@ -7,11 +7,13 @@ namespace Escape.Core
 	{
 		public string name;
 		public bool mainDoorKey = false;
+		public BaseRoomController controller;
 
 		public void PickUp()
 		{
-			BaseRoomController controller = GetComponentInParent<BaseRoomController> ();
-			if (controller != null) {
+			if(controller ==null){
+			controller = GetComponentInParent<BaseRoomController> ();
+			}if (controller != null) {
 				controller.ItemPickedUp (name);
 			} else {
 				Debug.LogError("Can't find controller");
