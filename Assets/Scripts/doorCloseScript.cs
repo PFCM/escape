@@ -30,6 +30,8 @@ public class doorCloseScript : MonoBehaviour {
 
 	public bool flippedDoor = false;
 
+	public bool isMainDoor = false;
+
 	public BaseDoor trigger;
 
 	private bool _locked;
@@ -116,7 +118,14 @@ public class doorCloseScript : MonoBehaviour {
 				lastSound = AudioTools.PlayRandomSound (audioSrc, lockedSounds, lastSound);
 				Logging.Log ("(Door) Open fail " + key);
 			}
-		} else if (key != "" && key != null && !PlayerStatus.HasKey (key)) {
+		} 
+		else if (isMainDoor && !PlayerStatus.canOpenMainDoor()) {
+			lastSound = AudioTools.PlayRandomSound (audioSrc, lockedSounds, lastSound);
+			if (_locked)
+				gameObject.GetComponent<playerGUIScript>().displayGuiText("You still need "  +(PlayerStatus.getTotalMainDoorKeys()-PlayerStatus.getMainDoorKeys()) + " keys"); 
+			Logging.Log ("(Door) Open fail main door not enough keys");
+		}
+		else if (key != "" && key != null && !PlayerStatus.HasKey (key)) {
 			lastSound = AudioTools.PlayRandomSound (audioSrc, lockedSounds, lastSound);
 			if (_locked)
 				GameObject.FindGameObjectWithTag("Player").GetComponent<playerGUIScript>().displayGuiText("Maybe I need a key...");

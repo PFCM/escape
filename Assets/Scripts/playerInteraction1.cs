@@ -134,9 +134,14 @@ public class playerInteraction1 : MonoBehaviour
 					gameObject.GetComponent<playerGUIScript>().displayGuiText(PlayerStatus.getMainDoorKeys() + "/" + PlayerStatus.getTotalMainDoorKeys() + " exit keys found"); 
 					GameObject.Destroy (other);
 				}else if (other.tag == "mainDoor") {
-					if(PlayerStatus.canOpenMainDoor()){
-						other.GetComponent<doorCloseScript>().activateDoor();
+					other.GetComponent<doorCloseScript>().activateDoor();
+					if(!PlayerStatus.canOpenMainDoor()){
+						gameObject.GetComponent<playerGUIScript>().displayGuiText("You still need "  +(PlayerStatus.getTotalMainDoorKeys()-PlayerStatus.getMainDoorKeys()) + " keys"); 
+
 					}
+					//else{
+					//	gameObject.GetComponent<playerGUIScript>().displayGuiText("You still need "  +(PlayerStatus.getTotalMainDoorKeys()-PlayerStatus.getMainDoorKeys()) + " keys"); 
+					//}
 				}
 			} 
 			}
