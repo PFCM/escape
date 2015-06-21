@@ -56,15 +56,26 @@ namespace Escape.Core
 				level = clips.Length - 1;
 			nextVolume = volume * (1.0f + volumeStep * level);
 			Logging.Log ("(AmbienceGenerator) intensity level " + level);
+			if (sourceA == playing) {
+				sourceB.clip = RandomClip ();
+			} else {
+				sourceA.clip = RandomClip ();
+			}
 			StartCoroutine (FadeVolume ());
 		}
 
 		// manually set the level of intensity
 		public void SetIntensity(int value)
 		{
+
 			level = Mathf.Clamp (value, 0, clips.Length-1);
 			nextVolume = volume * (1.0f + volumeStep * level);
 			Logging.Log ("(AmbienceGenerator) intensity level " + level);
+			if (sourceA == playing) {
+				sourceB.clip = RandomClip ();
+			} else {
+				sourceA.clip = RandomClip ();
+			}
 			StartCoroutine (FadeVolume ());
 		}
 
