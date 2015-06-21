@@ -24,20 +24,20 @@ namespace Escape
 			public Transform doorPosition;
 			private GameObject nextRoom;
 			public bool loaded = false;// has the room been loaded?
-
+			
 			public doorCloseScript exitDoorObject;
-
+			
 			// how many collisions are needed before the room is loaded
 			public int collisionsRequired = 1;
 			public int collisions = 0; // how many have happened?
-
+			
 			void Start ()
 			{
 				//doorPosition = transform;
 				if (weights == null)
 					weights = new Dictionary<string, float> ();
 			}
-
+			
 			// chooses a room probabilistically according to the weights
 			public BaseRoomController LoadNextRoom ()
 			{
@@ -66,19 +66,19 @@ namespace Escape
 				*/
 				//this.GetComponentInParent<BaseRoomController> ().gameObject.SetActive (false);
 				BaseRoomController room = PlayerStatus.GetRoomByTag (result);
-
+				
 				if (room == null) {
 					StartCoroutine (LoadRoomAsLevel (result));
 				} else {
 					ReloadRoom (room.gameObject);
 				}
-
-
-
+				
+				
+				
 				return this.GetComponentInParent<BaseRoomController> ();//newRoom.GetComponent<BaseRoomController> ();
 			}
-
-
+			
+			
 			// ensures a room that already exists is re-loaded approprioately into the correct position
 			void ReloadRoom (GameObject root)
 			{
@@ -90,7 +90,7 @@ namespace Escape
 				newRoom.Shuffle ();
 				Logging.Log ("(BaseDoor) Repositioned already loaded room: " + root.tag);
 			}
-
+			
 			// this has to happen
 			// Unity appears to not actually load the level until the end of the frame
 			// meaning that if you call FindX you won't find it, so good idea to 
@@ -100,7 +100,7 @@ namespace Escape
 				AsyncOperation async = Application.LoadLevelAdditiveAsync (name);
 				
 				yield return async;
-
+				
 				GameObject[] newStuff = GameObject.FindGameObjectsWithTag (name);//.transform.root.gameObject;
 				GameObject newRoom = null;
 				foreach (GameObject o in newStuff) {
@@ -109,31 +109,31 @@ namespace Escape
 						break; // there may be lots of them, so jump ship asap
 					}
 				}
-
+				
 				if (newRoom == null) {
 					Debug.LogError ("Could not find the room supposedly loaded?");
 					return false; 
 				}
-
+				
 				BaseRoomController newRoomController = newRoom.GetComponentInChildren<BaseRoomController> ();
 				newRoomController.SetParentRoom (this.GetComponentInParent<BaseRoomController> ());
 				
 				LineUpFacing (newRoom.transform);
 				newRoomController.positioned = true;
 				this.nextRoom = newRoom;
-
+				
 				exitDoorObject.gameObject.SetActive (true);
-
+				
 				// store in PlayerStatus
 				PlayerStatus.AddRoom (newRoomController);
 				BaseRoomController thisRoom = GetComponentInParent<BaseRoomController> ();
 				if (thisRoom != null) {
 					thisRoom.AddChild (newRoomController);
 				}
-
+				
 				Logging.Log ("(BaseDoor) loaded " + name);
 			}
-
+			
 			// Lines up a given transform so it is colocated with doorPosition, facing the opposite 
 			// direction
 			public void LineUpFacing (Transform other)
@@ -143,21 +143,42 @@ namespace Escape
 				//other.RotateAround (other.position, Vector3.up, 180);
 				//other.LookAt (doorPosition); // should do the trick???
 			}
-
+			
 			// default -- choose a new room when the collider is triggered
 			// would have to have an attached collider with 'isTrigger' checked
 			// this is here for convenience, some doors may be triggered by other means
 			public void OnTriggerEnter (Collider other)
 			{
-
+				
 				//Just so the infinite hallway generates properly
 				if (nextRoom != null) {
-					if (nextRoom.tag == "InfiniteHallway" || nextRoom.tag == "InfiniteHallway2" || nextRoom.tag == "InfiniteHallway3" || nextRoom.tag == "InfiniteHallwaySecret") {
+					if (nextRoom.tag == "InfiniteHallway" || nextRoom.tag == "InfiniteHallway2" || nextRoom.tag == "InfiniteHallway3" || 
+					    nextRoom.tag == "InfiniteHallwaySecret") {
 						nextRoom = null;
 					}
 				}
-
-				if (nextRoom == null || !nextRoom.activeInHierarchy) {
+				//special case for main door
+				if(exitDoorObject.isMainDoor){
+					if (other.gameObject.tag.Equals ("Player") && PlayerStatus.canOpenMainDoor()) { // temp tag
+						collisions++;
+						Logging.Log ("(BaseDoor) Collision " + collisions);
+						if (collisions >= collisionsRequired && !loaded) {
+							if (PlayerStatus.HasKey (exitDoorObject.key)) {
+								if (exitDoorObject.IsClosed ()) {
+									LoadNextRoom ();
+								} else {
+									StartCoroutine(WaitAndLoad(exitDoorObject)); // probably nt a good idea
+									Logging.Log ("(BaseDoor) Waiting for door to close to load next room.");
+								} 
+							} else 
+								Logging.Log ("(BaseDoor) Not loaded - no key");
+						} else if (isInfiniteHallwayDoor) {
+							//Fix for infinite hallways
+							LoadNextRoom ();
+						}
+					}
+				}
+				else if (nextRoom == null || !nextRoom.activeInHierarchy) {
 					if (other.gameObject.tag.Equals ("Player")) { // temp tag
 						collisions++;
 						Logging.Log ("(BaseDoor) Collision " + collisions);
@@ -178,7 +199,7 @@ namespace Escape
 					}
 				}
 			}
-
+			
 			/* tests
 			void OnTriggerStay(Collider other)
 			{
@@ -192,7 +213,7 @@ namespace Escape
 				if (!loaded && other.tag == "Player")
 					OnTriggerEnter (other);
 			}*/
-
+			
 			// waits until the door is closed, then loads the next room
 			IEnumerator WaitAndLoad (doorCloseScript door)
 			{
@@ -201,17 +222,17 @@ namespace Escape
 				}
 				LoadNextRoom ();
 			}
-
+			
 			// sets a weight, initialises dictionary if this has not already been done
 			public void SetWeight (string name, float weight)
 			{
 				if (weights == null)
 					weights = new Dictionary<string, float> ();
-
+				
 				weights [name] = weight;
 			}
 		}
-
-
+		
+		
 	}
 }
