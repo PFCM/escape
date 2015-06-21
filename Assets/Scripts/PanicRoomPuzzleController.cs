@@ -10,6 +10,7 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 	private bool triggered = false;
 
 	private AudioSource audioSource;
+	public AudioSource monsterScreamAudioSource;
 
 	public AudioClip horrorSound;
 
@@ -35,7 +36,7 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 		//if key Something
 		//player solved puzzle
 
-		if(spawnMonsterTimer ==0 && !playerSolvedPuzzle){
+		if(spawnMonsterTimer ==0 && key!=null){//!playerSolvedPuzzle){
 			GameObject monster = Instantiate(Resources.Load("Monsters/MonsterChase")) as GameObject; 
 			monster.transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z +4);
 		}
@@ -43,6 +44,9 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 //			PlayerStatus.addMainDoorKey();
 //			GameObject.FindGameObjectWithTag("Player").GetComponent<playerGUIScript>().displayGuiText(PlayerStatus.getMainDoorKeys() + "/" + PlayerStatus.getTotalMainDoorKeys() + " exit keys found");
 //		}
+	//	if(key ==null){
+		//	playerSolvedPuzzle=true;
+		//}
 	}
 
 	public void OnTriggerEnter(Collider other){
@@ -56,7 +60,7 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 		for(int i =0;i<lights.Length;i++){
 			lights[i].color = Color.red;
 		}
-
+		monsterScreamAudioSource.Play();
 		audioSource.clip = horrorSound;
 		audioSource.Play ();
 		}
