@@ -44,13 +44,17 @@ public class MazeMonster : MonoBehaviour {
 		}
 
 		if (chasing) {
-			agent.destination = player.transform.position;
+			agent.SetDestination (player.transform.position);
+			if (agent.remainingDistance >= acquisitionDistance*2) {
+				Logging.Log("(MazeMonster) Disengaging, too far away");
+				chasing = false;
+			}
 		} else {
 			//Debug.Log(Vector3.Distance(transform.position, agent.destination));
 			if (Vector3.Distance(transform.position, agent.destination) <= 
 			    transform.position.y - agent.destination.y) {
 				currentWaypoint = Random.Range (0, waypoints.Length);
-				agent.destination = waypoints[currentWaypoint].position;
+				agent.SetDestination (waypoints[currentWaypoint].position);
 				Logging.Log ("(MazeMonster) Reached destination, new objective: " + waypoints[currentWaypoint].name);
 			}
 		}
