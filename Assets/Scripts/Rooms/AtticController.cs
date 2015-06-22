@@ -11,6 +11,7 @@ namespace Escape.Rooms
 		// Use this for initialization
 		void Start ()
 		{
+			base.CheckParentRoomStatus ();
 			doors [0].SetWeight ("Nursery", 1);
 			doors [0].SetWeight ("LivingRoom", 1);
 			doors [0].SetWeight ("HallStairwayDown", 1);
@@ -30,7 +31,7 @@ namespace Escape.Rooms
 		public override void ItemPickedUp(string name)
 		{
 			// do something
-			Logging.Log ("(Nursery) Player picked up " + name);
+			Logging.Log ("(Attic) Player picked up " + name);
 		}
 		
 		public override void Shuffle() // TODO: move this into super class, even just as a helper

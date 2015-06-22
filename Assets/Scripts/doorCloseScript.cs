@@ -45,6 +45,10 @@ public class doorCloseScript : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		if (doorOpenAngle < 0)
+			doorOpenAngle += 360f; // fixes some issues
+		if (doorCloseAngle < 0)
+			doorCloseAngle += 360f;
 		if (doorOpenAngleChoice1 == 0)
 			doorOpenAngleChoice1 = doorOpenAngle;
 		if (doorOpenAngleChoice2 == 0)
@@ -156,16 +160,9 @@ public class doorCloseScript : MonoBehaviour {
 		
 	}
 	
-	//checks if the door is opening or closing
-	/*
-	 * changed to localRotation -- seems to fix issues with when rooms get loaded at different angles
-	 * paul
-	 * 
-	 * changed back to fix later issue...
-	 * paul
-	 */
+    // checks if the door is in flight
 	private bool doorMoving(){
-		/*Debug.Log ("(" + transform.localEulerAngles.y + "," + transform.rotation.eulerAngles.y + ")");
+		Debug.Log ("(" + transform.localEulerAngles.y + "," + transform.rotation.eulerAngles.y + ")");
 		if ((transform.localEulerAngles.y < doorOpenAngle+10) && (transform.localEulerAngles.y > doorOpenAngle-10 )) {
 			return false;
 		}
@@ -174,17 +171,6 @@ public class doorCloseScript : MonoBehaviour {
 		}
 		//special case for when open rotation is 0
 		if(doorOpenAngle == 0 && (transform.localEulerAngles.y < 360+10) && (transform.localEulerAngles.y > 360-10 )){
-			return false;
-		}
-		return true;*/
-		if ((transform.eulerAngles.y < doorOpenAngle+10) && (transform.eulerAngles.y > doorOpenAngle-10 )) {
-			return false;
-		}
-		if((transform.eulerAngles.y < doorCloseAngle+10) && (transform.eulerAngles.y > doorCloseAngle-10 )){
-			return false;
-		}
-		//special case for when open rotation is 0
-		if(doorOpenAngle == 0 && (transform.eulerAngles.y < 360+10) && (transform.eulerAngles.y > 360-10 )){
 			return false;
 		}
 		return true;

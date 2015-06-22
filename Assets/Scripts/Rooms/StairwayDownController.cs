@@ -11,6 +11,7 @@ namespace Escape.Rooms
 		// Use this for initialization
 		void Start ()
 		{
+			base.CheckParentRoomStatus ();
 			doors [0].SetWeight ("EntranceHall", 1);
 		
 			//doors [0].SetWeight ("DiningRoom", 1);
