@@ -9,7 +9,7 @@ public class RoomEventGenerator : MonoBehaviour {
 	//the chosen event
 	private string eventChoice = "null";
 
-	private string[] events = {"monsterSpawnBehind", "monsterStanding", "flickerLights", "turnLightsRed", "spawnBatteries", "randomSound", "delusion", "ageRoom", "openObjects"}; 
+	private string[] events = {"monsterSpawnBehind", "monsterStanding", "flickerLights", "turnLightsRed", "spawnBatteries", "randomSound"}; 
 
 	//lights in the room, used for flickering, turning red, etc. 
 	public Light[] lights;
@@ -135,21 +135,14 @@ public class RoomEventGenerator : MonoBehaviour {
 		//index of chosen event
 		int eventIndex = 0;
 
-		//roll to include rare events
-		if(eventChance > Random.Range (0, 80)){
-			string[] events = {"monsterSpawnBehind", "monsterStanding", "flickerLights", "turnLightsRed", "randomSound", "delusion", "ageRoom"}; 
-		}
-		else{
-			string[] events = {"flickerLights", "turnLightsRed", "randomSound", "ageRoom"}; 
-		}
+			string[] events = {"monsterSpawnBehind", "monsterStanding", "flickerLights", "turnLightsRed", "randomSound"}; 
+		
 
 		//roll to choose event
 		if (eventChance > Random.Range (0, 100)) {
 
 			eventIndex = Mathf.RoundToInt (Random.Range (0, Mathf.RoundToInt(events.Length)));
 			eventChoice = events[eventIndex];
-
-			print (eventChoice + "EVENT CHOICE");
 		
 
 		}else{
