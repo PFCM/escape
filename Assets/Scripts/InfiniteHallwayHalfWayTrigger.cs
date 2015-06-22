@@ -30,6 +30,9 @@ public class InfiniteHallwayHalfWayTrigger : MonoBehaviour {
 				GameObject monster = Instantiate (Resources.Load ("Monsters/MonsterStanding")) as GameObject; 
 				monster.transform.position = gameObject.transform.position;
 				triggered = true;
+
+				GameObject sound = Instantiate (Resources.Load ("Events/RandomSoundGenerator")) as GameObject; 
+				sound.transform.position = gameObject.transform.position;
 			}
 		}
 		//if (!player.GetComponent<PlayerStatus> ().isHallwayMonsterSpawned ()) {
