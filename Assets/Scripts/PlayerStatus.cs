@@ -272,7 +272,7 @@ public class PlayerStatus : MonoBehaviour
 	}
 	
 	public void killPlayer(){
-		deadTimer = 1000;
+		deadTimer = 200;
 		transform.position =new Vector3(transform.position.x,transform.position.y-0.5f,transform.position.z);
 		Time.timeScale = 0;
 		gameObject.GetComponent<playerGUIScript> ().displayGuiText ("You were killed.");
