@@ -25,6 +25,16 @@ public class SoundControlledForce : MonoBehaviour {
 		randomAccelerations [1] = leftCurtain.randomAcceleration;
 		externalAccelerations [0] = rightCurtain.externalAcceleration;
 		externalAccelerations [1] = leftCurtain.externalAcceleration;
+		UpdateDirection ();
+	}
+
+	// attempt to update the direction in case the room has moved
+	public void UpdateDirection () 
+	{
+		randomAccelerations [0] = rightCurtain.transform.TransformVector (randomAccelerations [0]);
+		randomAccelerations [1] = rightCurtain.transform.TransformVector (randomAccelerations [0]);
+		externalAccelerations [0] = rightCurtain.transform.TransformVector (externalAccelerations [0]);
+		externalAccelerations [1] = rightCurtain.transform.TransformVector (externalAccelerations [0]);
 	}
 	
 	// Update is called once per frame
