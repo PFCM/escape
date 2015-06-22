@@ -14,6 +14,8 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 
 	public AudioClip horrorSound;
 
+	public GameObject unopenableDoor;
+
 	private int spawnMonsterTimer;
 
 	public GameObject key;
@@ -36,9 +38,11 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 		//if key Something
 		//player solved puzzle
 
-		if(spawnMonsterTimer ==0 && key!=null){//!playerSolvedPuzzle){
+		if(spawnMonsterTimer ==0 && key!=null){
 			GameObject monster = Instantiate(Resources.Load("Monsters/MonsterChase")) as GameObject; 
 			monster.transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z +4);
+		}else if(spawnMonsterTimer ==0){
+			unopenableDoor.SetActive(false);
 		}
 	}
 
@@ -47,8 +51,9 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 		//lights turn red
 		//sounds play
 		if(other.gameObject.tag == "Player" && !triggered){
-		triggered = true;
-		spawnMonsterTimer = 200;	
+			unopenableDoor.SetActive(true);
+			triggered = true;
+		spawnMonsterTimer = 2200;	
 		spawnKey();
 		for(int i =0;i<lights.Length;i++){
 			lights[i].color = Color.red;
@@ -56,6 +61,8 @@ public class PanicRoomPuzzleController : MonoBehaviour {
 		monsterScreamAudioSource.Play();
 		audioSource.clip = horrorSound;
 		audioSource.Play ();
+		}else if(triggered && key==null){
+			audioSource.Stop ();
 		}
 
 	}
