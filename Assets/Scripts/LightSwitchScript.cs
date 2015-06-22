@@ -37,7 +37,7 @@ public class LightSwitchScript : InteractableObject {
 		}
 
 		lightSwitch = transform.Find ("Light_Switch_Switch");
-		if(!onByDefault && Random.Range (0,100)>75){
+		if(!onByDefault && Random.Range (0,100)>85){
 		Interact (null);
 		}
 	}
