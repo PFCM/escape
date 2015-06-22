@@ -9,6 +9,7 @@ public class HallwayController : BaseRoomController {
 	public GameObject firstDoor;
 
 	private LightSwitchScript[] switches;
+	private bool solved = false;
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +17,7 @@ public class HallwayController : BaseRoomController {
 		doors [1].SetWeight ("EntranceHall", 1);
 
 		switches = GetComponentsInChildren<LightSwitchScript> ();
-		StartCoroutine (LightSwitchCheck());
+		//StartCoroutine (LightSwitchCheck());
 
 		this.CheckParentRoomStatus ();
 	}
@@ -41,7 +42,19 @@ public class HallwayController : BaseRoomController {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (!solved) {
+			bool off = true;
+			foreach (LightSwitchScript ls in switches) {
+				off = off && !ls.on;
+			}
+			if (off) {
+				doors [1].LoadNextRoom ();
+				doorCloseScript door = doors [1].exitDoorObject;
+				PlayerStatus.AddKey (door.key);
+				door.activateDoor ();
+				solved = true;
+			}
+		}
 	}
 
 	override public Transform GetEntrance ()
@@ -54,6 +67,9 @@ public class HallwayController : BaseRoomController {
 	{
 		base.Shuffle ();
 		Logging.Log ("(Hallway) Shuffled");
+		if (solved) {
+			doors[1].LoadNextRoom (); 
+		}
 		
 		this.CheckParentRoomStatus ();
 	}
