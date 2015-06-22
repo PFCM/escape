@@ -11,15 +11,15 @@ namespace Escape.Core
 	[RequireComponent(typeof(AudioSource))] // for collision sounds
 	public class PickupableObject : MonoBehaviour
 	{
-		private BaseRoomController room;
-		private Rigidbody rigidBody;
-		private AudioSource audio;
-		private float threshold;
-		private Vector3 oldVelocity;
-		private ContactPoint[] contactPoints;
+		protected BaseRoomController room;
+		protected Rigidbody rigidBody;
+		protected AudioSource audio;
+		protected float threshold;
+		protected Vector3 oldVelocity;
+		protected ContactPoint[] contactPoints;
 
 		public AudioClip[] collisionSounds;
-		private AudioClip lastSound;
+		protected AudioClip lastSound;
 
 		public void Init () 
 		{
