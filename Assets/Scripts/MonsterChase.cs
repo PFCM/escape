@@ -9,9 +9,11 @@ public class MonsterChase : MonoBehaviour {
 
 	public AudioClip screamSound;
 	private AudioSource audioSource;
+	private float startingY;
 
 	// Use this for initialization
 	void Start () {
+		startingY = transform.position.y;
 	}
 	
 	// Update is called once per frame
@@ -20,6 +22,7 @@ public class MonsterChase : MonoBehaviour {
 		targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
 		//transform.position = Vector3.MoveTowards(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position,   speed*Time.deltaTime);
 		transform.position = Vector3.MoveTowards(transform.position, targetPosition,   speed*Time.deltaTime);
+		transform.position = new Vector3(transform.position.x,startingY,transform.position.z);
 		transform.LookAt(GameObject.FindGameObjectWithTag ("Player").transform.position);
 		audioSource = gameObject.GetComponent<AudioSource> ();
 
