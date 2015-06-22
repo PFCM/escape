@@ -13,10 +13,12 @@ public class MonsterSpawnBehind : MonoBehaviour {
 	public AudioClip scareSound;
 	public AudioClip[] footstepSounds;
 
+	private float startingY;
 
 	private int footStepSoundTimer = 60;
 	// Use this for initialization
 	void Start () {
+		startingY = transform.position.y;
 		targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
 		targetPosition = targetPosition - (GameObject.FindGameObjectWithTag ("Player").transform.forward * 2);
 		//targetPosition = new Vector3 (0,0,0);
@@ -36,7 +38,7 @@ public class MonsterSpawnBehind : MonoBehaviour {
 		targetPosition = targetPosition - (GameObject.FindGameObjectWithTag ("Player").transform.forward * 2);
 		//transform.position = Vector3.MoveTowards(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position,   speed*Time.deltaTime);
 		transform.position = Vector3.MoveTowards(transform.position, targetPosition,   speed*Time.deltaTime);
-		transform.position = new Vector3(transform.position.x,GameObject.FindGameObjectWithTag ("Player").transform.position.y,transform.position.z);
+		transform.position = new Vector3(transform.position.x,startingY,transform.position.z);
 		transform.LookAt(GameObject.FindGameObjectWithTag ("Player").transform.position);
 		if (enraged) {
 			timer--;
