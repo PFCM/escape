@@ -13,8 +13,11 @@ public class MonsterHallwayChase : MonoBehaviour {
 	public AudioClip[] scream;
 	public AudioClip killPlayerScream;
 
+	private float startingY;
+
 	// Use this for initialization
 	void Start () {
+		startingY = transform.position.y;
 		player = GameObject.FindGameObjectWithTag ("Player");
 		targetPosition = player.transform.position;
 		player.GetComponent<PlayerStatus> ().startRunning (9999); //make player run immediatly
@@ -29,7 +32,7 @@ public class MonsterHallwayChase : MonoBehaviour {
 		speed = 4.5f;
 		targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
 		transform.position = Vector3.MoveTowards(transform.position, targetPosition,   speed*Time.deltaTime);
-		
+		transform.position = new Vector3(transform.position.x,startingY,transform.position.z);
 		if (despawnTimer == 1) {
 			Destroy (gameObject);
 		}
