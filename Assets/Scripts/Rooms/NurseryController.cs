@@ -12,6 +12,7 @@ namespace Escape.Rooms
 		void Start ()
 		{
 			doors [0].SetWeight ("Attic", 1);
+			doors [0].SetWeight ("HallStairwayDown", 1);
 		}
 	
 		// Update is called once per frame

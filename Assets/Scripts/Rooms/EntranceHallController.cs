@@ -21,12 +21,12 @@ namespace Escape.Rooms
 		// Use this for initialization
 		void Start ()
 		{
-			this.doors [0].SetWeight ("MazeRoom", 1);
+			this.doors [0].SetWeight ("Stairs", 1);
 			//this.doors [0].SetWeight ("HallStairwayUp", 1);
 			//this.doors [0].SetWeight ("HallStairwayDown", 1);
-			this.doors [1].SetWeight ("Bathroom", 1);
 			this.doors [1].SetWeight ("Hallway2", 1);
-			this.doors [2].SetWeight ("InfiniteHallway", 1);
+			this.doors [1].SetWeight ("Bathroom", 1);
+			this.doors [2].SetWeight ("Kitchen", 1);
 			this.doors [3].SetWeight ("MazeRoom", 1);
 
 			PlayerStatus.AddRoom (this); // first room
