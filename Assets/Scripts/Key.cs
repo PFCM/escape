@@ -15,7 +15,7 @@ namespace Escape.Core
 			controller = GetComponentInParent<BaseRoomController> ();
 			}if (controller != null) {
 				controller.ItemPickedUp (name);
-			} else {
+			} else if(!mainDoorKey) {
 				Debug.LogError("Can't find controller");
 			}
 
