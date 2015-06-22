@@ -16,7 +16,7 @@ public class MazeRoomController : BaseRoomController {
 
 		PlayerStatus.SetAmbientIntensity (999);
 
-		doors [0].SetWeight ("EntranceHall", 1);
+		doors [0].SetWeight ("Cell", 1);
 	}
 
 	// Update is called once per frame
