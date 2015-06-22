@@ -51,7 +51,7 @@ public class flashlightScript : MonoBehaviour {
 			
 			//reduce brightness if battery low
 			if(charge < 40){
-				brightness = brightness - 0.003f;
+				brightness = brightness - 0.004f;
 			}
 		}
 		
