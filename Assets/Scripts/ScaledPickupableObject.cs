@@ -43,6 +43,10 @@ public class ScaledPickupableObject : PickupableObject {
 	{
 		if (audio.isPlaying || !canPlay)
 			return;
+		if (contactPoints == null) {
+			contactPoints = collision.contacts;
+			return;
+		}
 		// if the contact points have changed we should play a sound
 		// because even though we haven't hit something new, we have hit it in a 
 		// different way
