@@ -21,6 +21,7 @@ namespace Escape.Rooms
 		// Use this for initialization
 		void Start ()
 		{
+			//base.CheckParentRoomStatus ();
 			//this.doors [0].SetWeight ("Stairs", 1);
 			this.doors [0].SetWeight ("HallStairwayUp", 1);
 			//this.doors [0].SetWeight ("HallStairwayDown", 1);
@@ -58,12 +59,13 @@ namespace Escape.Rooms
 		public override void Shuffle() 
 		{
 			base.Shuffle ();
+			//base.CheckParentRoomStatus ();
 			// TODO: stop having to fix this case by case
 			doors [0].exitDoorObject.gameObject.SetActive (false);
-			foreach (BaseDoor door in doors) {
+			/*foreach (BaseDoor door in doors) {
 				if (!door.exitDoorObject.locked)
 					door.LoadNextRoom();
-			}
+			}*/
 		}
 
 		public override void ItemPickedUp(string name)
