@@ -28,7 +28,7 @@ public class RoomEventGenerator : MonoBehaviour {
 
 	void  OnEnable()
 	{
-		GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerStatus> ().addEventChance (5);
+		//GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerStatus> ().addEventChance (5);
 		chooseEvent ();
 	}
 

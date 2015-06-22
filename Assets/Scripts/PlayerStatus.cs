@@ -152,6 +152,7 @@ public class PlayerStatus : MonoBehaviour
 	}
 
 	public static void addMainDoorKey(){
+		addEventChance(15);
 		instance.playRandomSound (instance.keySounds);
 		mainDoorKeys++;
 	}
@@ -249,7 +250,7 @@ public class PlayerStatus : MonoBehaviour
 		return eventChance;
 	}
 	
-	public void addEventChance (int add)
+	public static void addEventChance (int add)
 	{
 		eventChance = eventChance + add;
 	}
