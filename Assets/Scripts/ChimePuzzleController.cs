@@ -9,8 +9,11 @@ public class ChimePuzzleController : MonoBehaviour {
 	public AudioSource successSource;
 	private int currentOrder = 0;
 
+	private bool completed = false;
+
 	// Use this for initialization
 	void Start () {
+		completed = false;
 		randomizeChimeOrder ();
 	}
 	
@@ -56,11 +59,14 @@ public class ChimePuzzleController : MonoBehaviour {
 	}
 
 	private void puzzleComplete(){
+		if(!completed){
 		print ("player completed puzzle");
 		GameObject key = Instantiate(Resources.Load("Keys/mainDoorKey")) as GameObject; 
 		key.transform.position = gameObject.transform.position;
 		//give a key or unlock some room
 		// play a sound
 		AudioTools.PlayRandomSound (successSource, successSounds);
+		completed = true;
+		}
 	}
 }
