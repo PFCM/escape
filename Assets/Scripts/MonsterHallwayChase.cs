@@ -26,7 +26,7 @@ public class MonsterHallwayChase : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//may have to check player to see if they completed puzzle here
-		
+		speed = 4.5f;
 		targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
 		transform.position = Vector3.MoveTowards(transform.position, targetPosition,   speed*Time.deltaTime);
 		
