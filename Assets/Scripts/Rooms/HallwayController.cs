@@ -67,7 +67,7 @@ public class HallwayController : BaseRoomController {
 	{
 		base.Shuffle ();
 		Logging.Log ("(Hallway) Shuffled");
-		if (solved) {
+		if (solved && this.parentRoom.tag != "EntranceHall") {
 			doors[1].LoadNextRoom (); 
 		}
 		

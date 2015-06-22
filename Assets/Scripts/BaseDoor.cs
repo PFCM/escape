@@ -22,7 +22,7 @@ namespace Escape
 			// this is the actual door position
 			// the center of the doorway, on the very edge, facing out of the room
 			public Transform doorPosition;
-			private GameObject nextRoom;
+			public BaseRoomController nextRoom;
 			public bool loaded = false;// has the room been loaded?
 			
 			public doorCloseScript exitDoorObject;
@@ -87,7 +87,9 @@ namespace Escape
 				exitDoorObject.gameObject.SetActive (true);
 				BaseRoomController newRoom = root.GetComponentInChildren<BaseRoomController> ();
 				newRoom.SetParentRoom (this.GetComponentInParent<BaseRoomController> ());
+				this.GetComponentInParent<BaseRoomController> ().AddChild (newRoom);
 				newRoom.Shuffle ();
+				nextRoom = newRoom;
 				Logging.Log ("(BaseDoor) Repositioned already loaded room: " + root.tag);
 			}
 			
@@ -120,7 +122,6 @@ namespace Escape
 				
 				LineUpFacing (newRoom.transform);
 				newRoomController.positioned = true;
-				this.nextRoom = newRoom;
 				
 				exitDoorObject.gameObject.SetActive (true);
 				
@@ -130,6 +131,8 @@ namespace Escape
 				if (thisRoom != null) {
 					thisRoom.AddChild (newRoomController);
 				}
+
+				nextRoom = newRoomController;
 				
 				Logging.Log ("(BaseDoor) loaded " + name);
 			}
@@ -178,7 +181,7 @@ namespace Escape
 						}
 					}
 				}
-				else if (nextRoom == null || !nextRoom.activeInHierarchy) {
+				else if (nextRoom == null || !nextRoom.gameObject.activeInHierarchy) {
 					if (other.gameObject.tag.Equals ("Player")) { // temp tag
 						collisions++;
 						Logging.Log ("(BaseDoor) Collision " + collisions);
