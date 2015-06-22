@@ -22,12 +22,8 @@ namespace Escape.Rooms
 		void Start ()
 		{
 			//this.doors [0].SetWeight ("Stairs", 1);
-			this.doors [0].SetWeight ("HallStairwayUp", 1);
-<<<<<<< HEAD
-			//this.doors [0].SetWeight ("LivingRoom", 1);
-=======
-			//this.doors [0].SetWeight ("HallStairWa", 1);
->>>>>>> afa89b19e6c37afd73c1f35e3e36cbe854115673
+			//this.doors [0].SetWeight ("HallStairwayUp", 1);
+			this.doors [0].SetWeight ("Attic",1);
 			//this.doors [0].SetWeight ("HallStairwayDown", 1);
 			this.doors [1].SetWeight ("Hallway2", 1);
 			this.doors [1].SetWeight ("Bathroom", 1);

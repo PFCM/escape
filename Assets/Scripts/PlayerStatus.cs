@@ -7,47 +7,49 @@ using Escape.Core;
 //keys, event chance management
 public class PlayerStatus : MonoBehaviour
 {
-
+	
 	//total keys for main door
 	private static int mainDoorKeys;
 	private static int totalMainDoorKeys;
-
+	
 	public bool isRunning = false;//used to tell fpscontrollers when player is running
 	private int runningTimer = 0;
-
+	
 	private static int eventChance = 0;
 	public PickupableObject holding;
 	private static PlayerStatus singleton; // for efficiency/ease of access
 	static PlayerStatus instance {
 		get { return singleton; }
 	}
-
+	
 	// holds all the rooms that have been loaded
 	private IDictionary<string, BaseRoomController> rooms;
 	// the audio source attached to the player
 	private AudioSource audioSrc;
 	// clips to play when receiving a key
 	public AudioClip[] keySounds;
-
+	
 	// a refernce to the ambience generator, slightly more convienient to do alter it through this class
 	private AmbienceGenerator ambience;
-
+	
 	public static PickupableObject heldObject {
 		get { return instance.holding; }
 	}
-
+	
 	// what keys are we holding on to?
 	private IDictionary<string, int> keys;
-
+	
 	// have we picked up the flashlight yet?
 	public bool haveFlashlight = false; 
-
+	
 	public Transform mCamera; // main camera, or something else for OVR?
-
+	
 	// anchor for the object we are holding
 	private SpringJoint springJoint;
 	private float oldDrag,oldAngularDrag; // data about what we are holding
-
+	
+	private int deadTimer = -1;
+	
 	// init the singleton
 	void Start ()
 	{
@@ -57,55 +59,59 @@ public class PlayerStatus : MonoBehaviour
 			singleton = this;
 			singleton.keys = new Dictionary<string, int> ();
 			singleton.rooms = new Dictionary<string, BaseRoomController> ();
-
+			
 			singleton.ambience = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<AmbienceGenerator> ();
 			if (ambience == null) {
 				Logging.Log("(PlayerStatus) ERROR: no ambient sound source found.");
 			}
-
+			
 			GameObject obj = new GameObject("Dragger");
 			obj.transform.SetParent(this.transform);
 			obj.transform.Translate(transform.forward);
 			Rigidbody body = obj.AddComponent <Rigidbody> () as Rigidbody;
 			springJoint = obj.AddComponent <SpringJoint> ();
 			body.isKinematic = true;
-
+			
 			singleton.audioSrc = GetComponent<AudioSource>();
-
+			
 			if (mCamera == null) // if not set by hand
 				mCamera = Camera.main.transform;
 		} else {
 			Logging.Log ("(PlayerStatus) ERROR: initialised more than once.");
 		}
 	}
-
+	
 	void Update(){
-		
+		deadTimer--;
+		if(deadTimer ==0){
+			Time.timeScale = 1;
+			Application.LoadLevel("EntranceHall");
+		}
 		if (runningTimer == 0) {
 			stopRunning ();
 		}
 		runningTimer--;
 	}
-
+	
 	public static void SetAmbientIntensity(int level) {
 		singleton.ambience.SetIntensity (level);
 	}
-
+	
 	public static void IncreaseAmbientIntensity() {
 		singleton.ambience.IncreaseIntensity ();
 	}
-
+	
 	public static void AddRoom(BaseRoomController newRoom) {
 		singleton.rooms [newRoom.tag] = newRoom;
 	}
-
+	
 	// will return null if room unloaded.
 	public static BaseRoomController GetRoomByTag (string tag) {
 		if (singleton.rooms.ContainsKey (tag))
 			return singleton.rooms [tag];
 		return null;
 	}
-
+	
 	// This is a coroutine that drags an object around with us
 	// mostly thanks to http://answers.unity3d.com/questions/31658/picking-upholding-objects.html
 	IEnumerator DragObject(float distance)
@@ -116,8 +122,8 @@ public class PlayerStatus : MonoBehaviour
 		}
 		springJoint.connectedBody = null;
 	}
-
-
+	
+	
 	// adds a key to the inventory
 	// returns how many of the keys the player has
 	public static int AddKey (string name)
@@ -129,7 +135,7 @@ public class PlayerStatus : MonoBehaviour
 		instance.playRandomSound (instance.keySounds);
 		return instance.keys [name];
 	}
-
+	
 	// checks if the player has a given key
 	public static bool HasKey (string name)
 	{
@@ -137,7 +143,7 @@ public class PlayerStatus : MonoBehaviour
 			return true;
 		return instance.keys.ContainsKey (name) && instance.keys [name] > 0;
 	}
-
+	
 	// if a player has a key, rturns true and decrements the count for that key.
 	// otherwise returns false
 	public static bool UseKey (string name)
@@ -147,36 +153,36 @@ public class PlayerStatus : MonoBehaviour
 			Logging.Log ("(Player) UseKey " + name + " " + instance.keys [name]);
 			return true;
 		}
-
+		
 		return false;
 	}
-
+	
 	public static void addMainDoorKey(){
 		addEventChance(15);
 		instance.playRandomSound (instance.keySounds);
 		mainDoorKeys++;
 	}
-
+	
 	public static bool canOpenMainDoor(){
 		if(mainDoorKeys >= totalMainDoorKeys){
 			return true;
 		}
 		return false;
 	}
-
+	
 	public static bool HasFlashlight ()
 	{
 		return instance.haveFlashlight;
 	}
-
+	
 	// makes sure HaveFlashLight is true
 	public static void GiveFlashlight ()
 	{
 		Logging.Log ("(Player) Pickup Flashlight");
 		instance.haveFlashlight = true;
 	}
-
-
+	
+	
 	// Make the player hold an object
 	// (pickupablobject requires rigidbody so the getComponent is safe)
 	public static void GiveObjectToHold (PickupableObject obj)
@@ -187,12 +193,12 @@ public class PlayerStatus : MonoBehaviour
 			instance.holding = obj;
 			//obj.transform.SetParent (instance.transform);
 			//obj.transform.position = instance.transform.position +
-				//instance.transform.forward * 0.7f +
-					//instance.transform.up*0.5f;
+			//instance.transform.forward * 0.7f +
+			//instance.transform.up*0.5f;
 			instance.springJoint.transform.position = obj.transform.position;
 			Rigidbody connected = obj.GetComponent<Rigidbody> ();
 			//Vector3 anchor = instance.transform.TransformDirection(connected.centerOfMass) + 
-							// obj.transform.position;
+			// obj.transform.position;
 			//anchor = instance.springJoint.transform.InverseTransformPoint(anchor);
 			instance.springJoint.anchor = Vector3.zero;//anchor;
 			instance.springJoint.autoConfigureConnectedAnchor = true;
@@ -208,13 +214,13 @@ public class PlayerStatus : MonoBehaviour
 			instance.oldAngularDrag = connected.angularDrag;
 			connected.drag = 7.5f;
 			connected.angularDrag = 5f;
-
+			
 			instance.StartCoroutine(instance.DragObject(Vector3.Distance(instance.transform.position, obj.transform.position)));
-
+			
 			Logging.Log ("(Player) now holding: " + obj.name);
 		}
 	}
-
+	
 	// Take the object the player is holding (if there is anything)
 	// this does not reset the parent of the object, rather it sets it to null
 	// so that whatever takes the object is responsible for ensuring it
@@ -232,18 +238,18 @@ public class PlayerStatus : MonoBehaviour
 		instance.holding = null;
 		return h;
 	}
-
+	
 	// plays random sound from clip array
 	private void playRandomSound(AudioClip[] clips) {
 		AudioTools.PlayRandomSound (instance.audioSrc, clips);
 	}
-
+	
 	// is the player holding anything
 	public static bool IsHolding ()
 	{
 		return instance.holding != null;
 	}
-
+	
 	// could be static?
 	public int getEventChance ()
 	{
@@ -254,7 +260,7 @@ public class PlayerStatus : MonoBehaviour
 	{
 		eventChance = eventChance + add;
 	}
-
+	
 	public void startRunning(int time){
 		isRunning = true;
 		runningTimer = time;
@@ -264,12 +270,15 @@ public class PlayerStatus : MonoBehaviour
 		runningTimer = -1;
 		isRunning = false;
 	}
-
+	
 	public void killPlayer(){
+		deadTimer = 1000;
 		transform.position =new Vector3(transform.position.x,transform.position.y-0.5f,transform.position.z);
-		Application.LoadLevel("EntranceHall");
+		Time.timeScale = 0;
+		gameObject.GetComponent<playerGUIScript> ().displayGuiText ("You were killed.");
+		//Application.LoadLevel("EntranceHall");
 	}
-
+	
 	public static int getMainDoorKeys(){
 		return mainDoorKeys;
 	}
