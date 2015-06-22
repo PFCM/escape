@@ -30,6 +30,8 @@ namespace Escape.Rooms
 			this.doors [2].SetWeight ("Kitchen", 1);
 			this.doors [3].SetWeight ("MazeRoom", 1);
 
+			this.doors [1].LoadNextRoom (); // load up the unlocked one
+
 			PlayerStatus.AddRoom (this); // first room
 
 			paintingsCorrect = new Dictionary<InteractableObject, bool> ();
@@ -59,6 +61,10 @@ namespace Escape.Rooms
 			base.Shuffle ();
 			// TODO: stop having to fix this case by case
 			doors [0].exitDoorObject.gameObject.SetActive (false);
+			foreach (BaseDoor door in doors) {
+				if (!door.exitDoorObject.locked)
+					door.LoadNextRoom();
+			}
 		}
 
 		public override void ItemPickedUp(string name)
