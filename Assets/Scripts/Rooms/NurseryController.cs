@@ -7,12 +7,15 @@ namespace Escape.Rooms
 {
 	public class NurseryController : BaseRoomController
 	{
+		private SoundControlledForce wind;
 
 		// Use this for initialization
 		void Start ()
 		{
 			doors [0].SetWeight ("Attic", 1);
 			doors [0].SetWeight ("HallStairwayDown", 1);
+			wind = GetComponentInChildren<SoundControlledForce> ();
+			wind.UpdateDirection ();
 		}
 	
 		// Update is called once per frame
@@ -38,6 +41,7 @@ namespace Escape.Rooms
 			foreach (PositionableObject obj in objects) {
 				obj.ChooseRandomPositionUniform ();
 			}
+			wind.UpdateDirection ();
 		}
 	}
 }
