@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Escape.Util;
 
 public class ChimePuzzleController : MonoBehaviour {
 
 	public GameObject[] chimes; 
+	public AudioClip[] successSounds;
+	public AudioSource successSource;
 	private int currentOrder = 0;
 
 	// Use this for initialization
@@ -57,6 +60,7 @@ public class ChimePuzzleController : MonoBehaviour {
 		GameObject key = Instantiate(Resources.Load("Keys/mainDoorKey")) as GameObject; 
 		key.transform.position = gameObject.transform.position;
 		//give a key or unlock some room
-
+		// play a sound
+		AudioTools.PlayRandomSound (successSource, successSounds);
 	}
 }
