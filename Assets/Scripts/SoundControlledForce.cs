@@ -12,6 +12,7 @@ public class SoundControlledForce : MonoBehaviour {
 	private AudioSource audio;
 	private Vector3[] randomAccelerations;
 	private Vector3[] externalAccelerations;
+	private bool doUpdate = false;
 
 	// Use this for initialization
 	void Start () {
@@ -25,20 +26,29 @@ public class SoundControlledForce : MonoBehaviour {
 		randomAccelerations [1] = leftCurtain.randomAcceleration;
 		externalAccelerations [0] = rightCurtain.externalAcceleration;
 		externalAccelerations [1] = leftCurtain.externalAcceleration;
-		UpdateDirection ();
+		//UpdateDirection ();
 	}
 
 	// attempt to update the direction in case the room has moved
 	public void UpdateDirection () 
 	{
-		randomAccelerations [0] = rightCurtain.transform.TransformVector (randomAccelerations [0]);
-		randomAccelerations [1] = rightCurtain.transform.TransformVector (randomAccelerations [0]);
-		externalAccelerations [0] = rightCurtain.transform.TransformVector (externalAccelerations [0]);
-		externalAccelerations [1] = rightCurtain.transform.TransformVector (externalAccelerations [0]);
+		if (randomAccelerations != null) { // in case this gets called before start
+			randomAccelerations [0] = rightCurtain.transform.TransformVector (randomAccelerations [0]);
+			randomAccelerations [1] = leftCurtain.transform.TransformVector (randomAccelerations [1]);
+			externalAccelerations [0] = rightCurtain.transform.TransformVector (externalAccelerations [0]);
+			externalAccelerations [1] = leftCurtain.transform.TransformVector (externalAccelerations [1]);
+			Logging.Log ("(SoundControlledForce) Updated direction");
+		} else {
+			doUpdate = true;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (doUpdate) {
+			UpdateDirection ();
+			doUpdate = false;
+		}
 		audio.GetOutputData (samples, 0); // grab a block of samples
 		float vol = AudioTools.GetRMS (samples); // get the volume
 		rightCurtain.externalAcceleration = externalAccelerations[0] * vol;
