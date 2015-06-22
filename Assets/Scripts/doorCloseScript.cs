@@ -49,15 +49,15 @@ public class doorCloseScript : MonoBehaviour {
 			doorOpenAngleChoice1 = doorOpenAngle;
 		if (doorOpenAngleChoice2 == 0)
 			doorOpenAngleChoice2 = doorCloseAngle - 90;
-		startRotationY = transform.rotation.eulerAngles.y;
+		startRotationY = transform.localRotation.eulerAngles.y;
 		_locked = true;//key != null && key != "";
 		
 		audioSrc = GetComponent<AudioSource> ();
 	}
 	
 	public void Reset() {
-		startRotationY = transform.localRotation.eulerAngles.y;
-		/*	doorOpenAngle = startRotationY + doorOpenAngle;
+		startRotationY = transform.localRotation.eulerAngles.y;/*
+			doorOpenAngle = startRotationY + doorOpenAngle;
 		doorCloseAngle = startRotationY + doorCloseAngle;
 		
 		doorOpenAngleChoice1 += startRotationY;
@@ -93,6 +93,7 @@ public class doorCloseScript : MonoBehaviour {
 		return Mathf.Approximately (transform.localEulerAngles.y,
 		                            doorCloseAngle);
 	}
+
 	
 	public void activateDoor(){
 		/*this condition is if the trigger isn't set. 
@@ -159,16 +160,31 @@ public class doorCloseScript : MonoBehaviour {
 	/*
 	 * changed to localRotation -- seems to fix issues with when rooms get loaded at different angles
 	 * paul
+	 * 
+	 * changed back to fix later issue...
+	 * paul
 	 */
 	private bool doorMoving(){
-		if ((transform.localRotation.eulerAngles.y < doorOpenAngle+10) && (transform.localRotation.eulerAngles.y > doorOpenAngle-10 )) {
+		/*Debug.Log ("(" + transform.localEulerAngles.y + "," + transform.rotation.eulerAngles.y + ")");
+		if ((transform.localEulerAngles.y < doorOpenAngle+10) && (transform.localEulerAngles.y > doorOpenAngle-10 )) {
 			return false;
 		}
-		if((transform.localRotation.eulerAngles.y < doorCloseAngle+10) && (transform.localRotation.eulerAngles.y > doorCloseAngle-10 )){
+		if((transform.localEulerAngles.y < doorCloseAngle+10) && (transform.localEulerAngles.y > doorCloseAngle-10 )){
 			return false;
 		}
 		//special case for when open rotation is 0
-		if(doorOpenAngle == 0 && (transform.localRotation.eulerAngles.y < 360+10) && (transform.localRotation.eulerAngles.y > 360-10 )){
+		if(doorOpenAngle == 0 && (transform.localEulerAngles.y < 360+10) && (transform.localEulerAngles.y > 360-10 )){
+			return false;
+		}
+		return true;*/
+		if ((transform.eulerAngles.y < doorOpenAngle+10) && (transform.eulerAngles.y > doorOpenAngle-10 )) {
+			return false;
+		}
+		if((transform.eulerAngles.y < doorCloseAngle+10) && (transform.eulerAngles.y > doorCloseAngle-10 )){
+			return false;
+		}
+		//special case for when open rotation is 0
+		if(doorOpenAngle == 0 && (transform.eulerAngles.y < 360+10) && (transform.eulerAngles.y > 360-10 )){
 			return false;
 		}
 		return true;
