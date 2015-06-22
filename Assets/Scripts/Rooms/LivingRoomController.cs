@@ -30,7 +30,7 @@ namespace Escape.Rooms
 		override public void Shuffle() 
 		{
 			base.Shuffle ();
-			Logging.Log ("(Bathroom) shuffled!");
+			Logging.Log ("(livingroom) shuffled!");
 		}
 		
 		
