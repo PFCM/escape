@@ -50,6 +50,7 @@ public class MazeGenerator : MonoBehaviour {
 	public GameObject[] southWalls; // prefabs for the south wall of each grid cell that needs one (except edges)
 	public Transform topLeftCorner; // The top left corner of the top left cell in the grid
 	public Transform bottomRightCorner; // the bottom left corner of the bottom left cell in the grid
+	public bool randomFacing = true; // if the walls should face randomly
 
 
 	// Use this for initialization
@@ -114,6 +115,8 @@ public class MazeGenerator : MonoBehaviour {
 		wall.transform.position = new Vector3 (topLeftCorner.position.x + cellWidth * x + cellWidth / 2.0f,
 		                                       0,
 		                                       topLeftCorner.position.z + cellHeight * y + cellHeight);
+		if (randomFacing)
+			wall.transform.Rotate (new Vector3 (0, Random.Range (0, 2) * 180, 0));
 
 		return wall;
 	}
@@ -126,6 +129,8 @@ public class MazeGenerator : MonoBehaviour {
 		wall.transform.position = new Vector3 (topLeftCorner.position.x + cellWidth * x + cellWidth,
 		                                       0,
 		                                       topLeftCorner.position.z + cellHeight * y + cellHeight/2);
+		if (randomFacing)
+			wall.transform.Rotate (new Vector3 (0, Random.Range (0, 2) * 180, 0));
 		
 		return wall;
 	}
