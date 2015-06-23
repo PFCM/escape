@@ -14,7 +14,8 @@ public class EndGameTrigger : MonoBehaviour {
 	void Update () {
 		backToMenuTimer--;
 		
-		if(backToMenuTimer == 600){
+		if(backToMenuTimer == 300){
+			Time.timeScale = 0;
 			GameObject.FindGameObjectWithTag ("Player").GetComponent<playerGUIScript>().displayEndCredits();
 		}
 		
@@ -26,7 +27,7 @@ public class EndGameTrigger : MonoBehaviour {
 	
 	public void OnTriggerEnter(Collider other){
 		if(other.tag =="Player"){
-			backToMenuTimer = 1000;
+			backToMenuTimer = 500;
 			//credits.active = true
 			//audioSource.clip = screamSound;
 			//audioSource.Play();
