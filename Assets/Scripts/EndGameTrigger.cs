@@ -15,7 +15,7 @@ public class EndGameTrigger : MonoBehaviour {
 		backToMenuTimer--;
 		
 		if(backToMenuTimer == 600){
-			//GameObject.FindGameObjectWithTag ("Player").GetComponent<playerGUIScript>().displayEndCredits();
+			GameObject.FindGameObjectWithTag ("Player").GetComponent<playerGUIScript>().displayEndCredits();
 		}
 		
 		if(backToMenuTimer == 0){

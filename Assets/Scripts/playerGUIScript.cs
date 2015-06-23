@@ -8,10 +8,11 @@ public class playerGUIScript : MonoBehaviour {
 	private int guiFadeTimer = 0; //how long the fade in/fade out goes for
 	private GUIStyle startStyle = new GUIStyle ();
 	public UnityEngine.UI.Text guiText; //displays the text
-
-
+	public UnityEngine.UI.Text endCreditText;
+	
 	// Use this for initialization
 	void Start () {
+		endCreditText.color = guiCol;
 		guiText.color = guiCol; //new Color(255,255,255,0);
 	}
 	
@@ -19,7 +20,7 @@ public class playerGUIScript : MonoBehaviour {
 	void Update () {
 		fadeGuiText ();
 	}
-
+	
 	//fades and redisplays text based on timer value
 	private void fadeGuiText ()
 	{
@@ -34,7 +35,7 @@ public class playerGUIScript : MonoBehaviour {
 		guiText.color = guiCol;
 		guiFadeTimer --;
 	}
-
+	
 	//displays some new text for a time until it fades
 	public void displayGuiText(string text){
 		guiText.text = text;
@@ -43,5 +44,9 @@ public class playerGUIScript : MonoBehaviour {
 		guiCol = guiText.color;
 		guiCol.a = 0;
 		guiText.color = guiCol;
+	}
+	
+	public void displayEndCredits(){
+		endCreditText.color = new Color (255, 255, 255, 1);
 	}
 }
