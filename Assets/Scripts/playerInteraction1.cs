@@ -32,6 +32,7 @@ public class playerInteraction1 : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		Time.timeScale = 1;
 		layerMask = ~(1 << 12);
 		noPickupLayerMask = layerMask & ~(1 << 11);
 
@@ -41,7 +42,7 @@ public class playerInteraction1 : MonoBehaviour
 			gameObject.GetComponent<playerGUIScript> ().displayGuiText ("Press E to pick up objects");
 		}
 
-		exitButton.onClick.AddListener(() => { Application.Quit (); });
+		exitButton.onClick.AddListener(() => { Application.LoadLevel("MainMenu_Redo"); });
 		resumeButton.onClick.AddListener(() => { togglePause(); });
 		exitButton.transform.gameObject.SetActive(false);
 		resumeButton.transform.gameObject.SetActive(false);
