@@ -159,9 +159,10 @@ public class PlayerStatus : MonoBehaviour
 	
 	public static void addMainDoorKey(){
 		addEventChance(15);
-		IncreaseAmbientIntensity ();
 		instance.playRandomSound (instance.keySounds);
 		mainDoorKeys++;
+		if (mainDoorKeys > 2)
+			IncreaseAmbientIntensity ();
 	}
 	
 	public static bool canOpenMainDoor(){
