@@ -14,7 +14,7 @@ public class BatterySpawnPositionScript : MonoBehaviour {
 	}
 	
 	private void SpawnBattery(){
-		if(Random.Range (0,100) >50){
+		if(Random.Range (0,100) >75){
 			GameObject battery = Instantiate(Resources.Load("Misc/Battery")) as GameObject; 
 			battery.transform.position = transform.position;
 		}
