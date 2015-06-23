@@ -36,8 +36,9 @@ public class MonsterSpawnBehind : MonoBehaviour {
 		targetPosition = targetPosition - (GameObject.FindGameObjectWithTag ("Player").transform.forward * 2);
 		//transform.position = Vector3.MoveTowards(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position,   speed*Time.deltaTime);
 		transform.position = Vector3.MoveTowards(transform.position, targetPosition,   speed*Time.deltaTime);
-		transform.position = new Vector3(transform.position.x,targetPosition.y-0.75f,transform.position.z);
+		transform.position = new Vector3(transform.position.x,targetPosition.y-0.8f,transform.position.z);
 		transform.LookAt(targetPosition); //(GameObject.FindGameObjectWithTag ("Player").transform.position);
+		transform.LookAt(new Vector3(GameObject.FindGameObjectWithTag ("Player").transform.position.x,targetPosition.y-0.8f,GameObject.FindGameObjectWithTag ("Player").transform.position.z));
 		//if (enraged) {
 			timer--;
 			if(timer==0){
