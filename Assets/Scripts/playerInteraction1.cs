@@ -199,7 +199,7 @@ public class playerInteraction1 : MonoBehaviour
 		torchDrainMessageTimer--;
 		if(torchFlickerMessageTimer==0){
 			print ("Printing message");
-			gameObject.GetComponent<playerGUIScript>().displayGuiText ("The torch will Flicker when looking at important objects");
+			gameObject.GetComponent<playerGUIScript>().displayGuiText ("The torch will Flicker when looking at objects you can interact with");
 		}
 		
 		if(torchDrainMessageTimer==0){
