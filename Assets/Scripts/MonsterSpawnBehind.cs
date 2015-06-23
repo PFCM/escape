@@ -4,7 +4,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class MonsterSpawnBehind : MonoBehaviour {
 	
-	private int timer = 10;
+	private int timer = -1;
 	private Vector3 targetPosition;
 	public int speed = 2;
 	
@@ -12,12 +12,13 @@ public class MonsterSpawnBehind : MonoBehaviour {
 	private AudioSource audioSource;
 	public AudioClip scareSound;
 	public AudioClip[] footstepSounds;
-
+	
 	private float startingY;
 
 	private int footStepSoundTimer = 60;
 	// Use this for initialization
 	void Start () {
+		timer = 1000;
 		startingY = transform.position.y;
 		targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
 		targetPosition = targetPosition - (GameObject.FindGameObjectWithTag ("Player").transform.forward * 2);
@@ -30,22 +31,19 @@ public class MonsterSpawnBehind : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//timer--;
-		//	if(timer <1){
-		//		Destroy (gameObject);
-		//	}
+
 		targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
 		targetPosition = targetPosition - (GameObject.FindGameObjectWithTag ("Player").transform.forward * 2);
 		//transform.position = Vector3.MoveTowards(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position,   speed*Time.deltaTime);
 		transform.position = Vector3.MoveTowards(transform.position, targetPosition,   speed*Time.deltaTime);
 		transform.position = new Vector3(transform.position.x,targetPosition.y-0.75f,transform.position.z);
 		transform.LookAt(targetPosition); //(GameObject.FindGameObjectWithTag ("Player").transform.position);
-		if (enraged) {
+		//if (enraged) {
 			timer--;
-			if(timer<1){
+			if(timer==0){
 				Destroy (gameObject);
 			}
-		}
+		//}
 	}
 
 	void FixedUpdate(){
@@ -64,6 +62,7 @@ public class MonsterSpawnBehind : MonoBehaviour {
 			enraged = true;
 			targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
 			speed = 4;
+			timer = 10;
 			return true;
 		}
 		return false;
