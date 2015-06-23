@@ -17,6 +17,7 @@ namespace Escape.Rooms
 		public AudioClip successSound;
 		private IDictionary<InteractableObject, bool> paintingsCorrect;
 		private bool solved = false;
+		public bool reloaded = false;
 
 		// Use this for initialization
 		void Start ()
@@ -51,6 +52,22 @@ namespace Escape.Rooms
 	
 		}
 
+		// forces reload of all doors that are unlocked
+		public void ReloadDoors () 
+		{
+			this.parentRoom.gameObject.SetActive (false);
+			this.DisableChildrenExcept ();
+			foreach (BaseDoor door in doors) {
+
+				doorCloseScript dcs = door.exitDoorObject;
+				if ((!dcs.isMainDoor) && (!dcs.locked)) {
+
+					door.loaded = false;
+					door.LoadNextRoom ();
+				}
+			}
+		}
+
 		public override Transform GetEntrance() 
 		{
 			return this.transform;
@@ -59,6 +76,8 @@ namespace Escape.Rooms
 		public override void Shuffle() 
 		{
 			base.Shuffle ();
+			CheckParentRoomStatus ();
+			reloaded = true;
 			//base.CheckParentRoomStatus ();
 			// TODO: stop having to fix this case by case
 			doors [0].exitDoorObject.gameObject.SetActive (false);
@@ -107,7 +126,6 @@ namespace Escape.Rooms
 					k.gameObject.SetActive(true);
 				}
 				paintingPositions[0].currentPainting.GetComponent<AudioSource> ().PlayOneShot (successSound);
-				PlayerStatus.IncreaseAmbientIntensity();
 				Logging.Log("Congratulations");
 			}
 		}
