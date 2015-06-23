@@ -26,7 +26,7 @@ public class EndGameTrigger : MonoBehaviour {
 	}
 	
 	public void OnTriggerEnter(Collider other){
-		if(other.tag =="Player"){
+		if(other.tag =="Player" && backToMenuTimer == -1){
 			backToMenuTimer = 500;
 			//credits.active = true
 			//audioSource.clip = screamSound;
