@@ -36,7 +36,7 @@ public class doorCloseScript : MonoBehaviour {
 	
 	private bool _locked;
 	public bool locked {
-		get { if(isMainDoor){return PlayerStatus.canOpenMainDoor();}return _locked; }
+		get { if(isMainDoor){return !PlayerStatus.canOpenMainDoor();}return _locked; }
 		set { 
 			Logging.Log ("(BaseDoor) locked: " + value);
 			_locked = value;

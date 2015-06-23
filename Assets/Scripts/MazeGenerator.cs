@@ -112,9 +112,9 @@ public class MazeGenerator : MonoBehaviour {
 		GameObject wall = Instantiate<GameObject> (southWalls [Random.Range (0, southWalls.Length)]);
 		wall.transform.parent = transform;
 
-		wall.transform.position = new Vector3 (topLeftCorner.position.x + cellWidth * x + cellWidth / 2.0f,
+		wall.transform.localPosition = new Vector3 (topLeftCorner.localPosition.x + cellWidth * x + cellWidth / 2.0f,
 		                                       0,
-		                                       topLeftCorner.position.z + cellHeight * y + cellHeight);
+		                                            topLeftCorner.localPosition.z + cellHeight * y + cellHeight);
 		if (randomFacing)
 			wall.transform.Rotate (new Vector3 (0, Random.Range (0, 2) * 180, 0));
 
@@ -126,9 +126,9 @@ public class MazeGenerator : MonoBehaviour {
 		GameObject wall = Instantiate<GameObject> (eastWalls [Random.Range (0, eastWalls.Length)]);
 		wall.transform.parent = transform;
 		
-		wall.transform.position = new Vector3 (topLeftCorner.position.x + cellWidth * x + cellWidth,
+		wall.transform.localPosition = new Vector3 (topLeftCorner.localPosition.x + cellWidth * x + cellWidth,
 		                                       0,
-		                                       topLeftCorner.position.z + cellHeight * y + cellHeight/2);
+		                                       topLeftCorner.localPosition.z + cellHeight * y + cellHeight/2);
 		if (randomFacing)
 			wall.transform.Rotate (new Vector3 (0, Random.Range (0, 2) * 180, 0));
 		
