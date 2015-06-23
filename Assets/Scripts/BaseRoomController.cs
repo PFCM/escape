@@ -62,7 +62,7 @@ namespace Escape
 					check.DisableChildrenExcept(this, this.parentRoom);
 					check.gameObject.SetActive (false);
 					check.ClearChildren ();
-					Logging.Log("(BaseRoomController) disabling a room.");
+					Logging.Log("(BaseRoomController) " + name + " disabling a room: " + check.name);
 				}
 			}
 

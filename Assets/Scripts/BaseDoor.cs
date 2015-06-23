@@ -181,7 +181,7 @@ namespace Escape
 						}
 					}
 				}
-				else if (nextRoom == null || !nextRoom.gameObject.activeInHierarchy) {
+				else if (nextRoom == null || !nextRoom.gameObject.activeInHierarchy || !loaded) {
 					if (other.gameObject.tag.Equals ("Player")) { // temp tag
 						collisions++;
 						Logging.Log ("(BaseDoor) Collision " + collisions);

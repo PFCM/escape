@@ -56,11 +56,11 @@ namespace Escape.Rooms
 		public void ReloadDoors () 
 		{
 			this.parentRoom.gameObject.SetActive (false);
-			this.ClearChildren ();
+			this.DisableChildrenExcept ();
 			foreach (BaseDoor door in doors) {
 
 				doorCloseScript dcs = door.exitDoorObject;
-				if ((!dcs.isMainDoor) && door.loaded) {
+				if ((!dcs.isMainDoor) && (!dcs.locked)) {
 
 					door.loaded = false;
 					door.LoadNextRoom ();
@@ -76,6 +76,7 @@ namespace Escape.Rooms
 		public override void Shuffle() 
 		{
 			base.Shuffle ();
+			CheckParentRoomStatus ();
 			reloaded = true;
 			//base.CheckParentRoomStatus ();
 			// TODO: stop having to fix this case by case

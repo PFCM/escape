@@ -28,6 +28,12 @@ namespace Escape.Rooms
 		{
 			return this.transform;
 		}
+
+		public override void Shuffle() 
+		{
+			base.Shuffle ();
+			CheckParentRoomStatus ();
+		}
 		
 		public override void ItemPickedUp(string name) 
 		{
