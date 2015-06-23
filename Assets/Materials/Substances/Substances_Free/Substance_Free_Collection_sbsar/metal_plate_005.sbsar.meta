@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 415227bc683b9d94b9bd2a0162f6ee4a
-timeCreated: 1431177379
+timeCreated: 1435056804
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -9,7 +9,7 @@ SubstanceImporter:
     name: metal_plate_005
     prototypeName: metal_plate_005
     shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
-    shaderKeywords: _NORMALMAP _PARALLAXMAP _SPECGLOSSMAP
+    shaderKeywords: _NORMALMAP _PARALLAXMAP
     renderQueue: -1
     inputs:
     - name: $normalformat
@@ -91,7 +91,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Contrast
       value:
-        scalar[0]: 0
+        scalar[0]: -.189999998
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -105,14 +105,14 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Verdigris
       value:
-        scalar[0]: 0
+        scalar[0]: .560000002
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Holes_Amount
       value:
-        scalar[0]: .5
+        scalar[0]: .109999999
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -126,22 +126,22 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Copper_Color
       value:
-        scalar[0]: .519999981
-        scalar[1]: .280000001
-        scalar[2]: .200000003
+        scalar[0]: .647058845
+        scalar[1]: .333044976
+        scalar[2]: .228373691
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Verdigris_Color
       value:
-        scalar[0]: .280000001
-        scalar[1]: .449999988
-        scalar[2]: .400000006
+        scalar[0]: 1
+        scalar[1]: 1
+        scalar[2]: 1
         scalar[3]: 0
         texture: {instanceID: 0}
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 16, y: 16}
+      scale: {x: 2, y: 2}
       generateMipmaps: 1
       generateAllOutputs: 0
       animationUpdateRate: 0
@@ -153,14 +153,14 @@ SubstanceImporter:
             name: _MainTex
           second:
             texture: {instanceID: 0}
-            scale: {x: 16, y: 16}
+            scale: {x: 2, y: 2}
             offset: {x: 0, y: 0}
         data:
           first:
             name: _BumpMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 16, y: 1}
+            scale: {x: 2, y: 2}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -174,7 +174,7 @@ SubstanceImporter:
             name: _ParallaxMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 16, y: 1}
+            scale: {x: 2, y: 2}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -188,7 +188,7 @@ SubstanceImporter:
             name: _EmissionMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 16, y: 16}
+            scale: {x: 2, y: 2}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -209,7 +209,7 @@ SubstanceImporter:
             name: _SpecGlossMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 16, y: 1}
+            scale: {x: 2, y: 2}
             offset: {x: 0, y: 0}
       floats:
         data:
@@ -235,7 +235,7 @@ SubstanceImporter:
         data:
           first:
             name: _Glossiness
-          second: .5
+          second: .230000004
         data:
           first:
             name: _BumpScale
