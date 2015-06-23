@@ -13,7 +13,7 @@ public class MainMenuController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		exitButton.onClick.AddListener(() => { Application.Quit (); });
-		startButton.onClick.AddListener(() => { Application.LoadLevel ("EntranceHall"); });
+		startButton.onClick.AddListener(() => { Application.LoadLevel ("Loading"); });
 	}
 	
 	// Update is called once per frame
