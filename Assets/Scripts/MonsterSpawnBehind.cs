@@ -18,7 +18,7 @@ public class MonsterSpawnBehind : MonoBehaviour {
 	private int footStepSoundTimer = 60;
 	// Use this for initialization
 	void Start () {
-		timer = 1000;
+		timer = 1500;
 		startingY = transform.position.y;
 		targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
 		targetPosition = targetPosition - (GameObject.FindGameObjectWithTag ("Player").transform.forward * 2);
@@ -62,7 +62,7 @@ public class MonsterSpawnBehind : MonoBehaviour {
 			enraged = true;
 			targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
 			speed = 4;
-			timer = 10;
+			timer = 15;
 			return true;
 		}
 		return false;
