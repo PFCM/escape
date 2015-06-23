@@ -60,6 +60,7 @@ namespace Escape.Rooms
 			foreach (BaseDoor door in doors) {
 
 				doorCloseScript dcs = door.exitDoorObject;
+				dcs.gameObject.SetActive (true);
 				if ((!dcs.isMainDoor) && (!dcs.locked)) {
 
 					door.loaded = false;
