@@ -48,7 +48,6 @@ public class RoomEventGenerator : MonoBehaviour {
 					lights[i].intensity =0.05f + lights[i].intensity*1.2f;
 				}else{
 				if(Random.Range (0,100) > 90){
-						print ("turned light " + i + " off");
 					lights[i].intensity=0;
 				}
 				
