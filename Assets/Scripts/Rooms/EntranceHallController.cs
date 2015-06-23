@@ -22,6 +22,9 @@ namespace Escape.Rooms
 		// Use this for initialization
 		void Start ()
 		{
+			// when you first get in the entrance hall, kill the cursor
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Confined;
 			//base.CheckParentRoomStatus ();
 			//this.doors [0].SetWeight ("Stairs", 1);
 			this.doors [0].SetWeight ("HallStairwayUp", 1);

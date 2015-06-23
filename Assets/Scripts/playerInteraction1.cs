@@ -222,6 +222,7 @@ public class playerInteraction1 : MonoBehaviour
 			resumeButton.transform.gameObject.SetActive(true);
 			exitButton.interactable =true;
 			resumeButton.interactable =true;
+			Cursor.visible = true;
 		}
 		else{
 	
@@ -230,6 +231,7 @@ public class playerInteraction1 : MonoBehaviour
 
 			//get rid of pause menu
 			Time.timeScale = 1;
+			Cursor.visible = false;
 		}
 	}
 
