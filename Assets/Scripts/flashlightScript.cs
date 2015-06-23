@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Escape.Core;
+using Escape.Util;
 
 [RequireComponent(typeof(AudioSource))]
 public class flashlightScript : MonoBehaviour {
@@ -25,6 +26,8 @@ public class flashlightScript : MonoBehaviour {
 	private AudioSource audioSrc;
 	public AudioClip onSound;
 	public AudioClip offSound;
+	public AudioClip[] batteryLoadSounds;
+	private AudioClip lastBatteryLoadSound;
 	
 	void Start()
 	{
@@ -132,5 +135,7 @@ public class flashlightScript : MonoBehaviour {
 		
 		//reset brightness
 		brightness = normalIntensity; //2.0f;
+		Logging.Log ("(Flashlight) charge " + charge);
+		lastBatteryLoadSound = AudioTools.PlayRandomSound (audioSrc, this.batteryLoadSounds, this.lastBatteryLoadSound);
 	}
 }
