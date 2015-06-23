@@ -32,7 +32,8 @@ public class MonsterHallwayChase : MonoBehaviour {
 		speed = 4.5f;
 		targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
 		transform.position = Vector3.MoveTowards(transform.position, targetPosition,   speed*Time.deltaTime);
-		transform.position = new Vector3(transform.position.x,startingY,transform.position.z);
+		//transform.position = new Vector3(transform.position.x,startingY,transform.position.z);
+		transform.position = new Vector3(transform.position.x,targetPosition.y-0.75f,transform.position.z);
 		if (despawnTimer == 1) {
 			Destroy (gameObject);
 		}

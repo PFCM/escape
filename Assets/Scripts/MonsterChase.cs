@@ -22,7 +22,8 @@ public class MonsterChase : MonoBehaviour {
 		targetPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
 		//transform.position = Vector3.MoveTowards(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position,   speed*Time.deltaTime);
 		transform.position = Vector3.MoveTowards(transform.position, targetPosition,   speed*Time.deltaTime);
-		transform.position = new Vector3(transform.position.x,startingY,transform.position.z);
+		//transform.position = new Vector3(transform.position.x,startingY,transform.position.z);
+		transform.position = new Vector3(transform.position.x,targetPosition.y-0.75f,transform.position.z);
 		transform.LookAt(GameObject.FindGameObjectWithTag ("Player").transform.position);
 		audioSource = gameObject.GetComponent<AudioSource> ();
 
