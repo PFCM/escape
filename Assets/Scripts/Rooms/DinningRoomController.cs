@@ -35,7 +35,7 @@ namespace Escape.Rooms
 		{
 			base.Shuffle ();
 			CheckParentRoomStatus ();
-			objects [0].ChooseRandomPositionUniform ();
+			//objects [0].ChooseRandomPositionUniform ();
 		}
 		
 		
