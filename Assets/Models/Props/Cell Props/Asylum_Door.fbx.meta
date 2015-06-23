@@ -1,0 +1,115 @@
+fileFormatVersion: 2
+guid: fba2364d28ead4535974a95ef7bcec92
+timeCreated: 1435056202
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Asylum_Door
+    100002: //RootNode
+    100004: Asylum_Door_Brace
+    100006: Asylum_Door_Brace1
+    100008: Asylum_Door_Hatch
+    100010: Asylum_Door_Hatch_Handle
+    100012: Asylum_Door_Hinge1
+    100014: Asylum_Door_Hinge2
+    100016: Asylum_Door_Hinge3
+    100018: Asylum_Door_Hinge4
+    100020: pCube3
+    400000: Asylum_Door
+    400002: //RootNode
+    400004: Asylum_Door_Brace
+    400006: Asylum_Door_Brace1
+    400008: Asylum_Door_Hatch
+    400010: Asylum_Door_Hatch_Handle
+    400012: Asylum_Door_Hinge1
+    400014: Asylum_Door_Hinge2
+    400016: Asylum_Door_Hinge3
+    400018: Asylum_Door_Hinge4
+    400020: pCube3
+    2300000: Asylum_Door
+    2300002: Asylum_Door_Brace
+    2300004: Asylum_Door_Brace1
+    2300006: Asylum_Door_Hatch
+    2300008: Asylum_Door_Hatch_Handle
+    2300010: Asylum_Door_Hinge1
+    2300012: Asylum_Door_Hinge2
+    2300014: Asylum_Door_Hinge3
+    2300016: Asylum_Door_Hinge4
+    3300000: Asylum_Door
+    3300002: Asylum_Door_Brace
+    3300004: Asylum_Door_Brace1
+    3300006: Asylum_Door_Hatch
+    3300008: Asylum_Door_Hatch_Handle
+    3300010: Asylum_Door_Hinge1
+    3300012: Asylum_Door_Hinge2
+    3300014: Asylum_Door_Hinge3
+    3300016: Asylum_Door_Hinge4
+    4300000: Asylum_Door
+    4300002: Asylum_Door_Hatch_Handle
+    4300004: Asylum_Door_Hatch
+    4300006: Asylum_Door_Hinge1
+    4300008: Asylum_Door_Hinge2
+    4300010: Asylum_Door_Brace
+    4300012: Asylum_Door_Hinge3
+    4300014: Asylum_Door_Hinge4
+    4300016: Asylum_Door_Brace1
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
