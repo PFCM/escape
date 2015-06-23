@@ -26,9 +26,9 @@ public class EntranceHallReentry : MonoBehaviour {
 				ehc.ReloadDoors ();
 				ehc.reloaded = false; // once per shuffle!
 			}
-			if (PlayerStatus.canOpenMainDoor()) {
+			/*if (PlayerStatus.canOpenMainDoor()) {
 				mainDoor.LoadNextRoom ();
-			}
+			}*/
 		}
 	}
 }

@@ -61,7 +61,7 @@ namespace Escape.Rooms
 
 				doorCloseScript dcs = door.exitDoorObject;
 				dcs.gameObject.SetActive (true);
-				if ((!dcs.isMainDoor) && (!dcs.locked)) {
+				if (/*(!dcs.isMainDoor) && */(!dcs.locked)) {
 
 					door.loaded = false;
 					door.LoadNextRoom ();
