@@ -12,7 +12,7 @@ namespace Escape.Rooms
 		// Use this for initialization
 		void Start ()
 		{
-			CheckParentRoomStatus ();
+			//CheckParentRoomStatus ();
 			doors [0].SetWeight ("InfiniteHallway", 1f);
 			//doors [1].SetWeight ("Bathroom", 1f);
 			//doors [1].SetWeight ("Bedroom", 0.5f);
@@ -34,7 +34,7 @@ namespace Escape.Rooms
 		override public void Shuffle()
 		{
 			base.Shuffle ();
-			CheckParentRoomStatus ();
+			//CheckParentRoomStatus ();
 			//objects [0].ChooseRandomPositionUniform ();
 		}
 		
