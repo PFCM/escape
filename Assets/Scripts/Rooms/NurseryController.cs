@@ -12,6 +12,7 @@ namespace Escape.Rooms
 		// Use this for initialization
 		void Start ()
 		{
+			base.CheckParentRoomStatus ();
 			doors [0].SetWeight ("Attic", 1);
 			doors [0].SetWeight ("HallStairwayDown", 1);
 			wind = GetComponentInChildren<SoundControlledForce> ();
@@ -38,6 +39,8 @@ namespace Escape.Rooms
 		public override void Shuffle() // TODO: move this into super class, even just as a helper
 		{
 			base.Shuffle ();
+			
+			base.CheckParentRoomStatus ();
 			foreach (PositionableObject obj in objects) {
 				obj.ChooseRandomPositionUniform ();
 			}

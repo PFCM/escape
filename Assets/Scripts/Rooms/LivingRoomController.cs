@@ -14,6 +14,7 @@ namespace Escape.Rooms
 		// Use this for initialization
 		void Start ()
 		{
+			base.CheckParentRoomStatus ();
 			doors [0].SetWeight ("Attic", 1);
 			doors [0].SetWeight ("HallStairwayDown", 0.5f);
 			doors [1].gameObject.SetActive (false);
@@ -33,6 +34,7 @@ namespace Escape.Rooms
 				doors[1].SetWeight("HallStairwayDown", 1);
 				doors[1].SetWeight("Nursery", 0.2f);
 				doors [1].exitDoorObject.gameObject.SetActive(true);
+				Logging.Log ("(LivingRoom) Player allowed out.");
 			}
 		}
 		
@@ -44,6 +46,8 @@ namespace Escape.Rooms
 		override public void Shuffle() 
 		{
 			base.Shuffle ();
+			
+			base.CheckParentRoomStatus ();
 			Logging.Log ("(livingroom) shuffled!");
 			reLoaded = true;
 			AllowOut ();
