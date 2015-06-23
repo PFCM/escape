@@ -69,6 +69,7 @@ public class HallwayController : BaseRoomController {
 		Logging.Log ("(Hallway) Shuffled");
 		if (solved && this.parentRoom.tag != "EntranceHall") {
 			doors[1].LoadNextRoom (); 
+			this.parentRoom.gameObject.SetActive(true); // hilarious last minute fix
 		}
 		
 		this.CheckParentRoomStatus ();

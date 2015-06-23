@@ -13,7 +13,7 @@ namespace Escape.Rooms
 		void Start ()
 		{
 			base.CheckParentRoomStatus ();
-			doors [0].SetWeight ("Attic", 1);
+			doors [0].SetWeight ("Attic", 1.5f);
 			doors [0].SetWeight ("HallStairwayDown", 1);
 			wind = GetComponentInChildren<SoundControlledForce> ();
 			wind.UpdateDirection ();

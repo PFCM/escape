@@ -12,7 +12,7 @@ namespace Escape.Rooms
 		void Start ()
 		{
 			base.Shuffle ();
-			doors [0].SetWeight ("Nursery", 1);
+			doors [0].SetWeight ("Nursery", 2);
 			doors [0].SetWeight ("LivingRoom", 1);
 			//doors [0].SetWeight ("DiningRoom", 1);
 			//doors [0].SetWeight ("LivingRoom", 1);
