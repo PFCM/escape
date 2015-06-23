@@ -7,6 +7,7 @@ using Escape.Util;
 public class EntranceHallReentry : MonoBehaviour {
 
 	EntranceHallController ehc;
+	public BaseDoor mainDoor;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,9 @@ public class EntranceHallReentry : MonoBehaviour {
 				Logging.Log ("(EntranceHall) Reentry, re loading children.");
 				ehc.ReloadDoors ();
 				ehc.reloaded = false; // once per shuffle!
+			}
+			if (PlayerStatus.canOpenMainDoor()) {
+				mainDoor.LoadNextRoom ();
 			}
 		}
 	}
